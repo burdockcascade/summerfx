@@ -6,12 +6,16 @@ on:
       - master
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
-        steps:
-        - uses: actions/checkout@v2
-        - uses: xmake-io/github-action-setup-xmake@v1
-          with:
-            xmake-version: latest
-        - name: Build
-          run: xmake
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup Lua
+      uses: leafo/gh-actions-lua@v10
+    - name: Setup LuaRocks
+      uses: leafo/gh-actions-luarocks@v4
+    - uses: xmake-io/github-action-setup-xmake@v1
+      with:
+        xmake-version: latest
+    - name: Build
+      run: xmake -y
