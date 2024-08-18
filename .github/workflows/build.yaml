@@ -9,6 +9,10 @@ jobs:
   linux:
     runs-on: ubuntu-latest
     steps:
+    - name: Installation
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev p7zip gobjc gcc g++ lua5.4
     - uses: actions/checkout@v2
     - uses: xmake-io/github-action-setup-xmake@v1
       with:
