@@ -1,6 +1,14 @@
 #include "graphics2d.hpp"
 
 // Draw Text
+// --@function DrawText
+// --@description Draw text using font inside rectangle limits
+// --@param string text The text to draw
+// --@param int X The x position
+// --@param int Y The y position
+// --@param int FontSize The font size
+// --@param Color Color The color of the text
+// --@return void
 static int graphics2d_draw_text(lua_State *L) {
     const char* text = luaL_checkstring(L, 1);
     int x = luaL_checkinteger(L, 2);

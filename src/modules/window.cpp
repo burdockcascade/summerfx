@@ -1,6 +1,12 @@
 #include "window.hpp"
 
 // Open Window
+// --@function Open
+// --@description Open a window with the specified title, width, and height.
+// --@param title string The title of the window.   
+// --@param width int The width of the window.
+// --@param height int The height of the window.
+// --@return void 
 static int window_open(lua_State *L) {
     const char* title = luaL_checkstring(L, 1);
     int width = luaL_checkinteger(L, 2);
@@ -13,6 +19,10 @@ static int window_open(lua_State *L) {
 }
 
 // Set Target FPS
+// --@function SetTargetFPS
+// --@description Set the target FPS of the window.
+// --@param fps int The target FPS.
+// --@return void
 static int window_set_target_fps(lua_State *L) {
     int fps = luaL_checkinteger(L, 1);
     SetTargetFPS(fps);
@@ -20,6 +30,10 @@ static int window_set_target_fps(lua_State *L) {
 }
 
 // Set Title
+// --@function SetTitle
+// --@description Set the title of the window.
+// --@param title string The title of the window.
+// --@return void
 static int window_set_title(lua_State *L) {
     const char* title = luaL_checkstring(L, 1);
     SetWindowTitle(title);
@@ -27,12 +41,19 @@ static int window_set_title(lua_State *L) {
 }
 
 // IsOpen
+// --@function IsOpen
+// --@description Check if the window is open.
+// --@return bool
 int window_is_open(lua_State *L) {
     lua_pushboolean(L, !WindowShouldClose());
     return 1;
 }
 
 // Clear Background
+// --@function ClearBackground
+// --@description Clear the background with the specified color.
+// --@param color Color The color to clear the background with.
+// --@return void
 static int window_clear_background(lua_State *L) {
     Color c = *(Color*)luaL_checkudata(L, 1, "Color");
     ClearBackground(c);
@@ -40,6 +61,11 @@ static int window_clear_background(lua_State *L) {
 }
 
 // Draw FPS
+// --@function DrawFPS
+// --@description Draw the FPS at the specified position.
+// --@param x int The x position to draw the FPS.
+// --@param y int The y position to draw the FPS.
+// --@return void
 static int window_draw_fps(lua_State *L) {
     int x = luaL_checkinteger(L, 1);
     int y = luaL_checkinteger(L, 2);
@@ -48,18 +74,27 @@ static int window_draw_fps(lua_State *L) {
 }
 
 // Begin Drawing
+// --@function BeginDrawing
+// --@description Begin drawing to the window.
+// --@return void
 static int window_begin_drawing(lua_State *L) {
     BeginDrawing();
     return 0;
 }
 
 // End Drawing
+// --@function EndDrawing
+// --@description End drawing to the window.
+// --@return void
 static int window_end_drawing(lua_State *L) {
     EndDrawing();
     return 0;
 }
 
 // Close Window
+// --@function Close
+// --@description Close the window.
+// --@return void
 static int window_close(lua_State *L) {
     CloseWindow();
     return 0;

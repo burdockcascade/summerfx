@@ -1,3 +1,6 @@
+set_description("SummerFX")
+set_version("0.1.0")
+
 add_requires("raylib 5.0", "lua 5.4.7")
 
 add_rules("mode.debug", "mode.release")

@@ -1,0 +1,104 @@
+modules:
+  - name: window
+    functions:
+      - name: Open
+        description: Open a window with the specified title, width, and height.
+        return:
+          type: void
+          description:  
+        params:
+          - name: title
+            type: string
+            description: The title of the window.   
+          - name: width
+            type: int
+            description: The width of the window.
+          - name: height
+            type: int
+            description: The height of the window.
+      - name: SetTargetFPS
+        description: Set the target FPS of the window.
+        return:
+          type: voi
+          description: d
+        params:
+          - name: fps
+            type: int
+            description: The target FPS.
+      - name: SetTitle
+        description: Set the title of the window.
+        return:
+          type: voi
+          description: d
+        params:
+          - name: title
+            type: string
+            description: The title of the window.
+      - name: IsOpen
+        description: Check if the window is open.
+        return:
+          type: boo
+          description: l
+        params:
+      - name: ClearBackground
+        description: Clear the background with the specified color.
+        return:
+          type: voi
+          description: d
+        params:
+          - name: color
+            type: Color
+            description: The color to clear the background with.
+      - name: DrawFPS
+        description: Draw the FPS at the specified position.
+        return:
+          type: voi
+          description: d
+        params:
+          - name: x
+            type: int
+            description: The x position to draw the FPS.
+          - name: y
+            type: int
+            description: The y position to draw the FPS.
+      - name: BeginDrawing
+        description: Begin drawing to the window.
+        return:
+          type: voi
+          description: d
+        params:
+      - name: EndDrawing
+        description: End drawing to the window.
+        return:
+          type: voi
+          description: d
+        params:
+      - name: Close
+        description: Close the window.
+        return:
+          type: voi
+          description: d
+        params:
+  - name: graphics2d
+    functions:
+      - name: DrawText
+        description: Draw text using font inside rectangle limits
+        return:
+          type: voi
+          description: d
+        params:
+          - name: string
+            type: text
+            description: The text to draw
+          - name: int
+            type: X
+            description: The x position
+          - name: int
+            type: Y
+            description: The y position
+          - name: int
+            type: FontSize
+            description: The font size
+          - name: Color
+            type: Color
+            description: The color of the text
