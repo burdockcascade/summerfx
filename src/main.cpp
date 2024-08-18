@@ -4,10 +4,7 @@
 #include <raylib.h>
 #include <lua.hpp>
 
-#include "modules/color.hpp"
-#include "modules/math.hpp"
-#include "modules/window.hpp"
-#include "modules/graphics2d.hpp"
+#include "modules/modules.hpp"
 
 int main(int argc, char** argv) {
 
@@ -45,10 +42,7 @@ int main(int argc, char** argv) {
     luaL_openlibs(L);
 
     // Bind modules
-    bind_color_module(L);
-    bind_math_module(L);
-    bind_window_module(L);
-    bind_graphics2d_module(L);
+    bind_modules(L);
 
     // Load and execute the Lua file
     if (luaL_dofile(L, fileToLoad.c_str())) {

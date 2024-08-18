@@ -1,5 +1,13 @@
 #include "color.hpp"
 
+// Color
+// --@function Color
+// --@description Creates a new Color object.
+// --@param r int The red component of the color.
+// --@param g int The green component of the color.
+// --@param b int The blue component of the color.
+// --@param a int The alpha component of the color.
+// --@return Color
 int l_Color_constructor(lua_State *L) {
 
 	Color s;

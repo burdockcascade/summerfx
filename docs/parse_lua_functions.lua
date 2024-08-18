@@ -1,6 +1,7 @@
 local modules = {
     "window",
     "graphics2d",
+    "color"
 }
 
 local function parse_lua_functions(file)
@@ -12,7 +13,7 @@ local function parse_lua_functions(file)
     local match_tag = tag_start .. "(%w+)"
     local match_function = tag_start .. "function%s*(%w+)"
     local match_desecription = tag_start .. "description%s*(.+)"
-    local match_return = tag_start .. "return%s*(%w+)%s*(.+)"
+    local match_return = tag_start .. "return%s*(%w+)%s*(.*)"
     local match_param = tag_start .. "param%s*(%w+)%s*(%w+)%s*(.+)"
 
     local functions = {}
@@ -30,7 +31,10 @@ local function parse_lua_functions(file)
                 }
             elseif tag == "description" then
                 if function_ptr then
-                    functions[function_ptr].desc = line:match(match_desecription)
+                    local desc = line:match(match_desecription)
+                    if desc then
+                        functions[function_ptr].desc = desc
+                    end
                 end
             elseif tag == "return" then
                 local type, desc = line:match(match_return)
@@ -64,7 +68,13 @@ yaml:write("modules:\n")
 
 -- parse each module
 for _, module in ipairs(modules) do
+
+    print("Documenting module: " .. module)
+
     local functions = parse_lua_functions("src/modules/" .. module .. ".cpp")
+
+    -- capitalise first letter
+    module = module:gsub("^%l", string.upper)
 
     -- write yaml
     yaml:write("  - name: " .. module .. "\n")
@@ -74,12 +84,12 @@ for _, module in ipairs(modules) do
         yaml:write("        description: " .. (func.desc) .. "\n")
         yaml:write("        return:\n")
         yaml:write("          type: " .. func.rtn.type .. "\n")
-        yaml:write("          description: " .. func.rtn.desc .. "\n")
+        yaml:write("          description: " .. (func.rtn.desc or "no description") .. "\n")
         yaml:write("        params:\n")
         for _, arg in ipairs(func.args) do
             yaml:write("          - name: " .. arg.name .. "\n")
             yaml:write("            type: " .. arg.type .. "\n")
-            yaml:write("            description: " .. arg.desc .. "\n")
+            yaml:write("            description: " .. (arg.desc or "no description") .. "\n")
         end
     end
 end

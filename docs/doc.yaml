@@ -1,11 +1,11 @@
 modules:
-  - name: window
+  - name: Window
     functions:
       - name: Open
         description: Open a window with the specified title, width, and height.
         return:
           type: void
-          description:  
+          description: 
         params:
           - name: title
             type: string
@@ -16,11 +16,17 @@ modules:
           - name: height
             type: int
             description: The height of the window.
+      - name: IsWindowReady
+        description: Check if the window is ready.
+        return:
+          type: bool
+          description: If the window is ready.
+        params:
       - name: SetTargetFPS
         description: Set the target FPS of the window.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
           - name: fps
             type: int
@@ -28,8 +34,8 @@ modules:
       - name: SetTitle
         description: Set the title of the window.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
           - name: title
             type: string
@@ -37,14 +43,14 @@ modules:
       - name: IsOpen
         description: Check if the window is open.
         return:
-          type: boo
-          description: l
+          type: bool
+          description: If the window is open.
         params:
       - name: ClearBackground
         description: Clear the background with the specified color.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
           - name: color
             type: Color
@@ -52,8 +58,8 @@ modules:
       - name: DrawFPS
         description: Draw the FPS at the specified position.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
           - name: x
             type: int
@@ -64,41 +70,238 @@ modules:
       - name: BeginDrawing
         description: Begin drawing to the window.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
       - name: EndDrawing
         description: End drawing to the window.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
+        params:
+      - name: GetWidth
+        description: Get the width of the window.
+        return:
+          type: int
+          description: The width of the window.
+        params:
+      - name: GetHeight
+        description: Get the height of the window.
+        return:
+          type: int
+          description: The height of the window.
+        params:
+      - name: IsFullscreen
+        description: Check if the window is fullscreen.
+        return:
+          type: bool
+          description: If the window is fullscreen.
+        params:
+      - name: IsFocused
+        description: Check if the window is focused.
+        return:
+          type: bool
+          description: If the window is focused.
+        params:
+      - name: Minimize
+        description: Minimize the window.
+        return:
+          type: void
+          description: 
+        params:
+      - name: Maximize
+        description: Maximize the window.
+        return:
+          type: void
+          description: 
+        params:
+      - name: GetPosition
+        description: Get the position of the window.
+        return:
+          type: Vector2
+          description: The position of the window.
         params:
       - name: Close
         description: Close the window.
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
-  - name: graphics2d
+  - name: Graphics2d
     functions:
       - name: DrawText
         description: Draw text using font inside rectangle limits
         return:
-          type: voi
-          description: d
+          type: void
+          description: 
         params:
           - name: string
             type: text
             description: The text to draw
+          - name: vector2
+            type: position
+            description: The position of the text
           - name: int
-            type: X
-            description: The x position
-          - name: int
-            type: Y
-            description: The y position
-          - name: int
-            type: FontSize
-            description: The font size
+            type: fontSize
+            description: The font size of the text
           - name: Color
-            type: Color
+            type: color
             description: The color of the text
+      - name: DrawRectangle
+        description: Draw a rectangle
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: Color
+            type: color
+            description: The color of the rectangle
+      - name: DrawRectangleLines
+        description: Draw a rectangle outline
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: int
+            type: lineThickness
+            description: The thickness of the lines
+          - name: Color
+            type: color
+            description: The color of the lines
+      - name: DrawRectangleRounded
+        description: Draw a rectangle with rounded edges
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: float
+            type: roundness
+            description: The roundness of the edges
+          - name: int
+            type: segments
+            description: The number of segments to use
+          - name: Color
+            type: color
+            description: The color of the rectangle
+      - name: DrawRectangleRoundedLines
+        description: Draw a rectangle with rounded edges
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: float
+            type: roundness
+            description: The roundness of the edges
+          - name: int
+            type: segments
+            description: The number of segments to use
+          - name: int
+            type: lineThickness
+            description: The thickness of the lines
+          - name: Color
+            type: color
+            description: The color of the lines
+      - name: DrawRectangleGradientV
+        description: Draw a rectangle with a vertical gradient
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: Color
+            type: color1
+            description: The first color of the gradient
+          - name: Color
+            type: color2
+            description: The second color of the gradient
+      - name: DrawRectangleGradientH
+        description: Draw a rectangle with a horizontal gradient
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: Color
+            type: color1
+            description: The first color of the gradient
+          - name: Color
+            type: color2
+            description: The second color of the gradient
+      - name: DrawRectangleGradientEx
+        description: Draw a rectangle with a gradient
+        return:
+          type: void
+          description: 
+        params:
+          - name: rectangle
+            type: rectangle
+            description: The rectangle to draw
+          - name: Color
+            type: color1
+            description: The first color of the gradient
+          - name: Color
+            type: color2
+            description: The second color of the gradient
+          - name: Color
+            type: color3
+            description: The third color of the gradient
+          - name: Color
+            type: color4
+            description: The fourth color of the gradient
+      - name: DrawPoly
+        description: Draw a polygon
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the polygon
+          - name: int
+            type: sides
+            description: The number of sides of the polygon
+          - name: float
+            type: radius
+            description: The radius of the polygon
+          - name: float
+            type: rotation
+            description: The rotation of the polygon
+          - name: Color
+            type: color
+            description: The color of the polygon
+  - name: Color
+    functions:
+      - name: Color
+        description: Creates a new Color object.
+        return:
+          type: Color
+          description: 
+        params:
+          - name: r
+            type: int
+            description: The red component of the color.
+          - name: g
+            type: int
+            description: The green component of the color.
+          - name: b
+            type: int
+            description: The blue component of the color.
+          - name: a
+            type: int
+            description: The alpha component of the color.
