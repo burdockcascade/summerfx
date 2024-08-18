@@ -176,6 +176,44 @@ static int mouse_get_position(lua_State *L) {
     return 1;
 }
 
+// Get Elapsed Time
+// --@function GetElapsedTime
+// --@description Returns the elapsed time in seconds since the window was opened.
+// --@return number The elapsed time in seconds.
+int window_get_elapsed_time(lua_State *L) {
+    lua_pushnumber(L, GetTime());
+    return 1;
+}
+
+// Get Frame Time
+// --@function GetFrameTime
+// --@description Returns the time in seconds since the last frame.
+// --@return number The time in seconds since the last frame.
+int window_get_frame_time(lua_State *L) {
+    lua_pushnumber(L, GetFrameTime());
+    return 1;
+}
+
+// Get FPS
+// --@function GetFPS
+// --@description Returns the current FPS.
+// --@return number The current FPS.
+int window_get_fps(lua_State *L) {
+    lua_pushnumber(L, GetFPS());
+    return 1;
+}
+
+// Take Screenshot
+// --@function TakeScreenshot
+// --@description Take a screenshot of the window.
+// --@param filename string The filename to save the screenshot to.
+// --@return void
+int window_take_screenshot(lua_State *L) {
+    const char* filename = luaL_checkstring(L, 1);
+    TakeScreenshot(filename);
+    return 0;
+}
+
 // Close Window
 // --@function Close
 // --@description Close the window.
@@ -238,10 +276,21 @@ void bind_window_module(lua_State *L) {
     lua_pushcfunction(L, window_get_position);
     lua_setfield(L, -2, "GetPosition");
 
-    lua_pushcfunction(L, window_close);
-    lua_setfield(L, -2, "Close");
-
     lua_pushcfunction(L, mouse_get_position);
     lua_setfield(L, -2, "GetMousePosition");
 
+    lua_pushcfunction(L, window_get_elapsed_time);
+    lua_setfield(L, -2, "GetElapsedTime");
+
+    lua_pushcfunction(L, window_get_frame_time);
+    lua_setfield(L, -2, "GetFrameTime");
+
+    lua_pushcfunction(L, window_get_fps);
+    lua_setfield(L, -2, "GetFPS");
+
+    lua_pushcfunction(L, window_take_screenshot);
+    lua_setfield(L, -2, "TakeScreenshot");
+
+    lua_pushcfunction(L, window_close);
+    lua_setfield(L, -2, "Close");
 }

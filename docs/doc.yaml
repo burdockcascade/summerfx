@@ -127,6 +127,33 @@ modules:
           type: Vector2
           description: The current mouse position 
         params:
+      - name: GetElapsedTime
+        description: Returns the elapsed time in seconds since the window was opened.
+        return:
+          type: number
+          description: The elapsed time in seconds.
+        params:
+      - name: GetFrameTime
+        description: Returns the time in seconds since the last frame.
+        return:
+          type: number
+          description: The time in seconds since the last frame.
+        params:
+      - name: GetFPS
+        description: Returns the current FPS.
+        return:
+          type: number
+          description: The current FPS.
+        params:
+      - name: TakeScreenshot
+        description: Take a screenshot of the window.
+        return:
+          type: void
+          description: 
+        params:
+          - name: filename
+            type: string
+            description: The filename to save the screenshot to.
       - name: Close
         description: Close the window.
         return:
@@ -414,23 +441,3 @@ modules:
           - name: Color
             type: color2
             description: The second color of the gradient
-  - name: Color
-    functions:
-      - name: Color
-        description: Creates a new Color object.
-        return:
-          type: Color
-          description: 
-        params:
-          - name: r
-            type: int
-            description: The red component of the color.
-          - name: g
-            type: int
-            description: The green component of the color.
-          - name: b
-            type: int
-            description: The blue component of the color.
-          - name: a
-            type: int
-            description: The alpha component of the color.

@@ -1,10 +1,10 @@
 Window.Open("Demo App", 800, 600)
 
-local skyblue = Color(135, 206, 235, 255)
-local oceanblue = Color(0, 105, 148, 255)
-local white = Color(255, 255, 255, 255)
-local red = Color(255, 0, 0, 255)
-local orange = Color(255, 127, 39, 255)
+local skyblue <const> = Color(135, 206, 235, 255)
+local oceanblue <const> = Color(0, 105, 148, 255)
+local white <const> = Color(255, 255, 255, 255)
+local red <const> = Color(255, 0, 0, 255)
+local orange <const> = Color(255, 127, 39, 255)
 
 while Window.IsOpen() do
 
@@ -67,6 +67,14 @@ while Window.IsOpen() do
     -- draw mouse position
     local mousePos = Window.GetMousePosition()
     Graphics2D.DrawText("Mouse Position: " .. mousePos.x .. ", " .. mousePos.y, Vector2(10, 450), 20, white)
+
+    -- draw elapsed time
+    local elapsed = Window.GetElapsedTime()
+    Graphics2D.DrawText("Elapsed Time: " .. elapsed, Vector2(10, 470), 20, white)
+
+    -- draw frame time
+    local frameTime = Window.GetFrameTime()
+    Graphics2D.DrawText("Frame Time: " .. frameTime, Vector2(10, 490), 20, white)
 
     Window.EndDrawing()
 
