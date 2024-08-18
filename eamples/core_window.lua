@@ -1,4 +1,4 @@
-Window.Open("Demo App", 800, 600)
+Window.Init("Demo App", 800, 600)
 
 local skyblue <const> = Color(135, 206, 235, 255)
 local oceanblue <const> = Color(0, 105, 148, 255)
@@ -6,7 +6,7 @@ local white <const> = Color(255, 255, 255, 255)
 local red <const> = Color(255, 0, 0, 255)
 local orange <const> = Color(255, 127, 39, 255)
 
-while Window.IsOpen() do
+while not Window.ShouldClose() do
 
     Window.BeginDrawing()
 
@@ -75,6 +75,11 @@ while Window.IsOpen() do
     -- draw frame time
     local frameTime = Window.GetFrameTime()
     Graphics2D.DrawText("Frame Time: " .. frameTime, Vector2(10, 490), 20, white)
+
+    -- print mouse wheel
+    local wheel = Input.GetMouseWheelMove()
+    Graphics2D.DrawText("Mouse Wheel: " .. wheel, Vector2(10, 510), 20, white)
+
 
     Window.EndDrawing()
 

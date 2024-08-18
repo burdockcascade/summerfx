@@ -1,6 +1,7 @@
 local modules = {
     "window",
-    "graphics2d"
+    "graphics2d",
+    "input",
 }
 
 local function parse_lua_functions(file)

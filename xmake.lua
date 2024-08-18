@@ -1,7 +1,7 @@
 set_description("SummerFX")
 set_version("0.1.0")
 
-add_requires("raylib 5.0", "lua 5.4.7")
+add_requires("raylib 5.0", "raygui 4.0", "lua 5.4.7")
 
 add_rules("mode.debug", "mode.release")
 
@@ -13,7 +13,7 @@ before_build(function(target)
 end)
 
 target("summerfx")
-    add_packages("raylib", "lua")
+    add_packages("raylib", "lua", "raygui")
     set_kind("binary")
     add_files("src/*.cpp")
     add_files("src/modules/*.cpp")

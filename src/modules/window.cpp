@@ -1,13 +1,13 @@
 #include "window.hpp"
 
-// Open Window
-// --@function Open
+// Initialize Window
+// --@function Init
 // --@description Open a window with the specified title, width, and height.
 // --@param title string The title of the window.   
 // --@param width int The width of the window.
 // --@param height int The height of the window.
 // --@return void 
-int window_open(lua_State *L) {
+int window_init(lua_State *L) {
     const char* title = luaL_checkstring(L, 1);
     int width = luaL_checkinteger(L, 2);
     int height = luaL_checkinteger(L, 3);
@@ -49,12 +49,12 @@ int window_set_title(lua_State *L) {
     return 0;
 }
 
-// IsOpen
-// --@function IsOpen
-// --@description Check if the window is open.
-// --@return bool If the window is open.
-int window_is_open(lua_State *L) {
-    lua_pushboolean(L, !WindowShouldClose());
+// Should Close
+// --@function ShouldClose
+// --@description Check if the window should close.
+// --@return bool If the window should close.
+int window_should_close(lua_State *L) {
+    lua_pushboolean(L, WindowShouldClose());
     return 1;
 }
 
@@ -133,6 +133,33 @@ int window_is_fullscreen(lua_State *L) {
 // --@return bool If the window is focused.
 int window_is_focused(lua_State *L) {
     lua_pushboolean(L, IsWindowFocused());
+    return 1;
+}
+
+// Is Hidden
+// --@function IsHidden
+// --@description Check if the window is hidden.
+// --@return bool If the window is hidden.
+int window_is_hidden(lua_State *L) {
+    lua_pushboolean(L, IsWindowHidden());
+    return 1;
+}
+
+// Is Minimized
+// --@function IsMinimized
+// --@description Check if the window is minimized.
+// --@return bool If the window is minimized.
+int window_is_minimized(lua_State *L) {
+    lua_pushboolean(L, IsWindowMinimized());
+    return 1;
+}
+
+// Is Maximized
+// --@function IsMaximized
+// --@description Check if the window is maximized.
+// --@return bool If the window is maximized.
+int window_is_maximized(lua_State *L) {
+    lua_pushboolean(L, IsWindowMaximized());
     return 1;
 }
 
@@ -228,8 +255,8 @@ void bind_window_module(lua_State *L) {
     lua_pushvalue(L, -1);
     lua_setglobal(L, "Window");
 
-    lua_pushcfunction(L, window_open);
-    lua_setfield(L, -2, "Open");
+    lua_pushcfunction(L, window_init);
+    lua_setfield(L, -2, "Init");
 
     lua_pushcfunction(L, window_is_ready);
     lua_setfield(L, -2, "IsReady");
@@ -240,8 +267,8 @@ void bind_window_module(lua_State *L) {
     lua_pushcfunction(L, window_set_title);
     lua_setfield(L, -2, "SetTitle");
 
-    lua_pushcfunction(L, window_is_open);
-    lua_setfield(L, -2, "IsOpen");
+    lua_pushcfunction(L, window_should_close);
+    lua_setfield(L, -2, "ShouldClose");
 
     lua_pushcfunction(L, window_draw_fps);
     lua_setfield(L, -2, "DrawFPS");
@@ -266,6 +293,15 @@ void bind_window_module(lua_State *L) {
 
     lua_pushcfunction(L, window_is_focused);
     lua_setfield(L, -2, "IsFocused");
+
+    lua_pushcfunction(L, window_is_hidden);
+    lua_setfield(L, -2, "IsHidden");
+
+    lua_pushcfunction(L, window_is_minimized);
+    lua_setfield(L, -2, "IsMinimized");
+
+    lua_pushcfunction(L, window_is_maximized);
+    lua_setfield(L, -2, "IsMaximized");
 
     lua_pushcfunction(L, window_minimize);
     lua_setfield(L, -2, "Minimize");

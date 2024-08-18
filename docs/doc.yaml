@@ -1,7 +1,7 @@
 modules:
   - name: Window
     functions:
-      - name: Open
+      - name: Init
         description: Open a window with the specified title, width, and height.
         return:
           type: void
@@ -40,11 +40,11 @@ modules:
           - name: title
             type: string
             description: The title of the window.
-      - name: IsOpen
-        description: Check if the window is open.
+      - name: ShouldClose
+        description: Check if the window should close.
         return:
           type: bool
-          description: If the window is open.
+          description: If the window should close.
         params:
       - name: ClearBackground
         description: Clear the background with the specified color.
@@ -102,6 +102,24 @@ modules:
         return:
           type: bool
           description: If the window is focused.
+        params:
+      - name: IsHidden
+        description: Check if the window is hidden.
+        return:
+          type: bool
+          description: If the window is hidden.
+        params:
+      - name: IsMinimized
+        description: Check if the window is minimized.
+        return:
+          type: bool
+          description: If the window is minimized.
+        params:
+      - name: IsMaximized
+        description: Check if the window is maximized.
+        return:
+          type: bool
+          description: If the window is maximized.
         params:
       - name: Minimize
         description: Minimize the window.
@@ -441,3 +459,209 @@ modules:
           - name: Color
             type: color2
             description: The second color of the gradient
+  - name: Input
+    functions:
+      - name: IsKeyPressed
+        description: Check if a key has been pressed once
+        return:
+          type: bool
+          description: If the key has been pressed
+        params:
+          - name: key
+            type: int
+            description: The key to check
+      - name: IsKeyPressedRepeat
+        description: Check if a key has been pressed and is being held down
+        return:
+          type: bool
+          description: If the key has been pressed and is being held down
+        params:
+          - name: key
+            type: int
+            description: The key to check
+      - name: IsKeyDown
+        description: Check if a key is being held down
+        return:
+          type: bool
+          description: If the key is being held down
+        params:
+          - name: key
+            type: int
+            description: The key to check
+      - name: IsKeyReleased
+        description: Check if a key has been released
+        return:
+          type: bool
+          description: If the key has been released
+        params:
+          - name: key
+            type: int
+            description: The key to check
+      - name: IsKeyUp
+        description: Check if a key is not being held down
+        return:
+          type: bool
+          description: If the key is not being held down
+        params:
+          - name: key
+            type: int
+            description: The key to check
+      - name: GetKeyPressed
+        description: Get the last key pressed
+        return:
+          type: int
+          description: The last key pressed
+        params:
+      - name: GetCharPressed
+        description: Get the last char pressed
+        return:
+          type: int
+          description: The last char pressed
+        params:
+      - name: IsMouseButtonPressed
+        description: Check if a mouse button has been pressed once
+        return:
+          type: bool
+          description: If the button has been pressed
+        params:
+          - name: button
+            type: int
+            description: The button to check
+      - name: IsMouseButtonDown
+        description: Check if a mouse button is being held down    
+        return:
+          type: bool
+          description: If the button is being held down
+        params:
+          - name: button
+            type: int
+            description: The button to check
+      - name: IsMouseButtonReleased
+        description: Check if a mouse button has been released
+        return:
+          type: bool
+          description: If the button has been released
+        params:
+          - name: button
+            type: int
+            description: The button to check
+      - name: IsMouseButtonUp
+        description: Check if a mouse button is not being held down
+        return:
+          type: bool
+          description: If the button is not being held down
+        params:
+          - name: button
+            type: int
+            description: The button to check
+      - name: GetMouseX
+        description: Get the x position of the mouse
+        return:
+          type: int
+          description: The x position of the mouse
+        params:
+      - name: GetMouseY
+        description: Get the y position of the mouse
+        return:
+          type: int
+          description: The y position of the mouse
+        params:
+      - name: GetMousePosition
+        description: Get the position of the mouse
+        return:
+          type: Vector2
+          description: The position of the mouse
+        params:
+      - name: SetMousePosition
+        description: Set the position of the mouse
+        return:
+          type: void
+          description: 
+        params:
+          - name: x
+            type: int
+            description: The x position of the mouse
+          - name: y
+            type: int
+            description: The y position of the mouse
+      - name: SetMouseOffset
+        description: Set the offset of the mouse
+        return:
+          type: void
+          description: 
+        params:
+          - name: x
+            type: int
+            description: The x offset of the mouse
+          - name: y
+            type: int
+            description: The y offset of the mouse
+      - name: SetMouseScale
+        description: Set the scale of the mouse
+        return:
+          type: void
+          description: 
+        params:
+          - name: x
+            type: int
+            description: The x scale of the mouse
+          - name: y
+            type: int
+            description: The y scale of the mouse
+      - name: GetMouseWheelMove
+        description: Get the amount the mouse wheel has moved
+        return:
+          type: int
+          description: The amount the mouse wheel has moved
+        params:
+      - name: GetMouseWheelMoveV
+        description: Get the amount the mouse wheel has moved
+        return:
+          type: Vector2
+          description: The amount the mouse wheel has moved
+        params:
+      - name: SetMouseCursor
+        description: Set the mouse cursor
+        return:
+          type: void
+          description: 
+        params:
+          - name: cursor
+            type: int
+            description: The cursor to set
+      - name: GetTouchX
+        description: Get the x position of a touc
+        return:
+          type: int
+          description: The x position of the touch
+        params:
+      - name: GetTouchY
+        description: Get the y position of a touch
+        return:
+          type: int
+          description: The y position of the touch
+        params:
+      - name: GetTouchPosition
+        description: Get the position of a touch
+        return:
+          type: Vector2
+          description: The position of the touch
+        params:
+          - name: touch
+            type: int
+            description: The touch to get the position of
+      - name: GetTouchPointId
+        description: Get the id of a touch point
+        return:
+          type: int
+          description: The id of the touch point
+        params:
+          - name: index
+            type: int
+            description: The index of the touch point
+      - name: GetTouchPointCount
+        description: Get the number of touch points
+        return:
+          type: int
+          description: The number of touch points
+        params:
