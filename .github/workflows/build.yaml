@@ -6,11 +6,17 @@ on:
       - master
 
 jobs:
-  build:
-    strategy:
-      matrix:
-        os: [ubuntu-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
+  linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: xmake-io/github-action-setup-xmake@v1
+      with:
+        xmake-version: latest
+    - name: Build
+      run: xmake -y
+  windows:
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v2
     - uses: xmake-io/github-action-setup-xmake@v1
