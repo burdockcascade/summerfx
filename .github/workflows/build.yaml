@@ -12,11 +12,13 @@ jobs:
     - name: Installation
       run: |
         sudo apt-get update
-        sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev p7zip gobjc gcc g++ lua5.4
+        sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev gcc g++
     - uses: actions/checkout@v2
     - uses: xmake-io/github-action-setup-xmake@v1
       with:
         xmake-version: latest
+        actions-cache-folder: '.xmake-cache'
+        actions-cache-key: 'ubuntu-xmake-cache'
     - name: Build
       run: xmake -y
   windows:
