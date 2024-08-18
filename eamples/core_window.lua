@@ -18,6 +18,12 @@ while Window.IsOpen() do
     Graphics2D.DrawText("Hello, World!", Vector2(10, 40), 20, white)
     Graphics2D.DrawText("Press ESC to exit", Vector2(10, 60), 20, white)
 
+    -- draw pixel
+    Graphics2D.DrawPixel(Vector2(400, 80), white)
+
+    -- draw line
+    Graphics2D.DrawLine(Vector2(10, 80), Vector2(110, 80), orange)
+
     -- draw rectangle
     Graphics2D.DrawRectangle(Rectangle(10, 100, 100, 100), white)
     Graphics2D.DrawRectangleLines(Rectangle(30, 120, 100, 100), 5, red)
@@ -29,6 +35,14 @@ while Window.IsOpen() do
 
     -- draw poly
     Graphics2D.DrawPoly(Vector2(400, 100), 8, 50, 0, skyblue)
+
+    -- draw circle
+    Graphics2D.DrawCircle(Vector2(400, 200), 50, red)
+    Graphics2D.DrawCircleLines(Vector2(400, 200), 50, red)
+    Graphics2D.DrawCircleSector(Vector2(550, 200), 50, 0, 180, 50, skyblue)
+    Graphics2D.DrawCircleSectorLines(Vector2(550, 200), 50, 0, 180, 5, red)
+    Graphics2D.DrawCircleGradient(Vector2(400, 350), 50, orange, red)
+
 
     -- draw screen width
     local width = Window.GetWidth()
@@ -49,6 +63,10 @@ while Window.IsOpen() do
     -- draw window position
     local pos = Window.GetPosition()
     Graphics2D.DrawText("Window Position: " .. pos.x .. ", " .. pos.y, Vector2(10, 430), 20, white)
+
+    -- draw mouse position
+    local mousePos = Window.GetMousePosition()
+    Graphics2D.DrawText("Mouse Position: " .. mousePos.x .. ", " .. mousePos.y, Vector2(10, 450), 20, white)
 
     Window.EndDrawing()
 

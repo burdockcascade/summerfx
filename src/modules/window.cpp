@@ -166,6 +166,16 @@ int window_get_position(lua_State *L) {
     return 1;
 }
 
+// Mouse Position
+// --@function GetPosition
+// --@description Returns the current mouse position
+// --@return Vector2 The current mouse position 
+static int mouse_get_position(lua_State *L) {
+    Vector2 result = GetMousePosition();
+    l_Vector2_push(L, result);
+    return 1;
+}
+
 // Close Window
 // --@function Close
 // --@description Close the window.
@@ -230,5 +240,8 @@ void bind_window_module(lua_State *L) {
 
     lua_pushcfunction(L, window_close);
     lua_setfield(L, -2, "Close");
+
+    lua_pushcfunction(L, mouse_get_position);
+    lua_setfield(L, -2, "GetMousePosition");
 
 }

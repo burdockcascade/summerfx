@@ -121,6 +121,12 @@ modules:
           type: Vector2
           description: The position of the window.
         params:
+      - name: GetPosition
+        description: Returns the current mouse position
+        return:
+          type: Vector2
+          description: The current mouse position 
+        params:
       - name: Close
         description: Close the window.
         return:
@@ -147,6 +153,18 @@ modules:
           - name: Color
             type: color
             description: The color of the text
+      - name: DrawPixel
+        description: Draw a pixel
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the pixel
+          - name: Color
+            type: color
+            description: The color of the pixel
       - name: DrawRectangle
         description: Draw a rectangle
         return:
@@ -285,6 +303,117 @@ modules:
           - name: Color
             type: color
             description: The color of the polygon
+      - name: DrawLine
+        description: Draw a line
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: start
+            description: The start position of the line
+          - name: vector2
+            type: end
+            description: The end position of the line
+          - name: Color
+            type: color
+            description: The color of the line
+      - name: DrawCircle
+        description: Draw a circle
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the circle
+          - name: float
+            type: radius
+            description: The radius of the circle
+          - name: Color
+            type: color
+            description: The color of the circle
+      - name: DrawCircleLines
+        description: Draw a circle outline
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the circle
+          - name: float
+            type: radius
+            description: The radius of the circle
+          - name: Color
+            type: color
+            description: The color of the circle
+      - name: DrawCircleSector
+        description: Draw a circle sector
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the circle
+          - name: float
+            type: radius
+            description: The radius of the circle
+          - name: int
+            type: startAngle
+            description: The start angle of the sector
+          - name: int
+            type: endAngle
+            description: The end angle of the sector
+          - name: int
+            type: segments
+            description: The number of segments to use
+          - name: Color
+            type: color
+            description: The color of the circle
+      - name: DrawCircleSectorLines
+        description: Draw a circle sector outline
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the circle
+          - name: float
+            type: radius
+            description: The radius of the circle
+          - name: int
+            type: startAngle
+            description: The start angle of the sector
+          - name: int
+            type: endAngle
+            description: The end angle of the sector
+          - name: int
+            type: segments
+            description: The number of segments to use
+          - name: Color
+            type: color
+            description: The color of the circle
+      - name: DrawCircleGradient
+        description: Draw a circle with a gradient
+        return:
+          type: void
+          description: 
+        params:
+          - name: vector2
+            type: position
+            description: The position of the circle
+          - name: float
+            type: radius
+            description: The radius of the circle
+          - name: Color
+            type: color1
+            description: The first color of the gradient
+          - name: Color
+            type: color2
+            description: The second color of the gradient
   - name: Color
     functions:
       - name: Color
