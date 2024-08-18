@@ -323,5 +323,5 @@ void bind_graphics2d_module(lua_State *L) {
     lua_pushcfunction(L, graphics2d_draw_circle_gradient);
     lua_setfield(L, -2, "DrawCircleGradient");
 
-
+    lua_pop(L, 1);
 }

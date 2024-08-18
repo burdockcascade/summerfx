@@ -65,7 +65,7 @@ while not Window.ShouldClose() do
     Graphics2D.DrawText("Window Position: " .. pos.x .. ", " .. pos.y, Vector2(10, 430), 20, white)
 
     -- draw mouse position
-    local mousePos = Window.GetMousePosition()
+    local mousePos = Input.GetMousePosition()
     Graphics2D.DrawText("Mouse Position: " .. mousePos.x .. ", " .. mousePos.y, Vector2(10, 450), 20, white)
 
     -- draw elapsed time

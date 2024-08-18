@@ -139,12 +139,6 @@ modules:
           type: Vector2
           description: The position of the window.
         params:
-      - name: GetPosition
-        description: Returns the current mouse position
-        return:
-          type: Vector2
-          description: The current mouse position 
-        params:
       - name: GetElapsedTime
         description: Returns the elapsed time in seconds since the window was opened.
         return:
