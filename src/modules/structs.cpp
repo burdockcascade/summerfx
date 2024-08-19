@@ -1,5 +1,8 @@
 #include "structs.hpp"
 
+// =====================================================================
+// Color
+
 // Color
 // --@function Color
 // --@description Creates a new Color object.
@@ -82,6 +85,9 @@ void l_Color_push(lua_State *L, const Color &color) {
 
 }
 
+// =====================================================================
+// Vector2
+
 // Vetor2
 // --@table Vector2
 // --@desc A 2D vector
@@ -154,6 +160,9 @@ void l_Vector2_push(lua_State *L, const Vector2 &vector2) {
 	lua_setmetatable(L, -2);
 
 }
+
+// =====================================================================
+// Rectangle
 
 // Rectangle
 // --@table Rectangle
@@ -238,7 +247,9 @@ void l_Rectangle_push(lua_State *L, const Rectangle &rectangle) {
     lua_setmetatable(L, -2);
 }
 
-// Bind shapes module
+// =====================================================================
+// Bindings
+
 void bind_structs(lua_State *L) {
     lua_register(L, "Rectangle", l_Rectangle_constructor);
     lua_register(L, "Vector2", l_Vector2_constructor);

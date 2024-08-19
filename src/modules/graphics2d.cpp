@@ -1,5 +1,8 @@
 #include "graphics2d.hpp"
 
+// =====================================================================
+// Text
+
 // Draw Text
 // --@function DrawText
 // --@description Draw text using font inside rectangle limits
@@ -17,6 +20,22 @@ int graphics2d_draw_text(lua_State *L) {
     return 0;
 }
 
+// Draw FPS
+// --@function DrawFPS
+// --@description Draw the FPS at the specified position.
+// --@param x int The x position to draw the FPS.
+// --@param y int The y position to draw the FPS.
+// --@return void
+int window_draw_fps(lua_State *L) {
+    int x = luaL_checkinteger(L, 1);
+    int y = luaL_checkinteger(L, 2);
+    DrawFPS(x, y);
+    return 0;
+}
+
+// =====================================================================
+// Pixels
+
 // DrawPixel
 // --@function DrawPixel
 // --@description Draw a pixel
@@ -29,6 +48,9 @@ int graphics2d_draw_pixel(lua_State *L) {
     DrawPixelV(position, c);
     return 0;
 }
+
+// =====================================================================
+// Rectangle
 
 // DrawRectangle
 // --@function DrawRectangle
@@ -143,6 +165,9 @@ int graphics2d_draw_rectangle_gradient_ex(lua_State *L) {
     return 0;
 }
 
+// =====================================================================
+// Polygons
+
 // DrawPoly
 // --@function DrawPoly
 // --@description Draw a polygon
@@ -162,6 +187,9 @@ int graphics2d_draw_poly(lua_State *L) {
     return 0;
 }
 
+// =====================================================================
+// Lines
+
 // Draw Line
 // --@function DrawLine
 // --@description Draw a line
@@ -176,6 +204,9 @@ int graphics2d_draw_line(lua_State *L) {
     DrawLine(start.x, start.y, end.x, end.y, c);
     return 0;
 }
+
+// =====================================================================
+// Circles
 
 // Draw Circle
 // --@function DrawCircle
@@ -266,9 +297,9 @@ int graphics2d_draw_circle_gradient(lua_State *L) {
     return 0;
 }
 
+// =====================================================================
+// Bindings
 
-
-// Bind Graphics2D module
 void bind_graphics2d_module(lua_State *L) {
 
     lua_newtable(L);
@@ -277,6 +308,9 @@ void bind_graphics2d_module(lua_State *L) {
 
     lua_pushcfunction(L, graphics2d_draw_text);
     lua_setfield(L, -2, "DrawText");
+
+    lua_pushcfunction(L, window_draw_fps);
+    lua_setfield(L, -2, "DrawFPS");
 
     lua_pushcfunction(L, graphics2d_draw_pixel);
     lua_setfield(L, -2, "DrawPixel");

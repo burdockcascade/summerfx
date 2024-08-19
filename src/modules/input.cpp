@@ -1,5 +1,8 @@
 #include "input.hpp"
 
+// =====================================================================
+// Keyboard Functions
+
 // Is Key Pressed
 // --@function IsKeyPressed
 // --@description Check if a key has been pressed once
@@ -72,6 +75,9 @@ int input_get_char_pressed(lua_State *L) {
     lua_pushinteger(L, GetCharPressed());
     return 1;
 }
+
+// =====================================================================
+// Mouse Functions
 
 // Is Mouse Button Pressed
 // --@function IsMouseButtonPressed
@@ -214,6 +220,9 @@ int input_set_mouse_cursor(lua_State *L) {
     return 0;
 }
 
+// =====================================================================
+// Touch Functions
+
 // Get Touch X
 // --@function GetTouchX
 // --@description Get the x position of a touc
@@ -264,8 +273,99 @@ int input_get_touch_point_count(lua_State *L) {
     return 1;
 }
 
+// =====================================================================
+// Gamepad Functions
+
+// Is Gamepad Available
+// --@function IsGamepadAvailable
+// --@description Check if a gamepad is available
+// --@param gamepad int The gamepad to check
+// --@return bool If the gamepad is available
+int input_is_gamepad_available(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    lua_pushboolean(L, IsGamepadAvailable(gamepad));
+    return 1;
+}
+
+// Get Gamepad Name
+// --@function GetGamepadName
+// --@description Get the name of a gamepad
+// --@param gamepad int The gamepad to get the name of
+// --@return string The name of the gamepad
+int input_get_gamepad_name(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    const char *name = GetGamepadName(gamepad);
+    lua_pushstring(L, name);
+    return 1;
+}
+
+// Mouse Button Constants
+void bind_mouse_button_constants(lua_State *L) {
+    lua_newtable(L);
+    lua_pushvalue(L, -1);
+    lua_setglobal(L, "MouseButton");
+
+    lua_pushinteger(L, MOUSE_LEFT_BUTTON);
+    lua_setfield(L, -2, "Left");
+
+    lua_pushinteger(L, MOUSE_RIGHT_BUTTON);
+    lua_setfield(L, -2, "Right");
+
+    lua_pushinteger(L, MOUSE_MIDDLE_BUTTON);
+    lua_setfield(L, -2, "Middle");
+
+    lua_pop(L, 1);
+}
+
+// Mouse Cursor Constants
+void bind_mouse_cursor_constants(lua_State *L) {
+    lua_newtable(L);
+    lua_pushvalue(L, -1);
+    lua_setglobal(L, "MouseCursor");
+
+    lua_pushinteger(L, MOUSE_CURSOR_DEFAULT);
+    lua_setfield(L, -2, "Default");
+
+    lua_pushinteger(L, MOUSE_CURSOR_ARROW);
+    lua_setfield(L, -2, "Arrow");
+
+    lua_pushinteger(L, MOUSE_CURSOR_IBEAM);
+    lua_setfield(L, -2, "IBeam");
+
+    lua_pushinteger(L, MOUSE_CURSOR_CROSSHAIR);
+    lua_setfield(L, -2, "Crosshair");
+
+    lua_pushinteger(L, MOUSE_CURSOR_POINTING_HAND);
+    lua_setfield(L, -2, "PointingHand");
+
+    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_EW);
+    lua_setfield(L, -2, "ResizeEW");
+
+    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_NS);
+    lua_setfield(L, -2, "ResizeNS");
+
+    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_NWSE);
+    lua_setfield(L, -2, "ResizeNWSE");
+
+    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_NESW);
+    lua_setfield(L, -2, "ResizeNESW");
+
+    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_ALL);
+    lua_setfield(L, -2, "ResizeAll");
+
+    lua_pushinteger(L, MOUSE_CURSOR_NOT_ALLOWED);
+    lua_setfield(L, -2, "NotAllowed");
+
+    lua_pop(L, 1);
+}
+
+// =====================================================================
 // Bindings
+
 void bind_input_module(lua_State *L) {
+
+    bind_mouse_button_constants(L);
+    bind_mouse_cursor_constants(L);
 
     lua_newtable(L);
     lua_pushvalue(L, -1);
@@ -345,6 +445,12 @@ void bind_input_module(lua_State *L) {
 
     lua_pushcfunction(L, input_get_touch_point_count);
     lua_setfield(L, -2, "GetTouchPointCount");
+
+    lua_pushcfunction(L, input_is_gamepad_available);
+    lua_setfield(L, -2, "IsGamepadAvailable");
+
+    lua_pushcfunction(L, input_get_gamepad_name);
+    lua_setfield(L, -2, "GetGamepadName");
 
     lua_pop(L, 1);
 

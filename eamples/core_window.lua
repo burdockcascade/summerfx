@@ -12,7 +12,7 @@ while not Window.ShouldClose() do
 
     Window.ClearBackground(oceanblue)
 
-    Window.DrawFPS(10, 10)
+    Graphics2D.DrawFPS(10, 10)
 
     -- draw text
     Graphics2D.DrawText("Hello, World!", Vector2(10, 40), 20, white)

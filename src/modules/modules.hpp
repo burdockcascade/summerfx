@@ -1,7 +1,6 @@
 #include "structs.hpp"
 #include "window.hpp"
 #include "graphics2d.hpp"
-#include "shapes.hpp"
 #include "input.hpp"
 
 void bind_modules(lua_State *L) {

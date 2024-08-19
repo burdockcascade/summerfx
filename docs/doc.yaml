@@ -16,11 +16,23 @@ modules:
           - name: height
             type: int
             description: The height of the window.
+      - name: Close
+        description: Close the window.
+        return:
+          type: void
+          description: 
+        params:
       - name: IsWindowReady
         description: Check if the window is ready.
         return:
           type: bool
           description: If the window is ready.
+        params:
+      - name: ShouldClose
+        description: Check if the window should close.
+        return:
+          type: bool
+          description: If the window should close.
         params:
       - name: SetTargetFPS
         description: Set the target FPS of the window.
@@ -40,12 +52,6 @@ modules:
           - name: title
             type: string
             description: The title of the window.
-      - name: ShouldClose
-        description: Check if the window should close.
-        return:
-          type: bool
-          description: If the window should close.
-        params:
       - name: ClearBackground
         description: Clear the background with the specified color.
         return:
@@ -55,18 +61,6 @@ modules:
           - name: color
             type: Color
             description: The color to clear the background with.
-      - name: DrawFPS
-        description: Draw the FPS at the specified position.
-        return:
-          type: void
-          description: 
-        params:
-          - name: x
-            type: int
-            description: The x position to draw the FPS.
-          - name: y
-            type: int
-            description: The y position to draw the FPS.
       - name: BeginDrawing
         description: Begin drawing to the window.
         return:
@@ -139,6 +133,15 @@ modules:
           type: Vector2
           description: The position of the window.
         params:
+      - name: TakeScreenshot
+        description: Take a screenshot of the window.
+        return:
+          type: void
+          description: 
+        params:
+          - name: filename
+            type: string
+            description: The filename to save the screenshot to.
       - name: GetElapsedTime
         description: Returns the elapsed time in seconds since the window was opened.
         return:
@@ -157,20 +160,41 @@ modules:
           type: number
           description: The current FPS.
         params:
-      - name: TakeScreenshot
-        description: Take a screenshot of the window.
+      - name: ShowCursor
+        description: Show the cursor.
         return:
           type: void
           description: 
         params:
-          - name: filename
-            type: string
-            description: The filename to save the screenshot to.
-      - name: Close
-        description: Close the window.
+      - name: HideCursor
+        description: Hide the cursor.
         return:
           type: void
           description: 
+        params:
+      - name: IsCursorHidden
+        description: Check if the cursor is hidden.
+        return:
+          type: bool
+          description: If the cursor is hidden.
+        params:
+      - name: EnableCursor
+        description: Enable the cursor.
+        return:
+          type: void
+          description: 
+        params:
+      - name: DisableCursor
+        description: Disable the cursor.
+        return:
+          type: void
+          description: 
+        params:
+      - name: IsCursorOnScreen
+        description: Check if the cursor is on the screen.
+        return:
+          type: bool
+          description: If the cursor is on the screen.
         params:
   - name: Graphics2d
     functions:
@@ -192,6 +216,18 @@ modules:
           - name: Color
             type: color
             description: The color of the text
+      - name: DrawFPS
+        description: Draw the FPS at the specified position.
+        return:
+          type: void
+          description: 
+        params:
+          - name: x
+            type: int
+            description: The x position to draw the FPS.
+          - name: y
+            type: int
+            description: The y position to draw the FPS.
       - name: DrawPixel
         description: Draw a pixel
         return:
@@ -659,3 +695,21 @@ modules:
           type: int
           description: The number of touch points
         params:
+      - name: IsGamepadAvailable
+        description: Check if a gamepad is available
+        return:
+          type: bool
+          description: If the gamepad is available
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+      - name: GetGamepadName
+        description: Get the name of a gamepad
+        return:
+          type: string
+          description: The name of the gamepad
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to get the name of

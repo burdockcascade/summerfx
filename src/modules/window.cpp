@@ -1,5 +1,8 @@
 #include "window.hpp"
 
+// =====================================================================
+// Lifecycle
+
 // Initialize Window
 // --@function Init
 // --@description Open a window with the specified title, width, and height.
@@ -18,12 +21,30 @@ int window_init(lua_State *L) {
     return 0;
 }
 
+// Close Window
+// --@function Close
+// --@description Close the window.
+// --@return void
+int window_close(lua_State *L) {
+    CloseWindow();
+    return 0;
+}
+
 // IsWindowReady
 // --@function IsWindowReady
 // --@description Check if the window is ready.
 // --@return bool If the window is ready.
 int window_is_ready(lua_State *L) {
     lua_pushboolean(L, IsWindowReady());
+    return 1;
+}
+
+// Should Close
+// --@function ShouldClose
+// --@description Check if the window should close.
+// --@return bool If the window should close.
+int window_should_close(lua_State *L) {
+    lua_pushboolean(L, WindowShouldClose());
     return 1;
 }
 
@@ -38,6 +59,9 @@ int window_set_target_fps(lua_State *L) {
     return 0;
 }
 
+// =====================================================================
+// Setters
+
 // Set Title
 // --@function SetTitle
 // --@description Set the title of the window.
@@ -47,15 +71,6 @@ int window_set_title(lua_State *L) {
     const char* title = luaL_checkstring(L, 1);
     SetWindowTitle(title);
     return 0;
-}
-
-// Should Close
-// --@function ShouldClose
-// --@description Check if the window should close.
-// --@return bool If the window should close.
-int window_should_close(lua_State *L) {
-    lua_pushboolean(L, WindowShouldClose());
-    return 1;
 }
 
 // Clear Background
@@ -69,18 +84,8 @@ int window_clear_background(lua_State *L) {
     return 0;
 }
 
-// Draw FPS
-// --@function DrawFPS
-// --@description Draw the FPS at the specified position.
-// --@param x int The x position to draw the FPS.
-// --@param y int The y position to draw the FPS.
-// --@return void
-int window_draw_fps(lua_State *L) {
-    int x = luaL_checkinteger(L, 1);
-    int y = luaL_checkinteger(L, 2);
-    DrawFPS(x, y);
-    return 0;
-}
+// =====================================================================
+// Drawing
 
 // Begin Drawing
 // --@function BeginDrawing
@@ -99,6 +104,9 @@ int window_end_drawing(lua_State *L) {
     EndDrawing();
     return 0;
 }
+
+// =====================================================================
+// Window
 
 // GetWidth
 // --@function GetWidth
@@ -193,6 +201,20 @@ int window_get_position(lua_State *L) {
     return 1;
 }
 
+// Take Screenshot
+// --@function TakeScreenshot
+// --@description Take a screenshot of the window.
+// --@param filename string The filename to save the screenshot to.
+// --@return void
+int window_take_screenshot(lua_State *L) {
+    const char* filename = luaL_checkstring(L, 1);
+    TakeScreenshot(filename);
+    return 0;
+}
+
+// =====================================================================
+// Time
+
 // Get Elapsed Time
 // --@function GetElapsedTime
 // --@description Returns the elapsed time in seconds since the window was opened.
@@ -220,25 +242,65 @@ int window_get_fps(lua_State *L) {
     return 1;
 }
 
-// Take Screenshot
-// --@function TakeScreenshot
-// --@description Take a screenshot of the window.
-// --@param filename string The filename to save the screenshot to.
+// =====================================================================
+// Cursor
+
+// Show Cursor
+// --@function ShowCursor
+// --@description Show the cursor.
 // --@return void
-int window_take_screenshot(lua_State *L) {
-    const char* filename = luaL_checkstring(L, 1);
-    TakeScreenshot(filename);
+int window_show_cursor(lua_State *L) {
+    ShowCursor();
     return 0;
 }
 
-// Close Window
-// --@function Close
-// --@description Close the window.
+// Hide Cursor
+// --@function HideCursor
+// --@description Hide the cursor.
 // --@return void
-int window_close(lua_State *L) {
-    CloseWindow();
+int window_hide_cursor(lua_State *L) {
+    HideCursor();
     return 0;
 }
+
+// Is Cursor Hidden
+// --@function IsCursorHidden
+// --@description Check if the cursor is hidden.
+// --@return bool If the cursor is hidden.
+int window_is_cursor_hidden(lua_State *L) {
+    lua_pushboolean(L, IsCursorHidden());
+    return 1;
+}
+
+// Enable Cursor
+// --@function EnableCursor
+// --@description Enable the cursor.
+// --@return void
+int window_enable_cursor(lua_State *L) {
+    EnableCursor();
+    return 0;
+}
+
+// Disable Cursor
+// --@function DisableCursor
+// --@description Disable the cursor.
+// --@return void
+int window_disable_cursor(lua_State *L) {
+    DisableCursor();
+    return 0;
+}
+
+// Is Cursor On Screen
+// --@function IsCursorOnScreen
+// --@description Check if the cursor is on the screen.
+// --@return bool If the cursor is on the screen.
+int window_is_cursor_on_screen(lua_State *L) {
+    lua_pushboolean(L, IsCursorOnScreen());
+    return 1;
+}
+
+// =====================================================================
+// Bindings
 
 void bind_window_module(lua_State *L) {
     lua_newtable(L);
@@ -259,9 +321,6 @@ void bind_window_module(lua_State *L) {
 
     lua_pushcfunction(L, window_should_close);
     lua_setfield(L, -2, "ShouldClose");
-
-    lua_pushcfunction(L, window_draw_fps);
-    lua_setfield(L, -2, "DrawFPS");
 
     lua_pushcfunction(L, window_clear_background);
     lua_setfield(L, -2, "ClearBackground");
@@ -313,6 +372,24 @@ void bind_window_module(lua_State *L) {
 
     lua_pushcfunction(L, window_take_screenshot);
     lua_setfield(L, -2, "TakeScreenshot");
+
+    lua_pushcfunction(L, window_show_cursor);
+    lua_setfield(L, -2, "ShowCursor");
+
+    lua_pushcfunction(L, window_hide_cursor);
+    lua_setfield(L, -2, "HideCursor");
+
+    lua_pushcfunction(L, window_is_cursor_hidden);
+    lua_setfield(L, -2, "IsCursorHidden");
+
+    lua_pushcfunction(L, window_enable_cursor);
+    lua_setfield(L, -2, "EnableCursor");
+
+    lua_pushcfunction(L, window_disable_cursor);
+    lua_setfield(L, -2, "DisableCursor");
+
+    lua_pushcfunction(L, window_is_cursor_on_screen);
+    lua_setfield(L, -2, "IsCursorOnScreen");
 
     lua_pushcfunction(L, window_close);
     lua_setfield(L, -2, "Close");
