@@ -207,7 +207,7 @@ modules:
           - name: string
             type: text
             description: The text to draw
-          - name: vector2
+          - name: Vector2
             type: position
             description: The position of the text
           - name: int
@@ -234,7 +234,7 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
+          - name: Vector2
             type: position
             description: The position of the pixel
           - name: Color
@@ -345,17 +345,17 @@ modules:
           - name: rectangle
             type: rectangle
             description: The rectangle to draw
-          - name: Color
-            type: color1
+          - name: c1
+            type: Color
             description: The first color of the gradient
-          - name: Color
-            type: color2
+          - name: c2
+            type: Color
             description: The second color of the gradient
-          - name: Color
-            type: color3
+          - name: c3
+            type: Color
             description: The third color of the gradient
-          - name: Color
-            type: color4
+          - name: c4
+            type: Color
             description: The fourth color of the gradient
       - name: DrawPoly
         description: Draw a polygon
@@ -363,20 +363,20 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
+          - name: Vector2
             type: position
             description: The position of the polygon
-          - name: int
-            type: sides
+          - name: sides
+            type: int
             description: The number of sides of the polygon
-          - name: float
-            type: radius
+          - name: radius
+            type: float
             description: The radius of the polygon
-          - name: float
-            type: rotation
+          - name: rotation
+            type: float
             description: The rotation of the polygon
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the polygon
       - name: DrawLine
         description: Draw a line
@@ -384,14 +384,14 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
-            type: start
+          - name: start
+            type: Vector2
             description: The start position of the line
-          - name: vector2
-            type: end
+          - name: end
+            type: Vector2
             description: The end position of the line
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the line
       - name: DrawCircle
         description: Draw a circle
@@ -399,14 +399,14 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
-            type: position
+          - name: position
+            type: Vector2
             description: The position of the circle
-          - name: float
-            type: radius
+          - name: radius
+            type: float
             description: The radius of the circle
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the circle
       - name: DrawCircleLines
         description: Draw a circle outline
@@ -414,14 +414,14 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
-            type: position
+          - name: position
+            type: Vector2
             description: The position of the circle
-          - name: float
-            type: radius
+          - name: radius
+            type: float
             description: The radius of the circle
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the circle
       - name: DrawCircleSector
         description: Draw a circle sector
@@ -429,23 +429,23 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
-            type: position
+          - name: position
+            type: Vector2
             description: The position of the circle
-          - name: float
-            type: radius
+          - name: radius
+            type: float
             description: The radius of the circle
-          - name: int
-            type: startAngle
+          - name: startAngle
+            type: int
             description: The start angle of the sector
-          - name: int
-            type: endAngle
+          - name: endAngle
+            type: int
             description: The end angle of the sector
-          - name: int
-            type: segments
+          - name: segments
+            type: int
             description: The number of segments to use
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the circle
       - name: DrawCircleSectorLines
         description: Draw a circle sector outline
@@ -453,23 +453,23 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
-            type: position
+          - name: position
+            type: Vector2
             description: The position of the circle
-          - name: float
-            type: radius
+          - name: radius
+            type: float
             description: The radius of the circle
-          - name: int
-            type: startAngle
+          - name: startAngle
+            type: int
             description: The start angle of the sector
-          - name: int
-            type: endAngle
+          - name: endAngle
+            type: int
             description: The end angle of the sector
-          - name: int
-            type: segments
+          - name: segments
+            type: int
             description: The number of segments to use
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the circle
       - name: DrawCircleGradient
         description: Draw a circle with a gradient
@@ -477,17 +477,17 @@ modules:
           type: void
           description: 
         params:
-          - name: vector2
-            type: position
-            description: The position of the circle
-          - name: float
-            type: radius
+          - name: positionVector2
+            type: The
+            description: position of the circle
+          - name: radius
+            type: float
             description: The radius of the circle
-          - name: Color
-            type: color1
+          - name: c1
+            type: Color
             description: The first color of the gradient
-          - name: Color
-            type: color2
+          - name: c2
+            type: Color
             description: The second color of the gradient
   - name: Input
     functions:
