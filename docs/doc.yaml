@@ -3,9 +3,8 @@ modules:
     functions:
       - name: Init
         description: Open a window with the specified title, width, and height.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.Init("My Game", 800, 600)
         params:
           - name: title
             type: string
@@ -18,191 +17,161 @@ modules:
             description: The height of the window.
       - name: Close
         description: Close the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.Close()
         params:
       - name: IsWindowReady
         description: Check if the window is ready.
-        return:
-          type: bool
-          description: If the window is ready.
+        usage:
+          - if Window.IsReady() then Window.SetTargetFPS(60) end
         params:
       - name: ShouldClose
         description: Check if the window should close.
-        return:
-          type: bool
-          description: If the window should close.
+        usage:
+          - if Window.ShouldClose() then Window.Close() end
         params:
       - name: SetTargetFPS
         description: Set the target FPS of the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.SetTargetFPS(60)
         params:
           - name: fps
             type: int
             description: The target FPS.
       - name: SetTitle
         description: Set the title of the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.SetTitle("My Game")
         params:
           - name: title
             type: string
             description: The title of the window.
       - name: ClearBackground
         description: Clear the background with the specified color.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.ClearBackground(Color(255, 255, 255, 255))
         params:
           - name: color
             type: Color
             description: The color to clear the background with.
       - name: BeginDrawing
         description: Begin drawing to the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.BeginDrawing()
         params:
       - name: EndDrawing
         description: End drawing to the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.EndDrawing()
         params:
       - name: GetWidth
         description: Get the width of the window.
-        return:
-          type: int
-          description: The width of the window.
+        usage:
+          - Window.GetWidth()
         params:
       - name: GetHeight
         description: Get the height of the window.
-        return:
-          type: int
-          description: The height of the window.
+        usage:
+          - Window.GetHeight()
         params:
       - name: IsFullscreen
         description: Check if the window is fullscreen.
-        return:
-          type: bool
-          description: If the window is fullscreen.
+        usage:
+          - Window.IsFullscreen()
         params:
       - name: IsFocused
         description: Check if the window is focused.
-        return:
-          type: bool
-          description: If the window is focused.
+        usage:
+          - Window.IsFocused()
         params:
       - name: IsHidden
         description: Check if the window is hidden.
-        return:
-          type: bool
-          description: If the window is hidden.
+        usage:
+          - Window.IsHidden()
         params:
       - name: IsMinimized
         description: Check if the window is minimized.
-        return:
-          type: bool
-          description: If the window is minimized.
+        usage:
+          - Window.IsMinimized()
         params:
       - name: IsMaximized
         description: Check if the window is maximized.
-        return:
-          type: bool
-          description: If the window is maximized.
+        usage:
+          - Window.IsMaximized()
         params:
       - name: Minimize
         description: Minimize the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.Minimize()
         params:
       - name: Maximize
         description: Maximize the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.Maximize()
         params:
       - name: GetPosition
         description: Get the position of the window.
-        return:
-          type: Vector2
-          description: The position of the window.
+        usage:
+          - Window.GetPosition()
         params:
       - name: TakeScreenshot
         description: Take a screenshot of the window.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.TakeScreenshot("screenshot.png")
         params:
           - name: filename
             type: string
             description: The filename to save the screenshot to.
       - name: GetElapsedTime
         description: Returns the elapsed time in seconds since the window was opened.
-        return:
-          type: number
-          description: The elapsed time in seconds.
+        usage:
+          - Window.GetElapsedTime()
         params:
       - name: GetFrameTime
         description: Returns the time in seconds since the last frame.
-        return:
-          type: number
-          description: The time in seconds since the last frame.
+        usage:
+          - Window.GetFrameTime()
         params:
       - name: GetFPS
         description: Returns the current FPS.
-        return:
-          type: number
-          description: The current FPS.
+        usage:
+          - Window.GetFPS()
         params:
       - name: ShowCursor
         description: Show the cursor.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.ShowCursor()
         params:
       - name: HideCursor
         description: Hide the cursor.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.HideCursor()
         params:
       - name: IsCursorHidden
         description: Check if the cursor is hidden.
-        return:
-          type: bool
-          description: If the cursor is hidden.
+        usage:
+          - Window.IsCursorHidden()
         params:
       - name: EnableCursor
         description: Enable the cursor.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.EnableCursor()
         params:
       - name: DisableCursor
         description: Disable the cursor.
-        return:
-          type: void
-          description: 
+        usage:
+          - Window.DisableCursor()
         params:
       - name: IsCursorOnScreen
         description: Check if the cursor is on the screen.
-        return:
-          type: bool
-          description: If the cursor is on the screen.
+        usage:
+          - Window.IsCursorOnScreen()
         params:
   - name: Graphics2d
     functions:
       - name: DrawText
         description: Draw text using font inside rectangle limits
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: string
             type: text
@@ -218,9 +187,7 @@ modules:
             description: The color of the text
       - name: DrawFPS
         description: Draw the FPS at the specified position.
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: x
             type: int
@@ -230,9 +197,7 @@ modules:
             description: The y position to draw the FPS.
       - name: DrawPixel
         description: Draw a pixel
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: Vector2
             type: position
@@ -242,9 +207,7 @@ modules:
             description: The color of the pixel
       - name: DrawRectangle
         description: Draw a rectangle
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -254,9 +217,7 @@ modules:
             description: The color of the rectangle
       - name: DrawRectangleLines
         description: Draw a rectangle outline
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -269,9 +230,7 @@ modules:
             description: The color of the lines
       - name: DrawRectangleRounded
         description: Draw a rectangle with rounded edges
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -287,9 +246,7 @@ modules:
             description: The color of the rectangle
       - name: DrawRectangleRoundedLines
         description: Draw a rectangle with rounded edges
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -308,9 +265,7 @@ modules:
             description: The color of the lines
       - name: DrawRectangleGradientV
         description: Draw a rectangle with a vertical gradient
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -323,9 +278,7 @@ modules:
             description: The second color of the gradient
       - name: DrawRectangleGradientH
         description: Draw a rectangle with a horizontal gradient
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -338,9 +291,7 @@ modules:
             description: The second color of the gradient
       - name: DrawRectangleGradientEx
         description: Draw a rectangle with a gradient
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -359,9 +310,7 @@ modules:
             description: The fourth color of the gradient
       - name: DrawPoly
         description: Draw a polygon
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: Vector2
             type: position
@@ -380,9 +329,7 @@ modules:
             description: The color of the polygon
       - name: DrawLine
         description: Draw a line
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: start
             type: Vector2
@@ -395,9 +342,7 @@ modules:
             description: The color of the line
       - name: DrawCircle
         description: Draw a circle
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: position
             type: Vector2
@@ -410,9 +355,7 @@ modules:
             description: The color of the circle
       - name: DrawCircleLines
         description: Draw a circle outline
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: position
             type: Vector2
@@ -425,9 +368,7 @@ modules:
             description: The color of the circle
       - name: DrawCircleSector
         description: Draw a circle sector
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: position
             type: Vector2
@@ -449,9 +390,7 @@ modules:
             description: The color of the circle
       - name: DrawCircleSectorLines
         description: Draw a circle sector outline
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: position
             type: Vector2
@@ -473,9 +412,7 @@ modules:
             description: The color of the circle
       - name: DrawCircleGradient
         description: Draw a circle with a gradient
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: positionVector2
             type: The
@@ -493,120 +430,93 @@ modules:
     functions:
       - name: IsKeyPressed
         description: Check if a key has been pressed once
-        return:
-          type: bool
-          description: If the key has been pressed
+        usage:
+          - if Input.IsKeyPressed(Key.A) then
         params:
           - name: key
             type: int
             description: The key to check
       - name: IsKeyPressedRepeat
         description: Check if a key has been pressed and is being held down
-        return:
-          type: bool
-          description: If the key has been pressed and is being held down
+        usage:
+          - if Input.IsKeyPressedRepeat(Key.A) then
         params:
           - name: key
             type: int
             description: The key to check
       - name: IsKeyDown
         description: Check if a key is being held down
-        return:
-          type: bool
-          description: If the key is being held down
+        usage:
+          - if Input.IsKeyDown(Key.A) then
         params:
           - name: key
             type: int
             description: The key to check
       - name: IsKeyReleased
         description: Check if a key has been released
-        return:
-          type: bool
-          description: If the key has been released
+        usage:
         params:
           - name: key
             type: int
             description: The key to check
       - name: IsKeyUp
         description: Check if a key is not being held down
-        return:
-          type: bool
-          description: If the key is not being held down
+        usage:
         params:
           - name: key
             type: int
             description: The key to check
       - name: GetKeyPressed
         description: Get the last key pressed
-        return:
-          type: int
-          description: The last key pressed
+        usage:
         params:
       - name: GetCharPressed
         description: Get the last char pressed
-        return:
-          type: int
-          description: The last char pressed
+        usage:
         params:
       - name: IsMouseButtonPressed
         description: Check if a mouse button has been pressed once
-        return:
-          type: bool
-          description: If the button has been pressed
+        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: IsMouseButtonDown
         description: Check if a mouse button is being held down    
-        return:
-          type: bool
-          description: If the button is being held down
+        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: IsMouseButtonReleased
         description: Check if a mouse button has been released
-        return:
-          type: bool
-          description: If the button has been released
+        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: IsMouseButtonUp
         description: Check if a mouse button is not being held down
-        return:
-          type: bool
-          description: If the button is not being held down
+        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: GetMouseX
         description: Get the x position of the mouse
-        return:
-          type: int
-          description: The x position of the mouse
+        usage:
         params:
       - name: GetMouseY
         description: Get the y position of the mouse
-        return:
-          type: int
-          description: The y position of the mouse
+        usage:
         params:
       - name: GetMousePosition
         description: Get the position of the mouse
-        return:
-          type: Vector2
-          description: The position of the mouse
+        usage:
         params:
       - name: SetMousePosition
         description: Set the position of the mouse
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: x
             type: int
@@ -616,9 +526,7 @@ modules:
             description: The y position of the mouse
       - name: SetMouseOffset
         description: Set the offset of the mouse
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: x
             type: int
@@ -628,9 +536,7 @@ modules:
             description: The y offset of the mouse
       - name: SetMouseScale
         description: Set the scale of the mouse
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: x
             type: int
@@ -640,75 +546,55 @@ modules:
             description: The y scale of the mouse
       - name: GetMouseWheelMove
         description: Get the amount the mouse wheel has moved
-        return:
-          type: int
-          description: The amount the mouse wheel has moved
+        usage:
         params:
       - name: GetMouseWheelMoveV
         description: Get the amount the mouse wheel has moved
-        return:
-          type: Vector2
-          description: The amount the mouse wheel has moved
+        usage:
         params:
       - name: SetMouseCursor
         description: Set the mouse cursor
-        return:
-          type: void
-          description: 
+        usage:
         params:
           - name: cursor
             type: int
             description: The cursor to set
       - name: GetTouchX
         description: Get the x position of a touc
-        return:
-          type: int
-          description: The x position of the touch
+        usage:
         params:
       - name: GetTouchY
         description: Get the y position of a touch
-        return:
-          type: int
-          description: The y position of the touch
+        usage:
         params:
       - name: GetTouchPosition
         description: Get the position of a touch
-        return:
-          type: Vector2
-          description: The position of the touch
+        usage:
         params:
           - name: touch
             type: int
             description: The touch to get the position of
       - name: GetTouchPointId
         description: Get the id of a touch point
-        return:
-          type: int
-          description: The id of the touch point
+        usage:
         params:
           - name: index
             type: int
             description: The index of the touch point
       - name: GetTouchPointCount
         description: Get the number of touch points
-        return:
-          type: int
-          description: The number of touch points
+        usage:
         params:
       - name: IsGamepadAvailable
         description: Check if a gamepad is available
-        return:
-          type: bool
-          description: If the gamepad is available
+        usage:
         params:
           - name: gamepad
             type: int
             description: The gamepad to check
       - name: GetGamepadName
         description: Get the name of a gamepad
-        return:
-          type: string
-          description: The name of the gamepad
+        usage:
         params:
           - name: gamepad
             type: int

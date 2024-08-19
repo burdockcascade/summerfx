@@ -6,6 +6,7 @@
 // Initialize Window
 // -- @function Init
 // -- @description Open a window with the specified title, width, and height.
+// -- @usage Window.Init("My Game", 800, 600)
 // -- @param title string The title of the window.   
 // -- @param width int The width of the window.
 // -- @param height int The height of the window.
@@ -24,6 +25,7 @@ int window_init(lua_State *L) {
 // Close Window
 // -- @function Close
 // -- @description Close the window.
+// -- @usage Window.Close()
 // -- @return void
 int window_close(lua_State *L) {
     CloseWindow();
@@ -33,6 +35,7 @@ int window_close(lua_State *L) {
 // IsWindowReady
 // -- @function IsWindowReady
 // -- @description Check if the window is ready.
+// -- @usage if Window.IsReady() then Window.SetTargetFPS(60) end
 // -- @return bool If the window is ready.
 int window_is_ready(lua_State *L) {
     lua_pushboolean(L, IsWindowReady());
@@ -42,6 +45,7 @@ int window_is_ready(lua_State *L) {
 // Should Close
 // -- @function ShouldClose
 // -- @description Check if the window should close.
+// -- @usage if Window.ShouldClose() then Window.Close() end
 // -- @return bool If the window should close.
 int window_should_close(lua_State *L) {
     lua_pushboolean(L, WindowShouldClose());
@@ -51,6 +55,7 @@ int window_should_close(lua_State *L) {
 // Set Target FPS
 // -- @function SetTargetFPS
 // -- @description Set the target FPS of the window.
+// -- @usage Window.SetTargetFPS(60)
 // -- @param fps int The target FPS.
 // -- @return void
 int window_set_target_fps(lua_State *L) {
@@ -65,6 +70,7 @@ int window_set_target_fps(lua_State *L) {
 // Set Title
 // -- @function SetTitle
 // -- @description Set the title of the window.
+// -- @usage Window.SetTitle("My Game")
 // -- @param title string The title of the window.
 // -- @return void
 int window_set_title(lua_State *L) {
@@ -76,6 +82,7 @@ int window_set_title(lua_State *L) {
 // Clear Background
 // -- @function ClearBackground
 // -- @description Clear the background with the specified color.
+// -- @usage Window.ClearBackground(Color(255, 255, 255, 255))
 // -- @param color Color The color to clear the background with.
 // -- @return void
 int window_clear_background(lua_State *L) {
@@ -90,6 +97,7 @@ int window_clear_background(lua_State *L) {
 // Begin Drawing
 // -- @function BeginDrawing
 // -- @description Begin drawing to the window.
+// -- @usage Window.BeginDrawing()
 // -- @return void
 int window_begin_drawing(lua_State *L) {
     BeginDrawing();
@@ -99,6 +107,7 @@ int window_begin_drawing(lua_State *L) {
 // End Drawing
 // -- @function EndDrawing
 // -- @description End drawing to the window.
+// -- @usage Window.EndDrawing()
 // -- @return void
 int window_end_drawing(lua_State *L) {
     EndDrawing();
@@ -111,6 +120,7 @@ int window_end_drawing(lua_State *L) {
 // GetWidth
 // -- @function GetWidth
 // -- @description Get the width of the window.
+// -- @usage Window.GetWidth()
 // -- @return int The width of the window.
 int window_get_width(lua_State *L) {
     lua_pushinteger(L, GetScreenWidth());
@@ -120,6 +130,7 @@ int window_get_width(lua_State *L) {
 // GetHeight
 // -- @function GetHeight
 // -- @description Get the height of the window.
+// -- @usage Window.GetHeight()
 // -- @return int The height of the window.
 int window_get_height(lua_State *L) {
     lua_pushinteger(L, GetScreenHeight());
@@ -129,6 +140,7 @@ int window_get_height(lua_State *L) {
 // IsWindowFullscreen
 // -- @function IsFullscreen
 // -- @description Check if the window is fullscreen.
+// -- @usage Window.IsFullscreen()
 // -- @return bool If the window is fullscreen.
 int window_is_fullscreen(lua_State *L) {
     lua_pushboolean(L, IsWindowFullscreen());
@@ -138,6 +150,7 @@ int window_is_fullscreen(lua_State *L) {
 // IsWindowFocused
 // -- @function IsFocused
 // -- @description Check if the window is focused.
+// -- @usage Window.IsFocused()
 // -- @return bool If the window is focused.
 int window_is_focused(lua_State *L) {
     lua_pushboolean(L, IsWindowFocused());
@@ -147,6 +160,7 @@ int window_is_focused(lua_State *L) {
 // Is Hidden
 // -- @function IsHidden
 // -- @description Check if the window is hidden.
+// -- @usage Window.IsHidden()
 // -- @return bool If the window is hidden.
 int window_is_hidden(lua_State *L) {
     lua_pushboolean(L, IsWindowHidden());
@@ -156,6 +170,7 @@ int window_is_hidden(lua_State *L) {
 // Is Minimized
 // -- @function IsMinimized
 // -- @description Check if the window is minimized.
+// -- @usage Window.IsMinimized()
 // -- @return bool If the window is minimized.
 int window_is_minimized(lua_State *L) {
     lua_pushboolean(L, IsWindowMinimized());
@@ -165,6 +180,7 @@ int window_is_minimized(lua_State *L) {
 // Is Maximized
 // -- @function IsMaximized
 // -- @description Check if the window is maximized.
+// -- @usage Window.IsMaximized()
 // -- @return bool If the window is maximized.
 int window_is_maximized(lua_State *L) {
     lua_pushboolean(L, IsWindowMaximized());
@@ -174,6 +190,7 @@ int window_is_maximized(lua_State *L) {
 // Minimize Window
 // -- @function Minimize
 // -- @description Minimize the window.
+// -- @usage Window.Minimize()
 // -- @return void
 int window_minimize(lua_State *L) {
     MinimizeWindow();
@@ -183,6 +200,7 @@ int window_minimize(lua_State *L) {
 // Maximize Window
 // -- @function Maximize
 // -- @description Maximize the window.
+// -- @usage Window.Maximize()
 // -- @return void
 int window_maximize(lua_State *L) {
     MaximizeWindow();
@@ -192,6 +210,7 @@ int window_maximize(lua_State *L) {
 // Get Window Position
 // -- @function GetPosition
 // -- @description Get the position of the window.
+// -- @usage Window.GetPosition()
 // -- @return Vector2 The position of the window.
 int window_get_position(lua_State *L) {
     Vector2 v;
@@ -204,6 +223,7 @@ int window_get_position(lua_State *L) {
 // Take Screenshot
 // -- @function TakeScreenshot
 // -- @description Take a screenshot of the window.
+// -- @usage Window.TakeScreenshot("screenshot.png")
 // -- @param filename string The filename to save the screenshot to.
 // -- @return void
 int window_take_screenshot(lua_State *L) {
@@ -218,6 +238,7 @@ int window_take_screenshot(lua_State *L) {
 // Get Elapsed Time
 // -- @function GetElapsedTime
 // -- @description Returns the elapsed time in seconds since the window was opened.
+// -- @usage Window.GetElapsedTime()
 // -- @return number The elapsed time in seconds.
 int window_get_elapsed_time(lua_State *L) {
     lua_pushnumber(L, GetTime());
@@ -227,6 +248,7 @@ int window_get_elapsed_time(lua_State *L) {
 // Get Frame Time
 // -- @function GetFrameTime
 // -- @description Returns the time in seconds since the last frame.
+// -- @usage Window.GetFrameTime()
 // -- @return number The time in seconds since the last frame.
 int window_get_frame_time(lua_State *L) {
     lua_pushnumber(L, GetFrameTime());
@@ -236,6 +258,7 @@ int window_get_frame_time(lua_State *L) {
 // Get FPS
 // -- @function GetFPS
 // -- @description Returns the current FPS.
+// -- @usage Window.GetFPS()
 // -- @return number The current FPS.
 int window_get_fps(lua_State *L) {
     lua_pushnumber(L, GetFPS());
@@ -248,6 +271,7 @@ int window_get_fps(lua_State *L) {
 // Show Cursor
 // -- @function ShowCursor
 // -- @description Show the cursor.
+// -- @usage Window.ShowCursor()
 // -- @return void
 int window_show_cursor(lua_State *L) {
     ShowCursor();
@@ -257,6 +281,7 @@ int window_show_cursor(lua_State *L) {
 // Hide Cursor
 // -- @function HideCursor
 // -- @description Hide the cursor.
+// -- @usage Window.HideCursor()
 // -- @return void
 int window_hide_cursor(lua_State *L) {
     HideCursor();
@@ -266,6 +291,7 @@ int window_hide_cursor(lua_State *L) {
 // Is Cursor Hidden
 // -- @function IsCursorHidden
 // -- @description Check if the cursor is hidden.
+// -- @usage Window.IsCursorHidden()
 // -- @return bool If the cursor is hidden.
 int window_is_cursor_hidden(lua_State *L) {
     lua_pushboolean(L, IsCursorHidden());
@@ -275,6 +301,7 @@ int window_is_cursor_hidden(lua_State *L) {
 // Enable Cursor
 // -- @function EnableCursor
 // -- @description Enable the cursor.
+// -- @usage Window.EnableCursor()
 // -- @return void
 int window_enable_cursor(lua_State *L) {
     EnableCursor();
@@ -284,6 +311,7 @@ int window_enable_cursor(lua_State *L) {
 // Disable Cursor
 // -- @function DisableCursor
 // -- @description Disable the cursor.
+// -- @usage Window.DisableCursor()
 // -- @return void
 int window_disable_cursor(lua_State *L) {
     DisableCursor();
@@ -293,6 +321,7 @@ int window_disable_cursor(lua_State *L) {
 // Is Cursor On Screen
 // -- @function IsCursorOnScreen
 // -- @description Check if the cursor is on the screen.
+// -- @usage Window.IsCursorOnScreen()
 // -- @return bool If the cursor is on the screen.
 int window_is_cursor_on_screen(lua_State *L) {
     lua_pushboolean(L, IsCursorOnScreen());

@@ -6,6 +6,7 @@
 // Is Key Pressed
 // -- @function IsKeyPressed
 // -- @description Check if a key has been pressed once
+// -- @usage if Input.IsKeyPressed(Key.A) then
 // -- @param key int The key to check
 // -- @return bool If the key has been pressed
 int input_is_key_pressed(lua_State *L) {
@@ -17,6 +18,7 @@ int input_is_key_pressed(lua_State *L) {
 // Is Key Pressed Repeat
 // -- @function IsKeyPressedRepeat
 // -- @description Check if a key has been pressed and is being held down
+// -- @usage if Input.IsKeyPressedRepeat(Key.A) then
 // -- @param key int The key to check
 // -- @return bool If the key has been pressed and is being held down
 int input_is_key_pressed_repeat(lua_State *L) {
@@ -28,6 +30,7 @@ int input_is_key_pressed_repeat(lua_State *L) {
 // Is Key Down
 // -- @function IsKeyDown
 // -- @description Check if a key is being held down
+// -- @usage if Input.IsKeyDown(Key.A) then
 // -- @param key int The key to check
 // -- @return bool If the key is being held down
 int input_is_key_down(lua_State *L) {

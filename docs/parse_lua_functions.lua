@@ -4,66 +4,74 @@ local modules = {
     "input",
 }
 
-local function parse_lua_functions(file)
-    local f = io.open(file, "r")
-    local content = f:read("*all")
-    f:close()
+local function parse_lua_functions(filename)
+    local file = io.open(filename, "r")
 
-    local tag_start = "//%s*%-%-%s*@"
-    local match_tag = tag_start .. "(%w+)"
-    local match_function = tag_start .. "function%s*(%w+)"
-    local match_desecription = tag_start .. "description%s*(.+)"
-    local match_return = tag_start .. "return%s*(%w+)%s*(.*)"
-    local match_param = tag_start .. "param%s*(%w+)%s*(%w+)%s*(.+)"
+    if not file then
+        print("Could not open file: " .. filename)
+        return
+    end
+
+    local luadoc_match = "//%s*%-%-%s*@(%w+)%s*(.*)"
+    local return_match = "(%w+)%s*(.*)"
+    local param_match = "(%w+)%s+(%w+)%s*(.*)"
 
     local functions = {}
-    local function_ptr
-    for line in content:gmatch("[^\r\n]+") do
+    local function_ptr = 0;
+    for line in file:lines() do
     
-        -- if the comment starts with a luadoc tag
-        if line:match(tag_start) then
-            local tag = line:match(match_tag)
+        local tag, body = line:match(luadoc_match)
+
+        if tag then
+
             if tag == "function" then
-                function_ptr = #functions + 1
+                function_ptr = function_ptr + 1
                 functions[function_ptr] = {
-                    name = line:match(match_function),
-                    args = {}
+                    name = body,
+                    description = "",
+                    usage = {},
+                    args = {},
+                    rtn = {},
                 }
             elseif tag == "description" then
-                if function_ptr then
-                    local desc = line:match(match_desecription)
-                    if desc then
-                        functions[function_ptr].desc = desc
-                    end
-                end
+                functions[function_ptr].description = body
+            elseif tag == "usage" then
+                table.insert(functions[function_ptr].usage, body)
+            elseif tag == "param" then
+                local name, type, desc = body:match(param_match)
+                table.insert(functions[function_ptr].args, {
+                    name = name,
+                    type = type,
+                    description = desc,
+                })
             elseif tag == "return" then
-                local type, desc = line:match(match_return)
-                if function_ptr then
+                local type, desc = body:match(return_match)
+                if type ~= "void" then
                     functions[function_ptr].rtn = {
                         type = type,
-                        desc = desc
+                        description = desc,
                     }
                 end
-            elseif tag == "param" then
-                local arg, type, desc = line:match(match_param)
-                if function_ptr then
-                    table.insert(functions[function_ptr].args, {
-                        name = arg,
-                        type = type,
-                        desc = desc
-                    })
-                end
             end
+            
         end
 
 
     end
+
+    file:close()
 
     return functions
 end
 
 -- open yaml
 local yaml = io.open("docs/doc.yaml", "w")
+
+if not yaml then
+    print("Could not open file: docs/doc.yaml")
+    return
+end
+
 yaml:write("modules:\n")
 
 -- parse each module
@@ -81,15 +89,21 @@ for _, module in ipairs(modules) do
     yaml:write("    functions:\n")
     for _, func in ipairs(functions) do
         yaml:write("      - name: " .. func.name .. "\n")
-        yaml:write("        description: " .. (func.desc) .. "\n")
-        yaml:write("        return:\n")
-        yaml:write("          type: " .. func.rtn.type .. "\n")
-        yaml:write("          description: " .. (func.rtn.desc or "no description") .. "\n")
+        yaml:write("        description: " .. (func.description) .. "\n")
+        yaml:write("        usage:\n")
+        for _, usage in ipairs(func.usage) do
+            yaml:write("          - " .. usage .. "\n")
+        end
+        if #func.rtn > 0 then
+            yaml:write("        return:\n")
+            yaml:write("          type: " .. func.rtn.type .. "\n")
+            yaml:write("          description: " .. (func.rtn.description or "no description") .. "\n")
+        end
         yaml:write("        params:\n")
         for _, arg in ipairs(func.args) do
             yaml:write("          - name: " .. arg.name .. "\n")
             yaml:write("            type: " .. arg.type .. "\n")
-            yaml:write("            description: " .. (arg.desc or "no description") .. "\n")
+            yaml:write("            description: " .. (arg.description or "no description") .. "\n")
         end
     end
 end
