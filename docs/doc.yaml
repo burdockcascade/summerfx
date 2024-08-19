@@ -599,3 +599,82 @@ modules:
           - name: gamepad
             type: int
             description: The gamepad to get the name of
+      - name: IsGamepadButtonPressed
+        description: Check if a gamepad button has been pressed once
+        usage:
+          - if Input.IsGamepadButtonPressed(Gamepad.One, GamepadButton.A) then
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+          - name: button
+            type: int
+            description: The button to check 
+      - name: IsGamepadButtonDown
+        description: Check if a gamepad button is being held down
+        usage:
+          - if Input.IsGamepadButtonDown(Gamepad.One, GamepadButton.A) then
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+          - name: button
+            type: int
+            description: The button to check
+      - name: IsGamepadButtonReleased
+        description: Check if a gamepad button has been released
+        usage:
+          - if Input.IsGamepadButtonReleased(Gamepad.One, GamepadButton.A) then
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+          - name: button
+            type: int
+            description: The button to check
+      - name: IsGamepadButtonUp
+        description: Check if a gamepad button is not being held down
+        usage:
+          - if Input.IsGamepadButtonUp(Gamepad.One, GamepadButton.A) then
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+          - name: button
+            type: int
+            description: The button to check
+      - name: GetGamepadButtonPressed
+        description: Get the last gamepad button pressed
+        usage:
+          - if Input.GetGamepadButtonPressed() == GamepadButton.A then
+        params:
+      - name: GetGamepadAxisCount
+        description: Get the number of axes on a gamepad
+        usage:
+          - if Input.GetGamepadAxisCount(Gamepad.One) > 0 then
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+      - name: GetGamepadAxisMovement
+        description: Get the movement of an axis on a gamepad
+        usage:
+          - if Input.GetGamepadAxisMovement(Gamepad.One, GamepadAxis.LeftX) > 0 then
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to check
+          - name: axis
+            type: int
+            description: The axis to check
+      - name: SetGamepadMappings
+        description: Set the mapping of a gamepad
+        usage:
+          - Input.SetGamepadMapping(Gamepad.One, "Xbox 360 Controller")
+        params:
+          - name: gamepad
+            type: int
+            description: The gamepad to set the mapping of
+          - name: mapping
+            type: string
+            description: The mapping to set

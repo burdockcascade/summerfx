@@ -304,6 +304,114 @@ int input_get_gamepad_name(lua_State *L) {
     return 1;
 }
 
+// Is Gamepad Button Pressed
+// -- @function IsGamepadButtonPressed
+// -- @description Check if a gamepad button has been pressed once
+// -- @usage if Input.IsGamepadButtonPressed(Gamepad.One, GamepadButton.A) then
+// -- @param gamepad int The gamepad to check
+// -- @param button int The button to check 
+// -- @return bool If the button has been pressed
+int input_is_gamepad_button_pressed(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    int button = luaL_checkinteger(L, 2);
+    lua_pushboolean(L, IsGamepadButtonPressed(gamepad, button));
+    return 1;
+}
+
+// Is Gamepad Button Down
+// -- @function IsGamepadButtonDown
+// -- @description Check if a gamepad button is being held down
+// -- @usage if Input.IsGamepadButtonDown(Gamepad.One, GamepadButton.A) then
+// -- @param gamepad int The gamepad to check
+// -- @param button int The button to check
+// -- @return bool If the button is being held down
+int input_is_gamepad_button_down(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    int button = luaL_checkinteger(L, 2);
+    lua_pushboolean(L, IsGamepadButtonDown(gamepad, button));
+    return 1;
+}
+
+// Is Gamepad Button Released
+// -- @function IsGamepadButtonReleased
+// -- @description Check if a gamepad button has been released
+// -- @usage if Input.IsGamepadButtonReleased(Gamepad.One, GamepadButton.A) then
+// -- @param gamepad int The gamepad to check
+// -- @param button int The button to check
+// -- @return bool If the button has been released
+int input_is_gamepad_button_released(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    int button = luaL_checkinteger(L, 2);
+    lua_pushboolean(L, IsGamepadButtonReleased(gamepad, button));
+    return 1;
+}
+
+// Is Gamepad Button Up
+// -- @function IsGamepadButtonUp
+// -- @description Check if a gamepad button is not being held down
+// -- @usage if Input.IsGamepadButtonUp(Gamepad.One, GamepadButton.A) then
+// -- @param gamepad int The gamepad to check
+// -- @param button int The button to check
+// -- @return bool If the button is not being held down
+int input_is_gamepad_button_up(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    int button = luaL_checkinteger(L, 2);
+    lua_pushboolean(L, IsGamepadButtonUp(gamepad, button));
+    return 1;
+}
+
+// Get Gamepad Button Pressed
+// -- @function GetGamepadButtonPressed
+// -- @description Get the last gamepad button pressed
+// -- @usage if Input.GetGamepadButtonPressed() == GamepadButton.A then
+// -- @return int The last button pressed
+int input_get_gamepad_button_pressed(lua_State *L) {
+    lua_pushinteger(L, GetGamepadButtonPressed());
+    return 1;
+}
+
+// Get Gamepad Axis Count
+// -- @function GetGamepadAxisCount
+// -- @description Get the number of axes on a gamepad
+// -- @usage if Input.GetGamepadAxisCount(Gamepad.One) > 0 then
+// -- @param gamepad int The gamepad to check
+// -- @return int The number of axes on the gamepad
+int input_get_gamepad_axis_count(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    lua_pushinteger(L, GetGamepadAxisCount(gamepad));
+    return 1;
+}
+
+// Get Gamepad Axis Movement
+// -- @function GetGamepadAxisMovement
+// -- @description Get the movement of an axis on a gamepad
+// -- @usage if Input.GetGamepadAxisMovement(Gamepad.One, GamepadAxis.LeftX) > 0 then
+// -- @param gamepad int The gamepad to check
+// -- @param axis int The axis to check
+// -- @return float The movement of the axis
+int input_get_gamepad_axis_movement(lua_State *L) {
+    int gamepad = luaL_checkinteger(L, 1);
+    int axis = luaL_checkinteger(L, 2);
+    lua_pushnumber(L, GetGamepadAxisMovement(gamepad, axis));
+    return 1;
+}
+
+// Set Gamepage Mappings
+// -- @function SetGamepadMappings
+// -- @description Set the mapping of a gamepad
+// -- @usage Input.SetGamepadMapping(Gamepad.One, "Xbox 360 Controller")
+// -- @param gamepad int The gamepad to set the mapping of
+// -- @param mapping string The mapping to set
+// -- @return void
+int input_set_gamepad_mappings(lua_State *L) {
+    const char *mapping = luaL_checkstring(L, 1);
+    SetGamepadMappings(mapping);
+    return 0;
+}
+
+// =====================================================================
+// Bindings
+
 // Mouse Button Constants
 void bind_mouse_button_constants(lua_State *L) {
     lua_newtable(L);
@@ -456,6 +564,30 @@ void bind_input_module(lua_State *L) {
 
     lua_pushcfunction(L, input_get_gamepad_name);
     lua_setfield(L, -2, "GetGamepadName");
+
+    lua_pushcfunction(L, input_is_gamepad_button_pressed);
+    lua_setfield(L, -2, "IsGamepadButtonPressed");
+
+    lua_pushcfunction(L, input_is_gamepad_button_down);
+    lua_setfield(L, -2, "IsGamepadButtonDown");
+
+    lua_pushcfunction(L, input_is_gamepad_button_released);
+    lua_setfield(L, -2, "IsGamepadButtonReleased");
+
+    lua_pushcfunction(L, input_is_gamepad_button_up);
+    lua_setfield(L, -2, "IsGamepadButtonUp");
+
+    lua_pushcfunction(L, input_get_gamepad_button_pressed);
+    lua_setfield(L, -2, "GetGamepadButtonPressed");
+
+    lua_pushcfunction(L, input_get_gamepad_axis_count);
+    lua_setfield(L, -2, "GetGamepadAxisCount");
+
+    lua_pushcfunction(L, input_get_gamepad_axis_movement);
+    lua_setfield(L, -2, "GetGamepadAxisMovement");
+
+    lua_pushcfunction(L, input_set_gamepad_mappings);
+    lua_setfield(L, -2, "SetGamepadMappings");
 
     lua_pop(L, 1);
 
