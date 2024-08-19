@@ -91,6 +91,116 @@ void l_Color_push(lua_State *L, const Color &color) {
 
 }
 
+// Add predefined colors to Color table
+void bind_color_constants(lua_State *L) {
+
+	// -- @constant COLOR_LIGHTGRAY Color(200, 200, 200, 255)
+	l_Color_push(L, LIGHTGRAY);
+	lua_setglobal(L, "COLOR_LIGHTGRAY");
+
+	// -- @constant COLOR_GRAY Color(130, 130, 130, 255)
+	l_Color_push(L, GRAY);
+	lua_setglobal(L, "COLOR_GRAY");
+
+	// -- @constant COLOR_DARKGRAY Color(80, 80, 80, 255)
+	l_Color_push(L, DARKGRAY);
+	lua_setglobal(L, "COLOR_DARKGRAY");
+
+	// -- @constant COLOR_YELLOW Color(253, 249, 0, 255)
+	l_Color_push(L, YELLOW);
+	lua_setglobal(L, "COLOR_YELLOW");
+
+	// -- @constant COLOR_GOLD Color(255, 203, 0, 255)
+	l_Color_push(L, GOLD);
+	lua_setglobal(L, "COLOR_GOLD");
+
+	// -- @constant COLOR_ORANGE Color(255, 161, 0, 255)
+	l_Color_push(L, ORANGE);
+	lua_setglobal(L, "COLOR_ORANGE");
+
+	// -- @constant COLOR_PINK Color(255, 109, 194, 255)
+	l_Color_push(L, PINK);
+	lua_setglobal(L, "COLOR_PINK");
+
+	// -- @constant COLOR_RED Color(230, 41, 55, 255)
+	l_Color_push(L, RED);
+	lua_setglobal(L, "COLOR_RED");
+
+	// -- @constant COLOR_MAROON Color(190, 33, 55, 255)
+	l_Color_push(L, MAROON);
+	lua_setglobal(L, "COLOR_MAROON");
+
+	// -- @constant COLOR_GREEN Color(0, 228, 48, 255)
+	l_Color_push(L, GREEN);
+	lua_setglobal(L, "COLOR_GREEN");
+
+	// -- @constant COLOR_LIME Color(0, 158, 47, 255)
+	l_Color_push(L, LIME);
+	lua_setglobal(L, "COLOR_LIME");
+
+	// -- @constant COLOR_DARKGREEN Color(0, 117, 44, 255)
+	l_Color_push(L, DARKGREEN);
+	lua_setglobal(L, "COLOR_DARKGREEN");
+
+	// -- @constant COLOR_SKYBLUE Color(102, 191, 255, 255)
+	l_Color_push(L, SKYBLUE);
+	lua_setglobal(L, "COLOR_SKYBLUE");
+
+	// -- @constant COLOR_BLUE Color(0, 121, 241, 255)
+	l_Color_push(L, BLUE);
+	lua_setglobal(L, "COLOR_BLUE");
+
+	// -- @constant COLOR_DARKBLUE Color(0, 82, 172, 255)
+	l_Color_push(L, DARKBLUE);
+	lua_setglobal(L, "COLOR_DARKBLUE");
+
+	// -- @constant COLOR_PURPLE Color(200, 122, 255, 255)
+	l_Color_push(L, PURPLE);
+	lua_setglobal(L, "COLOR_PURPLE");
+
+	// -- @constant COLOR_VIOLET Color(135, 60, 190, 255)
+	l_Color_push(L, VIOLET);
+	lua_setglobal(L, "COLOR_VIOLET");
+
+	// -- @constant COLOR_DARKPURPLE Color(112, 31, 126, 255)
+	l_Color_push(L, DARKPURPLE);
+	lua_setglobal(L, "COLOR_DARKPURPLE");
+
+	// -- @constant COLOR_BEIGE Color(211, 176, 131, 255)
+	l_Color_push(L, BEIGE);
+	lua_setglobal(L, "COLOR_BEIGE");
+
+	// -- @constant COLOR_BROWN Color(127, 106, 79, 255)
+	l_Color_push(L, BROWN);
+	lua_setglobal(L, "COLOR_BROWN");	
+
+	// -- @constant COLOR_DARKBROWN Color(76, 63, 47, 255)
+	l_Color_push(L, DARKBROWN);
+	lua_setglobal(L, "COLOR_DARKBROWN");
+
+	// -- @constant COLOR_WHITE Color(255, 255, 255, 255)
+	l_Color_push(L, WHITE);
+	lua_setglobal(L, "COLOR_WHITE");
+
+	// -- @constant COLOR_BLACK Color(0, 0, 0, 255)
+	l_Color_push(L, BLACK);
+	lua_setglobal(L, "COLOR_BLACK");
+
+	// -- @constant COLOR_BLANK Color(0, 0, 0, 0)
+	l_Color_push(L, BLANK);
+	lua_setglobal(L, "COLOR_BLANK");
+
+	// -- @constant COLOR_MAGENTA Color(255, 0, 255, 255)
+	l_Color_push(L, MAGENTA);
+	lua_setglobal(L, "COLOR_MAGENTA");
+
+	// -- @constant COLOR_RAYWHITE Color(245, 245, 245, 255)
+	l_Color_push(L, RAYWHITE);
+	lua_setglobal(L, "COLOR_RAYWHITE");
+
+}
+	
+
 // =====================================================================
 // Vector2
 
@@ -241,6 +351,96 @@ void l_Vector3_push(lua_State *L, const Vector3 &vector3) {
 
 	// Set newindex function
 	lua_pushcfunction(L, l_Vector3_newindex);
+	lua_setfield(L, -2, "__newindex");
+
+	lua_setmetatable(L, -2);
+
+}
+
+// =====================================================================
+// Vector4
+
+// Vector4
+// --@table Vector4
+// --@desc A 4D vector
+// --@field x number
+// --@field y number
+// --@field z number
+// --@field w number
+int l_Vector4_constructor(lua_State *L) {
+
+	// Create struct
+	Vector4 s;
+	s.x = luaL_checknumber(L, 1);
+	s.y = luaL_checknumber(L, 2);
+	s.z = luaL_checknumber(L, 3);
+	s.w = luaL_checknumber(L, 4);
+
+	// Push struct onto stack
+	l_Vector4_push(L, s);
+
+	return 1;
+}
+
+// Vector4 field getter
+int l_Vector4_index(lua_State *L) {
+
+	Vector4 *udata = (Vector4*)luaL_checkudata(L, 1, "Vector4");
+	const char *key = luaL_checkstring(L, 2);
+
+	// Vector x component
+	if (strcmp(key, "x") == 0) {
+		lua_pushnumber(L, udata->x);
+	} else if (strcmp(key, "y") == 0) {
+		lua_pushnumber(L, udata->y);
+	} else if (strcmp(key, "z") == 0) {
+		lua_pushnumber(L, udata->z);
+	} else if (strcmp(key, "w") == 0) {
+		lua_pushnumber(L, udata->w);
+	} else {
+		luaL_error(L, "Unknown field '%s' on Vector4", key);
+	}
+
+	return 1;
+}
+
+// Vector4 field setter
+int l_Vector4_newindex(lua_State *L) {
+
+	Vector4 *udata = (Vector4*)luaL_checkudata(L, 1, "Vector4");
+	const char *key = luaL_checkstring(L, 2);
+
+	if (strcmp(key, "x") == 0) {
+		udata->x = luaL_checknumber(L, 1);
+	} else if (strcmp(key, "y") == 0) {
+		udata->y = luaL_checknumber(L, 2);
+	} else if (strcmp(key, "z") == 0) {
+		udata->z = luaL_checknumber(L, 3);
+	} else if (strcmp(key, "w") == 0) {
+		udata->w = luaL_checknumber(L, 4);
+	} else {
+		luaL_error(L, "Unknown field '%s' on Vector4", key);
+	}
+
+	return 0;
+}
+
+// Pushes a Vector4 onto the stack
+void l_Vector4_push(lua_State *L, const Vector4 &vector4) {
+
+	// Create new user data
+	Vector4 *ud = (Vector4*)lua_newuserdata(L, sizeof(Vector4));
+	*ud = vector4;
+
+	// Set metatable
+	luaL_newmetatable(L, "Vector4");
+
+	// Set index function
+	lua_pushcfunction(L, l_Vector4_index);
+	lua_setfield(L, -2, "__index");
+
+	// Set newindex function
+	lua_pushcfunction(L, l_Vector4_newindex);
 	lua_setfield(L, -2, "__newindex");
 
 	lua_setmetatable(L, -2);
@@ -496,10 +696,107 @@ void l_Rectangle_push(lua_State *L, const Rectangle &rectangle) {
 }
 
 // =====================================================================
+// Camera2D
+
+// Camera2D
+// --@table Camera2D
+// --@desc A 2D camera
+// --@field target Vector2 The target of the camera
+// --@field offset Vector2 The offset of the camera
+// --@field rotation number The rotation of the camera
+// --@field zoom number The zoom of the camera
+// --@return Camera2D
+int l_Camera2D_constructor(lua_State *L) {
+
+	// Create struct
+	Camera2D s;
+	s.target = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
+	s.offset = *(Vector2*)luaL_checkudata(L, 2, "Vector2");
+	s.rotation = luaL_checknumber(L, 3);
+	s.zoom = luaL_checknumber(L, 4);
+
+	// Push struct onto stack
+	l_Camera2D_push(L, s);
+
+	return 1;
+}
+
+// Camera2D field getter
+int l_Camera2D_index(lua_State *L) {
+
+	Camera2D *udata = (Camera2D*)luaL_checkudata(L, 1, "Camera2D");
+	const char *key = luaL_checkstring(L, 2);
+
+	// Camera2D x component
+	if (strcmp(key, "target") == 0) {
+		l_Vector2_push(L, udata->target);
+	} else if (strcmp(key, "offset") == 0) {
+		l_Vector2_push(L, udata->offset);
+	} else if (strcmp(key, "rotation") == 0) {
+		lua_pushnumber(L, udata->rotation);
+	} else if (strcmp(key, "zoom") == 0) {
+		lua_pushnumber(L, udata->zoom);
+	} else {
+		luaL_error(L, "Unknown field '%s' on Camera2D", key);
+	}
+
+	return 1;
+}
+
+// Camera2D field setter
+int l_Camera2D_newindex(lua_State *L) {
+
+	Camera2D *udata = (Camera2D*)luaL_checkudata(L, 1, "Camera2D");
+	const char *key = luaL_checkstring(L, 2);
+
+	if (strcmp(key, "target") == 0) {
+		udata->target = *(Vector2*)luaL_checkudata(L, 3, "Vector2");
+	} else if (strcmp(key, "offset") == 0) {
+		udata->offset = *(Vector2*)luaL_checkudata(L, 3, "Vector2");
+	} else if (strcmp(key, "rotation") == 0) {
+		udata->rotation = luaL_checknumber(L, 3);
+	} else if (strcmp(key, "zoom") == 0) {
+		udata->zoom = luaL_checknumber(L, 3);
+	} else {
+		luaL_error(L, "Unknown field '%s' on Camera2D", key);
+	}
+
+	return 0;
+}
+
+// Pushes a Camera2D onto the stack
+void l_Camera2D_push(lua_State *L, const Camera2D &camera2d) {
+
+	// Create new user data
+	Camera2D *ud = (Camera2D*)lua_newuserdata(L, sizeof(Camera2D));
+	*ud = camera2d;
+
+	// Set metatable
+	luaL_newmetatable(L, "Camera2D");
+
+	// Set index function
+	lua_pushcfunction(L, l_Camera2D_index);
+	lua_setfield(L, -2, "__index");
+
+	// Set newindex function
+	lua_pushcfunction(L, l_Camera2D_newindex);
+	lua_setfield(L, -2, "__newindex");
+
+	lua_setmetatable(L, -2);
+
+}
+
+// =====================================================================
 // Bindings
 
 void bind_structs(lua_State *L) {
     lua_register(L, "Rectangle", l_Rectangle_constructor);
     lua_register(L, "Vector2", l_Vector2_constructor);
+	lua_register(L, "Vector3", l_Vector3_constructor);
+	lua_register(L, "Vector4", l_Vector4_constructor);
+	lua_register(L, "Matrix", l_Matrix_constructor);
     lua_register(L, "Color", l_Color_constructor);
+	lua_register(L, "Camera2D", l_Camera2D_constructor);
+
+	bind_color_constants(L);
 }
