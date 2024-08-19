@@ -3,6 +3,7 @@
 #include <raylib.h>
 #include <string>
 
+void bind_constants(lua_State *L);
 void bind_structs(lua_State *L);
 void bind_input_module(lua_State *L);
 void bind_window_module(lua_State *L);

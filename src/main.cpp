@@ -42,6 +42,7 @@ int main(int argc, char** argv) {
     luaL_openlibs(L);
 
     // Bind modules
+    bind_constants(L);
     bind_structs(L);
     bind_input_module(L);
     bind_window_module(L);

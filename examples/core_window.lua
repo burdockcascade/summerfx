@@ -17,8 +17,8 @@ while not Window.ShouldClose() do
     Graphics2D.DrawFPS(10, 10)
 
     -- draw text
-    Graphics2D.DrawText("Hello, World!", Vector2(10, 40), 20, COLOR_WHITE)
-    Graphics2D.DrawText("Press ESC to exit", Vector2(10, 60), 20, COLOR_WHITE)
+    Graphics2D.DrawText("Raylib Version: " .. RAYLIB_VERSION, Vector2(10, 30), 20, COLOR_BLACK)
+    Graphics2D.DrawText("Lua Version: " .. LUA_VERSION, Vector2(10, 50), 20, COLOR_BLACK)
 
     -- draw pixel
     Graphics2D.DrawPixel(Vector2(400, 80), COLOR_WHITE)
