@@ -4,12 +4,12 @@
 // Lifecycle
 
 // Initialize Window
-// --@function Init
-// --@description Open a window with the specified title, width, and height.
-// --@param title string The title of the window.   
-// --@param width int The width of the window.
-// --@param height int The height of the window.
-// --@return void 
+// -- @function Init
+// -- @description Open a window with the specified title, width, and height.
+// -- @param title string The title of the window.   
+// -- @param width int The width of the window.
+// -- @param height int The height of the window.
+// -- @return void 
 int window_init(lua_State *L) {
     const char* title = luaL_checkstring(L, 1);
     int width = luaL_checkinteger(L, 2);
@@ -22,37 +22,37 @@ int window_init(lua_State *L) {
 }
 
 // Close Window
-// --@function Close
-// --@description Close the window.
-// --@return void
+// -- @function Close
+// -- @description Close the window.
+// -- @return void
 int window_close(lua_State *L) {
     CloseWindow();
     return 0;
 }
 
 // IsWindowReady
-// --@function IsWindowReady
-// --@description Check if the window is ready.
-// --@return bool If the window is ready.
+// -- @function IsWindowReady
+// -- @description Check if the window is ready.
+// -- @return bool If the window is ready.
 int window_is_ready(lua_State *L) {
     lua_pushboolean(L, IsWindowReady());
     return 1;
 }
 
 // Should Close
-// --@function ShouldClose
-// --@description Check if the window should close.
-// --@return bool If the window should close.
+// -- @function ShouldClose
+// -- @description Check if the window should close.
+// -- @return bool If the window should close.
 int window_should_close(lua_State *L) {
     lua_pushboolean(L, WindowShouldClose());
     return 1;
 }
 
 // Set Target FPS
-// --@function SetTargetFPS
-// --@description Set the target FPS of the window.
-// --@param fps int The target FPS.
-// --@return void
+// -- @function SetTargetFPS
+// -- @description Set the target FPS of the window.
+// -- @param fps int The target FPS.
+// -- @return void
 int window_set_target_fps(lua_State *L) {
     int fps = luaL_checkinteger(L, 1);
     SetTargetFPS(fps);
@@ -63,10 +63,10 @@ int window_set_target_fps(lua_State *L) {
 // Setters
 
 // Set Title
-// --@function SetTitle
-// --@description Set the title of the window.
-// --@param title string The title of the window.
-// --@return void
+// -- @function SetTitle
+// -- @description Set the title of the window.
+// -- @param title string The title of the window.
+// -- @return void
 int window_set_title(lua_State *L) {
     const char* title = luaL_checkstring(L, 1);
     SetWindowTitle(title);
@@ -74,10 +74,10 @@ int window_set_title(lua_State *L) {
 }
 
 // Clear Background
-// --@function ClearBackground
-// --@description Clear the background with the specified color.
-// --@param color Color The color to clear the background with.
-// --@return void
+// -- @function ClearBackground
+// -- @description Clear the background with the specified color.
+// -- @param color Color The color to clear the background with.
+// -- @return void
 int window_clear_background(lua_State *L) {
     Color c = *(Color*)luaL_checkudata(L, 1, "Color");
     ClearBackground(c);
@@ -88,18 +88,18 @@ int window_clear_background(lua_State *L) {
 // Drawing
 
 // Begin Drawing
-// --@function BeginDrawing
-// --@description Begin drawing to the window.
-// --@return void
+// -- @function BeginDrawing
+// -- @description Begin drawing to the window.
+// -- @return void
 int window_begin_drawing(lua_State *L) {
     BeginDrawing();
     return 0;
 }
 
 // End Drawing
-// --@function EndDrawing
-// --@description End drawing to the window.
-// --@return void
+// -- @function EndDrawing
+// -- @description End drawing to the window.
+// -- @return void
 int window_end_drawing(lua_State *L) {
     EndDrawing();
     return 0;
@@ -109,90 +109,90 @@ int window_end_drawing(lua_State *L) {
 // Window
 
 // GetWidth
-// --@function GetWidth
-// --@description Get the width of the window.
-// --@return int The width of the window.
+// -- @function GetWidth
+// -- @description Get the width of the window.
+// -- @return int The width of the window.
 int window_get_width(lua_State *L) {
     lua_pushinteger(L, GetScreenWidth());
     return 1;
 }
 
 // GetHeight
-// --@function GetHeight
-// --@description Get the height of the window.
-// --@return int The height of the window.
+// -- @function GetHeight
+// -- @description Get the height of the window.
+// -- @return int The height of the window.
 int window_get_height(lua_State *L) {
     lua_pushinteger(L, GetScreenHeight());
     return 1;
 }
 
 // IsWindowFullscreen
-// --@function IsFullscreen
-// --@description Check if the window is fullscreen.
-// --@return bool If the window is fullscreen.
+// -- @function IsFullscreen
+// -- @description Check if the window is fullscreen.
+// -- @return bool If the window is fullscreen.
 int window_is_fullscreen(lua_State *L) {
     lua_pushboolean(L, IsWindowFullscreen());
     return 1;
 }
 
 // IsWindowFocused
-// --@function IsFocused
-// --@description Check if the window is focused.
-// --@return bool If the window is focused.
+// -- @function IsFocused
+// -- @description Check if the window is focused.
+// -- @return bool If the window is focused.
 int window_is_focused(lua_State *L) {
     lua_pushboolean(L, IsWindowFocused());
     return 1;
 }
 
 // Is Hidden
-// --@function IsHidden
-// --@description Check if the window is hidden.
-// --@return bool If the window is hidden.
+// -- @function IsHidden
+// -- @description Check if the window is hidden.
+// -- @return bool If the window is hidden.
 int window_is_hidden(lua_State *L) {
     lua_pushboolean(L, IsWindowHidden());
     return 1;
 }
 
 // Is Minimized
-// --@function IsMinimized
-// --@description Check if the window is minimized.
-// --@return bool If the window is minimized.
+// -- @function IsMinimized
+// -- @description Check if the window is minimized.
+// -- @return bool If the window is minimized.
 int window_is_minimized(lua_State *L) {
     lua_pushboolean(L, IsWindowMinimized());
     return 1;
 }
 
 // Is Maximized
-// --@function IsMaximized
-// --@description Check if the window is maximized.
-// --@return bool If the window is maximized.
+// -- @function IsMaximized
+// -- @description Check if the window is maximized.
+// -- @return bool If the window is maximized.
 int window_is_maximized(lua_State *L) {
     lua_pushboolean(L, IsWindowMaximized());
     return 1;
 }
 
 // Minimize Window
-// --@function Minimize
-// --@description Minimize the window.
-// --@return void
+// -- @function Minimize
+// -- @description Minimize the window.
+// -- @return void
 int window_minimize(lua_State *L) {
     MinimizeWindow();
     return 0;
 }
 
 // Maximize Window
-// --@function Maximize
-// --@description Maximize the window.
-// --@return void
+// -- @function Maximize
+// -- @description Maximize the window.
+// -- @return void
 int window_maximize(lua_State *L) {
     MaximizeWindow();
     return 0;
 }
 
 // Get Window Position
-// --@function GetPosition
-// --@description Get the position of the window.
-// --@return Vector2 The position of the window.
+// -- @function GetPosition
+// -- @description Get the position of the window.
+// -- @return Vector2 The position of the window.
 int window_get_position(lua_State *L) {
     Vector2 v;
     v.x = GetWindowPosition().x;
@@ -202,10 +202,10 @@ int window_get_position(lua_State *L) {
 }
 
 // Take Screenshot
-// --@function TakeScreenshot
-// --@description Take a screenshot of the window.
-// --@param filename string The filename to save the screenshot to.
-// --@return void
+// -- @function TakeScreenshot
+// -- @description Take a screenshot of the window.
+// -- @param filename string The filename to save the screenshot to.
+// -- @return void
 int window_take_screenshot(lua_State *L) {
     const char* filename = luaL_checkstring(L, 1);
     TakeScreenshot(filename);
@@ -216,27 +216,27 @@ int window_take_screenshot(lua_State *L) {
 // Time
 
 // Get Elapsed Time
-// --@function GetElapsedTime
-// --@description Returns the elapsed time in seconds since the window was opened.
-// --@return number The elapsed time in seconds.
+// -- @function GetElapsedTime
+// -- @description Returns the elapsed time in seconds since the window was opened.
+// -- @return number The elapsed time in seconds.
 int window_get_elapsed_time(lua_State *L) {
     lua_pushnumber(L, GetTime());
     return 1;
 }
 
 // Get Frame Time
-// --@function GetFrameTime
-// --@description Returns the time in seconds since the last frame.
-// --@return number The time in seconds since the last frame.
+// -- @function GetFrameTime
+// -- @description Returns the time in seconds since the last frame.
+// -- @return number The time in seconds since the last frame.
 int window_get_frame_time(lua_State *L) {
     lua_pushnumber(L, GetFrameTime());
     return 1;
 }
 
 // Get FPS
-// --@function GetFPS
-// --@description Returns the current FPS.
-// --@return number The current FPS.
+// -- @function GetFPS
+// -- @description Returns the current FPS.
+// -- @return number The current FPS.
 int window_get_fps(lua_State *L) {
     lua_pushnumber(L, GetFPS());
     return 1;
@@ -246,54 +246,54 @@ int window_get_fps(lua_State *L) {
 // Cursor
 
 // Show Cursor
-// --@function ShowCursor
-// --@description Show the cursor.
-// --@return void
+// -- @function ShowCursor
+// -- @description Show the cursor.
+// -- @return void
 int window_show_cursor(lua_State *L) {
     ShowCursor();
     return 0;
 }
 
 // Hide Cursor
-// --@function HideCursor
-// --@description Hide the cursor.
-// --@return void
+// -- @function HideCursor
+// -- @description Hide the cursor.
+// -- @return void
 int window_hide_cursor(lua_State *L) {
     HideCursor();
     return 0;
 }
 
 // Is Cursor Hidden
-// --@function IsCursorHidden
-// --@description Check if the cursor is hidden.
-// --@return bool If the cursor is hidden.
+// -- @function IsCursorHidden
+// -- @description Check if the cursor is hidden.
+// -- @return bool If the cursor is hidden.
 int window_is_cursor_hidden(lua_State *L) {
     lua_pushboolean(L, IsCursorHidden());
     return 1;
 }
 
 // Enable Cursor
-// --@function EnableCursor
-// --@description Enable the cursor.
-// --@return void
+// -- @function EnableCursor
+// -- @description Enable the cursor.
+// -- @return void
 int window_enable_cursor(lua_State *L) {
     EnableCursor();
     return 0;
 }
 
 // Disable Cursor
-// --@function DisableCursor
-// --@description Disable the cursor.
-// --@return void
+// -- @function DisableCursor
+// -- @description Disable the cursor.
+// -- @return void
 int window_disable_cursor(lua_State *L) {
     DisableCursor();
     return 0;
 }
 
 // Is Cursor On Screen
-// --@function IsCursorOnScreen
-// --@description Check if the cursor is on the screen.
-// --@return bool If the cursor is on the screen.
+// -- @function IsCursorOnScreen
+// -- @description Check if the cursor is on the screen.
+// -- @return bool If the cursor is on the screen.
 int window_is_cursor_on_screen(lua_State *L) {
     lua_pushboolean(L, IsCursorOnScreen());
     return 1;

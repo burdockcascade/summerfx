@@ -4,13 +4,13 @@
 // Text
 
 // Draw Text
-// --@function DrawText
-// --@description Draw text using font inside rectangle limits
-// --@param string text The text to draw
-// --@param vector2 position The position of the text
-// --@param int fontSize The font size of the text
-// --@param Color color The color of the text
-// --@return void
+// -- @function DrawText
+// -- @description Draw text using font inside rectangle limits
+// -- @param string text The text to draw
+// -- @param Vector2 position The position of the text
+// -- @param int fontSize The font size of the text
+// -- @param Color color The color of the text
+// -- @return void
 int graphics2d_draw_text(lua_State *L) {
     const char* text = luaL_checkstring(L, 1);
     Vector2 position = *(Vector2*)luaL_checkudata(L, 2, "Vector2");
@@ -21,11 +21,11 @@ int graphics2d_draw_text(lua_State *L) {
 }
 
 // Draw FPS
-// --@function DrawFPS
-// --@description Draw the FPS at the specified position.
-// --@param x int The x position to draw the FPS.
-// --@param y int The y position to draw the FPS.
-// --@return void
+// -- @function DrawFPS
+// -- @description Draw the FPS at the specified position.
+// -- @param x int The x position to draw the FPS.
+// -- @param y int The y position to draw the FPS.
+// -- @return void
 int graphics2d_draw_fps(lua_State *L) {
     int x = luaL_checkinteger(L, 1);
     int y = luaL_checkinteger(L, 2);
@@ -37,11 +37,11 @@ int graphics2d_draw_fps(lua_State *L) {
 // Pixels
 
 // DrawPixel
-// --@function DrawPixel
-// --@description Draw a pixel
-// --@param vector2 position The position of the pixel
-// --@param Color color The color of the pixel
-// --@return void
+// -- @function DrawPixel
+// -- @description Draw a pixel
+// -- @param Vector2 position The position of the pixel
+// -- @param Color color The color of the pixel
+// -- @return void
 int graphics2d_draw_pixel(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     Color c = *(Color*)luaL_checkudata(L, 2, "Color");
@@ -53,11 +53,11 @@ int graphics2d_draw_pixel(lua_State *L) {
 // Rectangle
 
 // DrawRectangle
-// --@function DrawRectangle
-// --@description Draw a rectangle
-// --@param rectangle rectangle The rectangle to draw
-// --@param Color color The color of the rectangle
-// --@return void
+// -- @function DrawRectangle
+// -- @description Draw a rectangle
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param Color color The color of the rectangle
+// -- @return void
 int graphics2d_draw_rectangle(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     Color c = *(Color*)luaL_checkudata(L, 2, "Color");
@@ -66,12 +66,12 @@ int graphics2d_draw_rectangle(lua_State *L) {
 }
 
 // DrawRectangleLinesV
-// --@function DrawRectangleLines
-// --@description Draw a rectangle outline
-// --@param rectangle rectangle The rectangle to draw
-// --@param int lineThickness The thickness of the lines
-// --@param Color color The color of the lines
-// --@return void
+// -- @function DrawRectangleLines
+// -- @description Draw a rectangle outline
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param int lineThickness The thickness of the lines
+// -- @param Color color The color of the lines
+// -- @return void
 int graphics2d_draw_rectangle_lines(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     int lineThickness = luaL_checkinteger(L, 2);
@@ -81,13 +81,13 @@ int graphics2d_draw_rectangle_lines(lua_State *L) {
 }
 
 // DrawRectangleRounded
-// --@function DrawRectangleRounded
-// --@description Draw a rectangle with rounded edges
-// --@param rectangle rectangle The rectangle to draw
-// --@param float roundness The roundness of the edges
-// --@param int segments The number of segments to use
-// --@param Color color The color of the rectangle
-// --@return void
+// -- @function DrawRectangleRounded
+// -- @description Draw a rectangle with rounded edges
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param float roundness The roundness of the edges
+// -- @param int segments The number of segments to use
+// -- @param Color color The color of the rectangle
+// -- @return void
 int graphics2d_draw_rectangle_rounded(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     float roundness = luaL_checknumber(L, 2);
@@ -98,14 +98,14 @@ int graphics2d_draw_rectangle_rounded(lua_State *L) {
 }
 
 // DrawRectangleRoundedLines
-// --@function DrawRectangleRoundedLines
-// --@description Draw a rectangle with rounded edges
-// --@param rectangle rectangle The rectangle to draw
-// --@param float roundness The roundness of the edges
-// --@param int segments The number of segments to use
-// --@param int lineThickness The thickness of the lines
-// --@param Color color The color of the lines
-// --@return void
+// -- @function DrawRectangleRoundedLines
+// -- @description Draw a rectangle with rounded edges
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param float roundness The roundness of the edges
+// -- @param int segments The number of segments to use
+// -- @param int lineThickness The thickness of the lines
+// -- @param Color color The color of the lines
+// -- @return void
 int graphics2d_draw_rectangle_rounded_lines(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     float roundness = luaL_checknumber(L, 2);
@@ -117,12 +117,12 @@ int graphics2d_draw_rectangle_rounded_lines(lua_State *L) {
 }
 
 // DrawRectangleGradientV
-// --@function DrawRectangleGradientV
-// --@description Draw a rectangle with a vertical gradient
-// --@param rectangle rectangle The rectangle to draw
-// --@param Color color1 The first color of the gradient
-// --@param Color color2 The second color of the gradient
-// --@return void
+// -- @function DrawRectangleGradientV
+// -- @description Draw a rectangle with a vertical gradient
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param Color color1 The first color of the gradient
+// -- @param Color color2 The second color of the gradient
+// -- @return void
 int graphics2d_draw_rectangle_gradient(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     Color c1 = *(Color*)luaL_checkudata(L, 2, "Color");
@@ -132,12 +132,12 @@ int graphics2d_draw_rectangle_gradient(lua_State *L) {
 }
 
 // DrawRectangleGradientH
-// --@function DrawRectangleGradientH
-// --@description Draw a rectangle with a horizontal gradient
-// --@param rectangle rectangle The rectangle to draw
-// --@param Color color1 The first color of the gradient
-// --@param Color color2 The second color of the gradient
-// --@return void
+// -- @function DrawRectangleGradientH
+// -- @description Draw a rectangle with a horizontal gradient
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param Color color1 The first color of the gradient
+// -- @param Color color2 The second color of the gradient
+// -- @return void
 int graphics2d_draw_rectangle_gradient_h(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     Color c1 = *(Color*)luaL_checkudata(L, 2, "Color");
@@ -147,14 +147,14 @@ int graphics2d_draw_rectangle_gradient_h(lua_State *L) {
 }
 
 // DrawRectangleGradientEx
-// --@function DrawRectangleGradientEx
-// --@description Draw a rectangle with a gradient
-// --@param rectangle rectangle The rectangle to draw
-// --@param Color color1 The first color of the gradient
-// --@param Color color2 The second color of the gradient
-// --@param Color color3 The third color of the gradient
-// --@param Color color4 The fourth color of the gradient
-// --@return void
+// -- @function DrawRectangleGradientEx
+// -- @description Draw a rectangle with a gradient
+// -- @param rectangle rectangle The rectangle to draw
+// -- @param c1 Color The first color of the gradient
+// -- @param c2 Color The second color of the gradient
+// -- @param c3 Color The third color of the gradient
+// -- @param c4 Color The fourth color of the gradient
+// -- @return void
 int graphics2d_draw_rectangle_gradient_ex(lua_State *L) {
     Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
     Color c1 = *(Color*)luaL_checkudata(L, 2, "Color");
@@ -169,14 +169,14 @@ int graphics2d_draw_rectangle_gradient_ex(lua_State *L) {
 // Polygons
 
 // DrawPoly
-// --@function DrawPoly
-// --@description Draw a polygon
-// --@param vector2 position The position of the polygon
-// --@param int sides The number of sides of the polygon
-// --@param float radius The radius of the polygon
-// --@param float rotation The rotation of the polygon
-// --@param Color color The color of the polygon
-// --@return void
+// -- @function DrawPoly
+// -- @description Draw a polygon
+// -- @param Vector2 position The position of the polygon
+// -- @param sides int The number of sides of the polygon
+// -- @param radius float The radius of the polygon
+// -- @param rotation float The rotation of the polygon
+// -- @param color Color The color of the polygon
+// -- @return void
 int graphics2d_draw_poly(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     int sides = luaL_checkinteger(L, 2);
@@ -191,12 +191,12 @@ int graphics2d_draw_poly(lua_State *L) {
 // Lines
 
 // Draw Line
-// --@function DrawLine
-// --@description Draw a line
-// --@param vector2 start The start position of the line
-// --@param vector2 end The end position of the line
-// --@param Color color The color of the line
-// --@return void
+// -- @function DrawLine
+// -- @description Draw a line
+// -- @param start Vector2 The start position of the line
+// -- @param end Vector2 The end position of the line
+// -- @param color Color The color of the line
+// -- @return void
 int graphics2d_draw_line(lua_State *L) {
     Vector2 start = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     Vector2 end = *(Vector2*)luaL_checkudata(L, 2, "Vector2");
@@ -209,12 +209,12 @@ int graphics2d_draw_line(lua_State *L) {
 // Circles
 
 // Draw Circle
-// --@function DrawCircle
-// --@description Draw a circle
-// --@param vector2 position The position of the circle
-// --@param float radius The radius of the circle
-// --@param Color color The color of the circle
-// --@return void
+// -- @function DrawCircle
+// -- @description Draw a circle
+// -- @param position Vector2 The position of the circle
+// -- @param radius float The radius of the circle
+// -- @param color Color The color of the circle
+// -- @return void
 int graphics2d_draw_circle(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     float radius = luaL_checknumber(L, 2);
@@ -224,12 +224,12 @@ int graphics2d_draw_circle(lua_State *L) {
 }
 
 // Draw Circle Lines
-// --@function DrawCircleLines
-// --@description Draw a circle outline
-// --@param vector2 position The position of the circle
-// --@param float radius The radius of the circle
-// --@param Color color The color of the circle
-// --@return void
+// -- @function DrawCircleLines
+// -- @description Draw a circle outline
+// -- @param position Vector2 The position of the circle
+// -- @param radius float The radius of the circle
+// -- @param color Color The color of the circle
+// -- @return void
 int graphics2d_draw_circle_lines(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     float radius = luaL_checknumber(L, 2);
@@ -239,15 +239,15 @@ int graphics2d_draw_circle_lines(lua_State *L) {
 }
 
 // Draw Cirlce Sector
-// --@function DrawCircleSector
-// --@description Draw a circle sector
-// --@param vector2 position The position of the circle
-// --@param float radius The radius of the circle
-// --@param int startAngle The start angle of the sector
-// --@param int endAngle The end angle of the sector
-// --@param int segments The number of segments to use
-// --@param Color color The color of the circle
-// --@return void
+// -- @function DrawCircleSector
+// -- @description Draw a circle sector
+// -- @param position Vector2 The position of the circle
+// -- @param radius float The radius of the circle
+// -- @param startAngle int The start angle of the sector
+// -- @param endAngle int The end angle of the sector
+// -- @param segments int The number of segments to use
+// -- @param color Color The color of the circle
+// -- @return void
 int graphics2d_draw_circle_sector(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     float radius = luaL_checknumber(L, 2);
@@ -260,15 +260,15 @@ int graphics2d_draw_circle_sector(lua_State *L) {
 }
 
 // Draw Circle Sector Lines
-// --@function DrawCircleSectorLines
-// --@description Draw a circle sector outline
-// --@param vector2 position The position of the circle
-// --@param float radius The radius of the circle
-// --@param int startAngle The start angle of the sector
-// --@param int endAngle The end angle of the sector
-// --@param int segments The number of segments to use
-// --@param Color color The color of the circle
-// --@return void
+// -- @function DrawCircleSectorLines
+// -- @description Draw a circle sector outline
+// -- @param position Vector2 The position of the circle
+// -- @param radius float The radius of the circle
+// -- @param startAngle int The start angle of the sector
+// -- @param endAngle int The end angle of the sector
+// -- @param segments int The number of segments to use
+// -- @param color Color The color of the circle
+// -- @return void
 int graphics2d_draw_circle_sector_lines(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     float radius = luaL_checknumber(L, 2);
@@ -281,13 +281,13 @@ int graphics2d_draw_circle_sector_lines(lua_State *L) {
 }
 
 // Draw Circle Gradient
-// --@function DrawCircleGradient
-// --@description Draw a circle with a gradient
-// --@param vector2 position The position of the circle
-// --@param float radius The radius of the circle
-// --@param Color color1 The first color of the gradient
-// --@param Color color2 The second color of the gradient
-// --@return void
+// -- @function DrawCircleGradient
+// -- @description Draw a circle with a gradient
+// -- @param positionVector2 The position of the circle
+// -- @param radius float The radius of the circle
+// -- @param c1 Color The first color of the gradient
+// -- @param c2 Color The second color of the gradient
+// -- @return void
 int graphics2d_draw_circle_gradient(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     float radius = luaL_checknumber(L, 2);

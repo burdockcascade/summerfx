@@ -4,13 +4,13 @@
 // Color
 
 // Color
-// --@function Color
-// --@description Creates a new Color object.
-// --@param r int The red component of the color.
-// --@param g int The green component of the color.
-// --@param b int The blue component of the color.
-// --@param a int The alpha component of the color.
-// --@return Color
+// -- @name Color
+// -- @description Creates a new Color object.
+// -- @param r int The red component of the color.
+// -- @param g int The green component of the color.
+// -- @param b int The blue component of the color.
+// -- @param a int The alpha component of the color.
+// -- @return Color
 int l_Color_constructor(lua_State *L) {
 
 	Color s;
@@ -64,6 +64,12 @@ int l_Color_newindex(lua_State *L) {
 	return 0;
 }
 
+// Color table
+// -- @table Color
+// -- @field r number The red component of the color
+// -- @field g number The green component of the color
+// -- @field b number The blue component of the color
+// -- @field a number The alpha component of the color
 void l_Color_push(lua_State *L, const Color &color) {
 
 	// Create new user data
