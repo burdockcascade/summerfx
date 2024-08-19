@@ -26,7 +26,7 @@ int graphics2d_draw_text(lua_State *L) {
 // --@param x int The x position to draw the FPS.
 // --@param y int The y position to draw the FPS.
 // --@return void
-int window_draw_fps(lua_State *L) {
+int graphics2d_draw_fps(lua_State *L) {
     int x = luaL_checkinteger(L, 1);
     int y = luaL_checkinteger(L, 2);
     DrawFPS(x, y);
@@ -309,7 +309,7 @@ void bind_graphics2d_module(lua_State *L) {
     lua_pushcfunction(L, graphics2d_draw_text);
     lua_setfield(L, -2, "DrawText");
 
-    lua_pushcfunction(L, window_draw_fps);
+    lua_pushcfunction(L, graphics2d_draw_fps);
     lua_setfield(L, -2, "DrawFPS");
 
     lua_pushcfunction(L, graphics2d_draw_pixel);
