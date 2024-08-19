@@ -1,4 +1,6 @@
-#include "input.hpp"
+#include <lua.hpp>
+#include <raylib.h>
+#include "modules.hpp"
 
 // =====================================================================
 // Keyboard Functions

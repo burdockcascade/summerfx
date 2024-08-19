@@ -1,11 +1,8 @@
-#include "structs.hpp"
-#include "window.hpp"
-#include "graphics2d.hpp"
-#include "input.hpp"
+void bind_structs(lua_State *L);
+void bind_input_module(lua_State *L);
+void bind_window_module(lua_State *L);
+void bind_graphics2d_module(lua_State *L);
 
-void bind_modules(lua_State *L) {
-    bind_structs(L);
-    bind_input_module(L);
-    bind_window_module(L);
-    bind_graphics2d_module(L);
-}
+void l_Vector2_push(lua_State *L, const Vector2 &vector2);
+void l_Rectangle_push(lua_State *L, const Rectangle &rectangle);
+void l_Color_push(lua_State *L, const Color &color);

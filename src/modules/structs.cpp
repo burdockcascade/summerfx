@@ -1,4 +1,8 @@
-#include "structs.hpp"
+#include <lua.hpp>
+#include <raylib.h>
+#include "modules.hpp"
+
+#include <string>
 
 // =====================================================================
 // Color
