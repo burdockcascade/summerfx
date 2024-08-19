@@ -90,9 +90,11 @@ for _, module in ipairs(modules) do
     for _, func in ipairs(functions) do
         yaml:write("      - name: " .. func.name .. "\n")
         yaml:write("        description: " .. (func.description) .. "\n")
-        yaml:write("        usage:\n")
-        for _, usage in ipairs(func.usage) do
-            yaml:write("          - " .. usage .. "\n")
+        if #func.usage > 0 then
+            yaml:write("        usage:\n")
+            for _, usage in ipairs(func.usage) do
+                yaml:write("          - " .. usage .. "\n")
+            end
         end
         if #func.rtn > 0 then
             yaml:write("        return:\n")

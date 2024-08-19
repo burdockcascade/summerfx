@@ -171,7 +171,6 @@ modules:
     functions:
       - name: DrawText
         description: Draw text using font inside rectangle limits
-        usage:
         params:
           - name: text
             type: string
@@ -187,7 +186,6 @@ modules:
             description: The color of the text
       - name: DrawFPS
         description: Draw the FPS at the specified position.
-        usage:
         params:
           - name: x
             type: int
@@ -197,7 +195,6 @@ modules:
             description: The y position to draw the FPS.
       - name: DrawPixel
         description: Draw a pixel
-        usage:
         params:
           - name: position
             type: Vector2
@@ -207,7 +204,6 @@ modules:
             description: The color of the pixel
       - name: DrawRectangle
         description: Draw a rectangle
-        usage:
         params:
           - name: rectangle
             type: Rectangle
@@ -217,7 +213,6 @@ modules:
             description: The color of the rectangle
       - name: DrawRectangleLines
         description: Draw a rectangle outline
-        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -230,7 +225,6 @@ modules:
             description: The color of the lines
       - name: DrawRectangleRounded
         description: Draw a rectangle with rounded edges
-        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -246,7 +240,6 @@ modules:
             description: The color of the rectangle
       - name: DrawRectangleRoundedLines
         description: Draw a rectangle with rounded edges
-        usage:
         params:
           - name: rectangle
             type: Rectangle
@@ -265,7 +258,6 @@ modules:
             description: The color of the lines
       - name: DrawRectangleGradientV
         description: Draw a rectangle with a vertical gradient
-        usage:
         params:
           - name: rectangle
             type: Rectangle
@@ -278,7 +270,6 @@ modules:
             description: The second color of the gradient
       - name: DrawRectangleGradientH
         description: Draw a rectangle with a horizontal gradient
-        usage:
         params:
           - name: rectangle
             type: Rectangle
@@ -291,7 +282,6 @@ modules:
             description: The second color of the gradient
       - name: DrawRectangleGradientEx
         description: Draw a rectangle with a gradient
-        usage:
         params:
           - name: rectangle
             type: rectangle
@@ -310,7 +300,6 @@ modules:
             description: The fourth color of the gradient
       - name: DrawPoly
         description: Draw a polygon
-        usage:
         params:
           - name: Vector2
             type: position
@@ -329,7 +318,6 @@ modules:
             description: The color of the polygon
       - name: DrawLine
         description: Draw a line
-        usage:
         params:
           - name: start
             type: Vector2
@@ -342,7 +330,6 @@ modules:
             description: The color of the line
       - name: DrawCircle
         description: Draw a circle
-        usage:
         params:
           - name: position
             type: Vector2
@@ -355,7 +342,6 @@ modules:
             description: The color of the circle
       - name: DrawCircleLines
         description: Draw a circle outline
-        usage:
         params:
           - name: position
             type: Vector2
@@ -368,7 +354,6 @@ modules:
             description: The color of the circle
       - name: DrawCircleSector
         description: Draw a circle sector
-        usage:
         params:
           - name: position
             type: Vector2
@@ -390,7 +375,6 @@ modules:
             description: The color of the circle
       - name: DrawCircleSectorLines
         description: Draw a circle sector outline
-        usage:
         params:
           - name: position
             type: Vector2
@@ -412,7 +396,6 @@ modules:
             description: The color of the circle
       - name: DrawCircleGradient
         description: Draw a circle with a gradient
-        usage:
         params:
           - name: positionVector2
             type: The
@@ -454,69 +437,57 @@ modules:
             description: The key to check
       - name: IsKeyReleased
         description: Check if a key has been released
-        usage:
         params:
           - name: key
             type: int
             description: The key to check
       - name: IsKeyUp
         description: Check if a key is not being held down
-        usage:
         params:
           - name: key
             type: int
             description: The key to check
       - name: GetKeyPressed
         description: Get the last key pressed
-        usage:
         params:
       - name: GetCharPressed
         description: Get the last char pressed
-        usage:
         params:
       - name: IsMouseButtonPressed
         description: Check if a mouse button has been pressed once
-        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: IsMouseButtonDown
         description: Check if a mouse button is being held down    
-        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: IsMouseButtonReleased
         description: Check if a mouse button has been released
-        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: IsMouseButtonUp
         description: Check if a mouse button is not being held down
-        usage:
         params:
           - name: button
             type: int
             description: The button to check
       - name: GetMouseX
         description: Get the x position of the mouse
-        usage:
         params:
       - name: GetMouseY
         description: Get the y position of the mouse
-        usage:
         params:
       - name: GetMousePosition
         description: Get the position of the mouse
-        usage:
         params:
       - name: SetMousePosition
         description: Set the position of the mouse
-        usage:
         params:
           - name: x
             type: int
@@ -526,7 +497,6 @@ modules:
             description: The y position of the mouse
       - name: SetMouseOffset
         description: Set the offset of the mouse
-        usage:
         params:
           - name: x
             type: int
@@ -536,7 +506,6 @@ modules:
             description: The y offset of the mouse
       - name: SetMouseScale
         description: Set the scale of the mouse
-        usage:
         params:
           - name: x
             type: int
@@ -546,55 +515,45 @@ modules:
             description: The y scale of the mouse
       - name: GetMouseWheelMove
         description: Get the amount the mouse wheel has moved
-        usage:
         params:
       - name: GetMouseWheelMoveV
         description: Get the amount the mouse wheel has moved
-        usage:
         params:
       - name: SetMouseCursor
         description: Set the mouse cursor
-        usage:
         params:
           - name: cursor
             type: int
             description: The cursor to set
       - name: GetTouchX
         description: Get the x position of a touc
-        usage:
         params:
       - name: GetTouchY
         description: Get the y position of a touch
-        usage:
         params:
       - name: GetTouchPosition
         description: Get the position of a touch
-        usage:
         params:
           - name: touch
             type: int
             description: The touch to get the position of
       - name: GetTouchPointId
         description: Get the id of a touch point
-        usage:
         params:
           - name: index
             type: int
             description: The index of the touch point
       - name: GetTouchPointCount
         description: Get the number of touch points
-        usage:
         params:
       - name: IsGamepadAvailable
         description: Check if a gamepad is available
-        usage:
         params:
           - name: gamepad
             type: int
             description: The gamepad to check
       - name: GetGamepadName
         description: Get the name of a gamepad
-        usage:
         params:
           - name: gamepad
             type: int
