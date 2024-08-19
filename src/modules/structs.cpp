@@ -1,7 +1,3 @@
-#include <string>
-
-#include <lua.hpp>
-#include <raylib.h>
 #include "modules.hpp"
 
 // =====================================================================

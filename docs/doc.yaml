@@ -173,17 +173,17 @@ modules:
         description: Draw text using font inside rectangle limits
         usage:
         params:
-          - name: string
-            type: text
+          - name: text
+            type: string
             description: The text to draw
-          - name: Vector2
-            type: position
+          - name: position
+            type: Vector2
             description: The position of the text
-          - name: int
-            type: fontSize
+          - name: fontSize
+            type: int
             description: The font size of the text
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the text
       - name: DrawFPS
         description: Draw the FPS at the specified position.
@@ -199,21 +199,21 @@ modules:
         description: Draw a pixel
         usage:
         params:
-          - name: Vector2
-            type: position
+          - name: position
+            type: Vector2
             description: The position of the pixel
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the pixel
       - name: DrawRectangle
         description: Draw a rectangle
         usage:
         params:
           - name: rectangle
-            type: rectangle
+            type: Rectangle
             description: The rectangle to draw
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the rectangle
       - name: DrawRectangleLines
         description: Draw a rectangle outline
@@ -235,59 +235,59 @@ modules:
           - name: rectangle
             type: rectangle
             description: The rectangle to draw
-          - name: float
-            type: roundness
+          - name: roundness
+            type: float
             description: The roundness of the edges
-          - name: int
-            type: segments
+          - name: segments
+            type: int
             description: The number of segments to use
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the rectangle
       - name: DrawRectangleRoundedLines
         description: Draw a rectangle with rounded edges
         usage:
         params:
           - name: rectangle
-            type: rectangle
+            type: Rectangle
             description: The rectangle to draw
-          - name: float
-            type: roundness
+          - name: roundness
+            type: float
             description: The roundness of the edges
-          - name: int
-            type: segments
+          - name: segments
+            type: int
             description: The number of segments to use
-          - name: int
-            type: lineThickness
+          - name: lineThickness
+            type: int
             description: The thickness of the lines
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the lines
       - name: DrawRectangleGradientV
         description: Draw a rectangle with a vertical gradient
         usage:
         params:
           - name: rectangle
-            type: rectangle
+            type: Rectangle
             description: The rectangle to draw
-          - name: Color
-            type: color1
+          - name: c1
+            type: Color
             description: The first color of the gradient
-          - name: Color
-            type: color2
+          - name: c2
+            type: Color
             description: The second color of the gradient
       - name: DrawRectangleGradientH
         description: Draw a rectangle with a horizontal gradient
         usage:
         params:
           - name: rectangle
-            type: rectangle
+            type: Rectangle
             description: The rectangle to draw
-          - name: Color
-            type: color1
+          - name: color1
+            type: Color
             description: The first color of the gradient
-          - name: Color
-            type: color2
+          - name: color2
+            type: Color
             description: The second color of the gradient
       - name: DrawRectangleGradientEx
         description: Draw a rectangle with a gradient
