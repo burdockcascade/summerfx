@@ -95,7 +95,7 @@ int input_is_mouse_button_pressed(lua_State *L) {
 
 // Is Mouse Button Down
 // -- @function IsMouseButtonDown
-// -- @description Check if a mouse button is being held down    
+// -- @description Check if a mouse button is being held down
 // -- @param button int The button to check
 // -- @return bool If the button is being held down
 int input_is_mouse_button_down(lua_State *L) {
@@ -307,7 +307,7 @@ int input_get_gamepad_name(lua_State *L) {
 // -- @description Check if a gamepad button has been pressed once
 // -- @usage if Input.IsGamepadButtonPressed(Gamepad.One, GamepadButton.A) then
 // -- @param gamepad int The gamepad to check
-// -- @param button int The button to check 
+// -- @param button int The button to check
 // -- @return bool If the button has been pressed
 int input_is_gamepad_button_pressed(lua_State *L) {
     int gamepad = luaL_checkinteger(L, 1);
@@ -410,73 +410,80 @@ int input_set_gamepad_mappings(lua_State *L) {
 // =====================================================================
 // Bindings
 
-// Mouse Button Constants
-void bind_mouse_button_constants(lua_State *L) {
-    lua_newtable(L);
-    lua_pushvalue(L, -1);
-    lua_setglobal(L, "MouseButton");
+void bind_keys_constants(lua_State *L) {
 
-    lua_pushinteger(L, MOUSE_LEFT_BUTTON);
-    lua_setfield(L, -2, "Left");
+    lua_pushinteger(L, KEY_SPACE);
+    lua_setglobal(L, "KEY_SPACE");
 
-    lua_pushinteger(L, MOUSE_RIGHT_BUTTON);
-    lua_setfield(L, -2, "Right");
+    lua_pushinteger(L, KEY_ESCAPE);
+    lua_setglobal(L, "KEY_ESCAPE");
 
-    lua_pushinteger(L, MOUSE_MIDDLE_BUTTON);
-    lua_setfield(L, -2, "Middle");
+    lua_pushinteger(L, KEY_ENTER);
+    lua_setglobal(L, "KEY_ENTER");
 
-    lua_pop(L, 1);
+    lua_pushinteger(L, KEY_TAB);
+    lua_setglobal(L, "KEY_TAB");
+
+    lua_pushinteger(L, KEY_BACKSPACE);
+    lua_setglobal(L, "KEY_BACKSPACE");
+
+    lua_pushinteger(L, KEY_INSERT);
+    lua_setglobal(L, "KEY_INSERT");
+
+    lua_pushinteger(L, KEY_DELETE);
+    lua_setglobal(L, "KEY_DELETE");
+
+    lua_pushinteger(L, KEY_RIGHT);
+    lua_setglobal(L, "KEY_RIGHT");
+
+    lua_pushinteger(L, KEY_LEFT);
+    lua_setglobal(L, "KEY_LEFT");
+
+    lua_pushinteger(L, KEY_DOWN);
+    lua_setglobal(L, "KEY_DOWN");
+
+    lua_pushinteger(L, KEY_UP);
+    lua_setglobal(L, "KEY_UP");
+
+    lua_pushinteger(L, KEY_PAGE_UP);
+    lua_setglobal(L, "KEY_PAGE_UP");
+
+    lua_pushinteger(L, KEY_PAGE_DOWN);
+    lua_setglobal(L, "KEY_PAGE_DOWN");
+
+    // TODO: Add more keys
+
 }
 
-// Mouse Cursor Constants
-void bind_mouse_cursor_constants(lua_State *L) {
-    lua_newtable(L);
-    lua_pushvalue(L, -1);
-    lua_setglobal(L, "MouseCursor");
+void bind_mouse_constants(lua_State *L) {
 
-    lua_pushinteger(L, MOUSE_CURSOR_DEFAULT);
-    lua_setfield(L, -2, "Default");
+    lua_pushinteger(L, MOUSE_BUTTON_LEFT);
+    lua_setglobal(L, "MOUSE_BUTTON_LEFT");
 
-    lua_pushinteger(L, MOUSE_CURSOR_ARROW);
-    lua_setfield(L, -2, "Arrow");
+    lua_pushinteger(L, MOUSE_BUTTON_RIGHT);
+    lua_setglobal(L, "MOUSE_BUTTON_RIGHT");
 
-    lua_pushinteger(L, MOUSE_CURSOR_IBEAM);
-    lua_setfield(L, -2, "IBeam");
+    lua_pushinteger(L, MOUSE_BUTTON_MIDDLE);
+    lua_setglobal(L, "MOUSE_BUTTON_MIDDLE");
 
-    lua_pushinteger(L, MOUSE_CURSOR_CROSSHAIR);
-    lua_setfield(L, -2, "Crosshair");
+    lua_pushinteger(L, MOUSE_BUTTON_SIDE);
+    lua_setglobal(L, "MOUSE_BUTTON_SIDE");
 
-    lua_pushinteger(L, MOUSE_CURSOR_POINTING_HAND);
-    lua_setfield(L, -2, "PointingHand");
+    lua_pushinteger(L, MOUSE_BUTTON_EXTRA);
+    lua_setglobal(L, "MOUSE_BUTTON_EXTRA");
 
-    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_EW);
-    lua_setfield(L, -2, "ResizeEW");
+    lua_pushinteger(L, MOUSE_BUTTON_FORWARD);
+    lua_setglobal(L, "MOUSE_BUTTON_FORWARD");
 
-    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_NS);
-    lua_setfield(L, -2, "ResizeNS");
+    lua_pushinteger(L, MOUSE_BUTTON_BACK);
+    lua_setglobal(L, "MOUSE_BUTTON_BACK");
 
-    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_NWSE);
-    lua_setfield(L, -2, "ResizeNWSE");
-
-    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_NESW);
-    lua_setfield(L, -2, "ResizeNESW");
-
-    lua_pushinteger(L, MOUSE_CURSOR_RESIZE_ALL);
-    lua_setfield(L, -2, "ResizeAll");
-
-    lua_pushinteger(L, MOUSE_CURSOR_NOT_ALLOWED);
-    lua_setfield(L, -2, "NotAllowed");
-
-    lua_pop(L, 1);
 }
-
-// =====================================================================
-// Bindings
 
 void bind_input_module(lua_State *L) {
 
-    bind_mouse_button_constants(L);
-    bind_mouse_cursor_constants(L);
+    bind_keys_constants(L);
+    bind_mouse_constants(L);
 
     lua_newtable(L);
     lua_pushvalue(L, -1);

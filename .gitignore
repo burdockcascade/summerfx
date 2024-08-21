@@ -13,3 +13,5 @@ build/
 /lua.bat
 /lua_modules
 /.luarocks
+
+examples/**/*.c

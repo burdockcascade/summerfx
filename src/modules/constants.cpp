@@ -3,6 +3,9 @@
 // Add predefined colors to Color table
 void bind_constants(lua_State *L) {
 
+	// ==================================================
+	// App constants
+
     // -- @constant RAYLIB_VERSION
     // -- @description The version of Raylib
     lua_pushstring(L, RAYLIB_VERSION);
@@ -12,6 +15,14 @@ void bind_constants(lua_State *L) {
     // --- @description The version of Lua
     lua_pushstring(L, LUA_VERSION);
     lua_setglobal(L, "LUA_VERSION");
+
+	// -- @constant LUA_RELEASE
+	// -- @description The release of Lua
+	lua_pushstring(L, LUA_RELEASE);
+	lua_setglobal(L, "LUA_RELEASE");
+
+	// ==================================================
+	// Color constants
 
 	// -- @constant COLOR_LIGHTGRAY Color(200, 200, 200, 255)
 	// -- @desecription A light gray color

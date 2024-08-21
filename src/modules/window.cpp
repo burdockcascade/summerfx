@@ -6,18 +6,17 @@
 // Initialize Window
 // -- @function Init
 // -- @description Open a window with the specified title, width, and height.
-// -- @usage Window.Init("My Game", 800, 600)
-// -- @param title string The title of the window.   
+// -- @usage Window.Init(800, 600, "My Game")
 // -- @param width int The width of the window.
 // -- @param height int The height of the window.
+// -- @param title string The title of the window.   
 // -- @return void 
 int window_init(lua_State *L) {
-    const char* title = luaL_checkstring(L, 1);
-    int width = luaL_checkinteger(L, 2);
-    int height = luaL_checkinteger(L, 3);
+    int width = luaL_checkinteger(L, 1);
+    int height = luaL_checkinteger(L, 2);
+    const char* title = luaL_checkstring(L, 3);
     
     InitWindow(width, height, title);
-    SetTargetFPS(60);
 
     return 0;
 }

@@ -4,17 +4,17 @@ modules:
       - name: Init
         description: Open a window with the specified title, width, and height.
         usage:
-          - Window.Init("My Game", 800, 600)
+          - Window.Init(800, 600, "My Game")
         params:
-          - name: title
-            type: string
-            description: The title of the window.   
           - name: width
             type: int
             description: The width of the window.
           - name: height
             type: int
             description: The height of the window.
+          - name: title
+            type: string
+            description: The title of the window.   
       - name: Close
         description: Close the window.
         usage:
@@ -170,18 +170,69 @@ modules:
   - name: Graphics2d
     functions:
       - name: DrawText
-        description: Draw text using font inside rectangle limits
+        description: Draw text at the specified position
         params:
+          - name: text
+            type: string
+            description: The text to draw
+          - name: x
+            type: int
+            description: The x position to draw the text
+          - name: y
+            type: int
+            description: The y position to draw the text
+          - name: fontSize
+            type: int
+            description: The size of the font
+          - name: color
+            type: Color
+            description: The color of the text
+      - name: DrawTextEx
+        description: Draw text at the specified position
+        params:
+          - name: font
+            type: Font
+            description: The font to use
           - name: text
             type: string
             description: The text to draw
           - name: position
             type: Vector2
-            description: The position of the text
+            description: The position to draw the text
           - name: fontSize
-            type: int
-            description: The font size of the text
-          - name: color
+            type: float
+            description: The size of the font
+          - name: spacing
+            type: float
+            description: The spacing of the font
+          - name: tint
+            type: Color
+            description: The color of the text
+      - name: DrawTextPro
+        description: Draw text at the specified position
+        params:
+          - name: font
+            type: Font
+            description: The font to use
+          - name: text
+            type: string
+            description: The text to draw
+          - name: position
+            type: Vector2
+            description: The position to draw the text
+          - name: origin
+            type: Vector2
+            description: The origin of the text
+          - name: rotation
+            type: float
+            description: The rotation of the text
+          - name: fontSize
+            type: float
+            description: The size of the font
+          - name: spacing
+            type: float
+            description: The spacing of the font
+          - name: tint
             type: Color
             description: The color of the text
       - name: DrawFPS
@@ -205,9 +256,18 @@ modules:
       - name: DrawRectangle
         description: Draw a rectangle
         params:
-          - name: rectangle
-            type: Rectangle
-            description: The rectangle to draw
+          - name: x
+            type: int
+            description: The x position of the rectangle
+          - name: y
+            type: int
+            description: The y position of the rectangle
+          - name: width
+            type: int
+            description: The width of the rectangle
+          - name: height
+            type: int
+            description: The height of the rectangle
           - name: color
             type: Color
             description: The color of the rectangle
@@ -460,7 +520,7 @@ modules:
             type: int
             description: The button to check
       - name: IsMouseButtonDown
-        description: Check if a mouse button is being held down    
+        description: Check if a mouse button is being held down
         params:
           - name: button
             type: int
@@ -568,7 +628,7 @@ modules:
             description: The gamepad to check
           - name: button
             type: int
-            description: The button to check 
+            description: The button to check
       - name: IsGamepadButtonDown
         description: Check if a gamepad button is being held down
         usage:

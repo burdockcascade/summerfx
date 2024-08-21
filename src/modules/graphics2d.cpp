@@ -3,20 +3,68 @@
 // =====================================================================
 // Text
 
-// Draw Text
+// Draw Text (basic)
 // -- @function DrawText
-// -- @description Draw text using font inside rectangle limits
+// -- @description Draw text at the specified position
 // -- @param text string The text to draw
-// -- @param position Vector2 The position of the text
-// -- @param fontSize int The font size of the text
+// -- @param x int The x position to draw the text
+// -- @param y int The y position to draw the text
+// -- @param fontSize int The size of the font
 // -- @param color Color The color of the text
 // -- @return void
 int graphics2d_draw_text(lua_State *L) {
-    const char* text = luaL_checkstring(L, 1);
-    Vector2 position = *(Vector2*)luaL_checkudata(L, 2, "Vector2");
-    int fontSize = luaL_checkinteger(L, 3);
-    Color c = *(Color*)luaL_checkudata(L, 4, "Color");
-    DrawText(text, position.x, position.y, fontSize, c);
+    const char *text = luaL_checkstring(L, 1);
+    int x = luaL_checkinteger(L, 2);
+    int y = luaL_checkinteger(L, 3);
+    int fontSize = luaL_checkinteger(L, 4);
+    Color c = *(Color*)luaL_checkudata(L, 5, "Color");
+    DrawText(text, x, y, fontSize, c);
+    return 0;
+}
+
+// Draw Text (Extended)
+// -- @function DrawTextEx
+// -- @description Draw text at the specified position
+// -- @param font Font The font to use
+// -- @param text string The text to draw
+// -- @param position Vector2 The position to draw the text
+// -- @param fontSize float The size of the font
+// -- @param spacing float The spacing of the font
+// -- @param tint Color The color of the text
+// -- @return void
+int graphics2d_draw_text_ex(lua_State *L) {
+    Font font = *(Font*)luaL_checkudata(L, 1, "Font");
+    const char *text = luaL_checkstring(L, 2);
+    Vector2 position = *(Vector2*)luaL_checkudata(L, 3, "Vector2");
+    float fontSize = luaL_checknumber(L, 4);
+    float spacing = luaL_checknumber(L, 5);
+    Color c = *(Color*)luaL_checkudata(L, 6, "Color");
+    DrawTextEx(font, text, position, fontSize, spacing, c);
+    return 0;
+}
+
+// Draw Text (Pro)
+// -- @function DrawTextPro
+// -- @description Draw text at the specified position
+// -- @param font Font The font to use
+// -- @param text string The text to draw
+// -- @param position Vector2 The position to draw the text
+// -- @param origin Vector2 The origin of the text
+// -- @param rotation float The rotation of the text
+// -- @param fontSize float The size of the font
+// -- @param spacing float The spacing of the font
+// -- @param tint Color The color of the text
+// -- @return void
+int graphics2d_draw_text_pro(lua_State *L) {
+    Font font = *(Font*)luaL_checkudata(L, 1, "Font");
+    const char *text = luaL_checkstring(L, 2);
+    Vector2 position = *(Vector2*)luaL_checkudata(L, 3, "Vector2");
+    Vector2 origin = *(Vector2*)luaL_checkudata(L, 4, "Vector2");
+    float rotation = luaL_checknumber(L, 5);
+    float fontSize = luaL_checknumber(L, 6);
+    float spacing = luaL_checknumber(L, 7);
+    Color c = *(Color*)luaL_checkudata(L, 8, "Color");
+    DrawTextPro(font, text, position, origin, rotation, fontSize, spacing, c);
     return 0;
 }
 
@@ -55,13 +103,19 @@ int graphics2d_draw_pixel(lua_State *L) {
 // DrawRectangle
 // -- @function DrawRectangle
 // -- @description Draw a rectangle
-// -- @param rectangle Rectangle The rectangle to draw
+// -- @param x int The x position of the rectangle
+// -- @param y int The y position of the rectangle
+// -- @param width int The width of the rectangle
+// -- @param height int The height of the rectangle
 // -- @param color Color The color of the rectangle
 // -- @return void
 int graphics2d_draw_rectangle(lua_State *L) {
-    Rectangle r = *(Rectangle*)luaL_checkudata(L, 1, "Rectangle");
-    Color c = *(Color*)luaL_checkudata(L, 2, "Color");
-    DrawRectangle(r.x, r.y, r.width, r.height, c);
+    int x = luaL_checkinteger(L, 1);
+    int y = luaL_checkinteger(L, 2);
+    int width = luaL_checkinteger(L, 3);
+    int height = luaL_checkinteger(L, 4);
+    Color c = *(Color*)luaL_checkudata(L, 5, "Color");
+    DrawRectangle(x, y, width, height, c);
     return 0;
 }
 
@@ -208,18 +262,18 @@ int graphics2d_draw_line(lua_State *L) {
 // =====================================================================
 // Circles
 
-// Draw Circle
+// Draw Circle (Vector2)
 // -- @function DrawCircle
 // -- @description Draw a circle
 // -- @param position Vector2 The position of the circle
 // -- @param radius float The radius of the circle
 // -- @param color Color The color of the circle
 // -- @return void
-int graphics2d_draw_circle(lua_State *L) {
+int graphics2d_draw_circlev(lua_State *L) {
     Vector2 position = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
     float radius = luaL_checknumber(L, 2);
     Color c = *(Color*)luaL_checkudata(L, 3, "Color");
-    DrawCircle(position.x, position.y, radius, c);
+    DrawCircleV(position, radius, c);
     return 0;
 }
 
@@ -342,8 +396,8 @@ void bind_graphics2d_module(lua_State *L) {
     lua_pushcfunction(L, graphics2d_draw_line);
     lua_setfield(L, -2, "DrawLine");
 
-    lua_pushcfunction(L, graphics2d_draw_circle);
-    lua_setfield(L, -2, "DrawCircle");
+    lua_pushcfunction(L, graphics2d_draw_circlev);
+    lua_setfield(L, -2, "DrawCircleV");
 
     lua_pushcfunction(L, graphics2d_draw_circle_lines);
     lua_setfield(L, -2, "DrawCircleLines");

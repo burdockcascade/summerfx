@@ -89,7 +89,7 @@ void l_Color_push(lua_State *L, const Color &color) {
 
 	lua_setmetatable(L, -2);
 
-}	
+}
 
 // =====================================================================
 // Vector2
@@ -135,9 +135,9 @@ int l_Vector2_newindex(lua_State *L) {
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "x") == 0) {
-		udata->x = luaL_checknumber(L, 1);
+		udata->x = luaL_checknumber(L, 3);
 	} else if (strcmp(key, "y") == 0) {
-		udata->y = luaL_checknumber(L, 2);
+		udata->y = luaL_checknumber(L, 3);
 	} else {
 		luaL_error(L, "Unknown field '%s' on Vector2", key);
 	}
