@@ -1,4 +1,4 @@
-#include "modules.hpp"
+#include "modules.h"
 
 // =====================================================================
 // Keyboard Functions
@@ -10,7 +10,7 @@
 // -- @param key int The key to check
 // -- @return bool If the key has been pressed
 int input_is_key_pressed(lua_State *L) {
-    int key = luaL_checkinteger(L, 1);
+    const int key = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsKeyPressed(key));
     return 1;
 }
@@ -22,7 +22,7 @@ int input_is_key_pressed(lua_State *L) {
 // -- @param key int The key to check
 // -- @return bool If the key has been pressed and is being held down
 int input_is_key_pressed_repeat(lua_State *L) {
-    int key = luaL_checkinteger(L, 1);
+    const int key = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsKeyDown(key));
     return 1;
 }
@@ -34,7 +34,7 @@ int input_is_key_pressed_repeat(lua_State *L) {
 // -- @param key int The key to check
 // -- @return bool If the key is being held down
 int input_is_key_down(lua_State *L) {
-    int key = luaL_checkinteger(L, 1);
+    const int key = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsKeyDown(key));
     return 1;
 }
@@ -45,7 +45,7 @@ int input_is_key_down(lua_State *L) {
 // -- @param key int The key to check
 // -- @return bool If the key has been released
 int input_is_key_released(lua_State *L) {
-    int key = luaL_checkinteger(L, 1);
+    const int key = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsKeyReleased(key));
     return 1;
 }
@@ -56,7 +56,7 @@ int input_is_key_released(lua_State *L) {
 // -- @param key int The key to check
 // -- @return bool If the key is not being held down
 int input_is_key_up(lua_State *L) {
-    int key = luaL_checkinteger(L, 1);
+    const int key = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsKeyUp(key));
     return 1;
 }
@@ -88,7 +88,7 @@ int input_get_char_pressed(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button has been pressed
 int input_is_mouse_button_pressed(lua_State *L) {
-    int button = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsMouseButtonPressed(button));
     return 1;
 }
@@ -99,7 +99,7 @@ int input_is_mouse_button_pressed(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button is being held down
 int input_is_mouse_button_down(lua_State *L) {
-    int button = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsMouseButtonDown(button));
     return 1;
 }
@@ -110,7 +110,7 @@ int input_is_mouse_button_down(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button has been released
 int input_is_mouse_button_released(lua_State *L) {
-    int button = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsMouseButtonReleased(button));
     return 1;
 }
@@ -121,7 +121,7 @@ int input_is_mouse_button_released(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button is not being held down
 int input_is_mouse_button_up(lua_State *L) {
-    int button = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsMouseButtonUp(button));
     return 1;
 }
@@ -149,7 +149,7 @@ int input_get_mouse_y(lua_State *L) {
 // -- @description Get the position of the mouse
 // -- @return Vector2 The position of the mouse
 int input_get_mouse_position(lua_State *L) {
-    Vector2 v = GetMousePosition();
+    const Vector2 v = GetMousePosition();
     l_Vector2_push(L, v);
     return 1;
 }
@@ -161,8 +161,8 @@ int input_get_mouse_position(lua_State *L) {
 // -- @param y int The y position of the mouse
 // -- @return void
 int input_set_mouse_position(lua_State *L) {
-    int x = luaL_checkinteger(L, 1);
-    int y = luaL_checkinteger(L, 2);
+    const int x = luaL_checkinteger(L, 1);
+    const int y = luaL_checkinteger(L, 2);
     SetMousePosition(x, y);
     return 0;
 }
@@ -174,8 +174,8 @@ int input_set_mouse_position(lua_State *L) {
 // -- @param y int The y offset of the mouse
 // -- @return void
 int input_set_mouse_offset(lua_State *L) {
-    int x = luaL_checkinteger(L, 1);
-    int y = luaL_checkinteger(L, 2);
+    const int x = luaL_checkinteger(L, 1);
+    const int y = luaL_checkinteger(L, 2);
     SetMouseOffset(x, y);
     return 0;
 }
@@ -187,8 +187,8 @@ int input_set_mouse_offset(lua_State *L) {
 // -- @param y int The y scale of the mouse
 // -- @return void
 int input_set_mouse_scale(lua_State *L) {
-    int x = luaL_checkinteger(L, 1);
-    int y = luaL_checkinteger(L, 2);
+    const int x = luaL_checkinteger(L, 1);
+    const int y = luaL_checkinteger(L, 2);
     SetMouseScale(x, y);
     return 0;
 }
@@ -207,7 +207,7 @@ int input_get_mouse_wheel_move(lua_State *L) {
 // -- @description Get the amount the mouse wheel has moved
 // -- @return Vector2 The amount the mouse wheel has moved
 int input_get_mouse_wheel_move_v(lua_State *L) {
-    Vector2 v = GetMouseWheelMoveV();
+    const Vector2 v = GetMouseWheelMoveV();
     l_Vector2_push(L, v);
     return 1;
 }
@@ -218,7 +218,7 @@ int input_get_mouse_wheel_move_v(lua_State *L) {
 // -- @param cursor int The cursor to set
 // -- @return void
 int input_set_mouse_cursor(lua_State *L) {
-    int cursor = luaL_checkinteger(L, 1);
+    const int cursor = luaL_checkinteger(L, 1);
     SetMouseCursor(cursor);
     return 0;
 }
@@ -250,8 +250,8 @@ int input_get_touch_y(lua_State *L) {
 // -- @param touch int The touch to get the position of
 // -- @return Vector2 The position of the touch
 int input_get_touch_position(lua_State *L) {
-    int touch = luaL_checkinteger(L, 1);
-    Vector2 v = GetTouchPosition(touch);
+    const int touch = luaL_checkinteger(L, 1);
+    const Vector2 v = GetTouchPosition(touch);
     l_Vector2_push(L, v);
     return 1;
 }
@@ -262,7 +262,7 @@ int input_get_touch_position(lua_State *L) {
 // -- @param index int The index of the touch point
 // -- @return int The id of the touch point
 int input_get_touch_point_id(lua_State *L) {
-    int index = luaL_checkinteger(L, 1);
+    const int index = luaL_checkinteger(L, 1);
     lua_pushinteger(L, GetTouchPointId(index));
     return 1;
 }
@@ -285,7 +285,7 @@ int input_get_touch_point_count(lua_State *L) {
 // -- @param gamepad int The gamepad to check
 // -- @return bool If the gamepad is available
 int input_is_gamepad_available(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
+    const int gamepad = luaL_checkinteger(L, 1);
     lua_pushboolean(L, IsGamepadAvailable(gamepad));
     return 1;
 }
@@ -296,7 +296,7 @@ int input_is_gamepad_available(lua_State *L) {
 // -- @param gamepad int The gamepad to get the name of
 // -- @return string The name of the gamepad
 int input_get_gamepad_name(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
+    const int gamepad = luaL_checkinteger(L, 1);
     const char *name = GetGamepadName(gamepad);
     lua_pushstring(L, name);
     return 1;
@@ -310,8 +310,8 @@ int input_get_gamepad_name(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button has been pressed
 int input_is_gamepad_button_pressed(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
-    int button = luaL_checkinteger(L, 2);
+    const int gamepad = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 2);
     lua_pushboolean(L, IsGamepadButtonPressed(gamepad, button));
     return 1;
 }
@@ -324,8 +324,8 @@ int input_is_gamepad_button_pressed(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button is being held down
 int input_is_gamepad_button_down(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
-    int button = luaL_checkinteger(L, 2);
+    const int gamepad = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 2);
     lua_pushboolean(L, IsGamepadButtonDown(gamepad, button));
     return 1;
 }
@@ -338,8 +338,8 @@ int input_is_gamepad_button_down(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button has been released
 int input_is_gamepad_button_released(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
-    int button = luaL_checkinteger(L, 2);
+    const int gamepad = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 2);
     lua_pushboolean(L, IsGamepadButtonReleased(gamepad, button));
     return 1;
 }
@@ -352,8 +352,8 @@ int input_is_gamepad_button_released(lua_State *L) {
 // -- @param button int The button to check
 // -- @return bool If the button is not being held down
 int input_is_gamepad_button_up(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
-    int button = luaL_checkinteger(L, 2);
+    const int gamepad = luaL_checkinteger(L, 1);
+    const int button = luaL_checkinteger(L, 2);
     lua_pushboolean(L, IsGamepadButtonUp(gamepad, button));
     return 1;
 }
@@ -375,7 +375,7 @@ int input_get_gamepad_button_pressed(lua_State *L) {
 // -- @param gamepad int The gamepad to check
 // -- @return int The number of axes on the gamepad
 int input_get_gamepad_axis_count(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
+    const int gamepad = luaL_checkinteger(L, 1);
     lua_pushinteger(L, GetGamepadAxisCount(gamepad));
     return 1;
 }
@@ -388,8 +388,8 @@ int input_get_gamepad_axis_count(lua_State *L) {
 // -- @param axis int The axis to check
 // -- @return float The movement of the axis
 int input_get_gamepad_axis_movement(lua_State *L) {
-    int gamepad = luaL_checkinteger(L, 1);
-    int axis = luaL_checkinteger(L, 2);
+    const int gamepad = luaL_checkinteger(L, 1);
+    const int axis = luaL_checkinteger(L, 2);
     lua_pushnumber(L, GetGamepadAxisMovement(gamepad, axis));
     return 1;
 }

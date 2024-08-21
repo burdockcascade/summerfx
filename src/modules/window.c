@@ -1,4 +1,4 @@
-#include "modules.hpp"
+#include "modules.h"
 
 // =====================================================================
 // Lifecycle
@@ -9,13 +9,13 @@
 // -- @usage Window.Init(800, 600, "My Game")
 // -- @param width int The width of the window.
 // -- @param height int The height of the window.
-// -- @param title string The title of the window.   
-// -- @return void 
+// -- @param title string The title of the window.
+// -- @return void
 int window_init(lua_State *L) {
-    int width = luaL_checkinteger(L, 1);
-    int height = luaL_checkinteger(L, 2);
+    const int width = luaL_checkinteger(L, 1);
+    const int height = luaL_checkinteger(L, 2);
     const char* title = luaL_checkstring(L, 3);
-    
+
     InitWindow(width, height, title);
 
     return 0;
@@ -58,7 +58,7 @@ int window_should_close(lua_State *L) {
 // -- @param fps int The target FPS.
 // -- @return void
 int window_set_target_fps(lua_State *L) {
-    int fps = luaL_checkinteger(L, 1);
+    const int fps = luaL_checkinteger(L, 1);
     SetTargetFPS(fps);
     return 0;
 }
@@ -85,8 +85,8 @@ int window_set_title(lua_State *L) {
 // -- @param color Color The color to clear the background with.
 // -- @return void
 int window_clear_background(lua_State *L) {
-    Color c = *(Color*)luaL_checkudata(L, 1, "Color");
-    ClearBackground(c);
+    const Color *c = luaL_checkudata(L, 1, "Color");
+    ClearBackground(*c);
     return 0;
 }
 
@@ -212,10 +212,8 @@ int window_maximize(lua_State *L) {
 // -- @usage Window.GetPosition()
 // -- @return Vector2 The position of the window.
 int window_get_position(lua_State *L) {
-    Vector2 v;
-    v.x = GetWindowPosition().x;
-    v.y = GetWindowPosition().y;
-    l_Vector2_push(L, v);
+    const Vector2 position = GetWindowPosition();
+    l_Vector2_push(L, position);
     return 1;
 }
 
@@ -226,7 +224,7 @@ int window_get_position(lua_State *L) {
 // -- @param filename string The filename to save the screenshot to.
 // -- @return void
 int window_take_screenshot(lua_State *L) {
-    const char* filename = luaL_checkstring(L, 1);
+    const char *filename = luaL_checkstring(L, 1);
     TakeScreenshot(filename);
     return 0;
 }

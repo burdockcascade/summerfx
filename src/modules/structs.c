@@ -1,4 +1,4 @@
-#include "modules.hpp"
+#include "modules.h"
 
 // =====================================================================
 // Color
@@ -26,7 +26,7 @@ int l_Color_constructor(lua_State *L) {
 
 int l_Color_index(lua_State *L) {
 
-	Color *udata = (Color*)luaL_checkudata(L, 1, "Color");
+	const Color *udata = luaL_checkudata(L, 1, "Color");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "r") == 0) {
@@ -46,7 +46,7 @@ int l_Color_index(lua_State *L) {
 
 int l_Color_newindex(lua_State *L) {
 
-	Color *udata = (Color*)luaL_checkudata(L, 1, "Color");
+	Color *udata = luaL_checkudata(L, 1, "Color");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "r") == 0) {
@@ -70,10 +70,10 @@ int l_Color_newindex(lua_State *L) {
 // -- @field g number The green component of the color
 // -- @field b number The blue component of the color
 // -- @field a number The alpha component of the color
-void l_Color_push(lua_State *L, const Color &color) {
+void l_Color_push(lua_State *L, Color color) {
 
 	// Create new user data
-	Color *ud = (Color*)lua_newuserdata(L, sizeof(Color));
+	Color *ud = lua_newuserdata(L, sizeof(Color));
 	*ud = color;
 
 	// Set metatable
@@ -114,7 +114,7 @@ int l_Vector2_constructor(lua_State *L) {
 
 int l_Vector2_index(lua_State *L) {
 
-	Vector2 *udata = (Vector2*)luaL_checkudata(L, 1, "Vector2");
+	Vector2 *udata = luaL_checkudata(L, 1, "Vector2");
 	const char *key = luaL_checkstring(L, 2);
 
 	// Vector x component
@@ -131,7 +131,7 @@ int l_Vector2_index(lua_State *L) {
 
 int l_Vector2_newindex(lua_State *L) {
 
-	Vector2 *udata = (Vector2*)luaL_checkudata(L, 1, "Vector2");
+	Vector2 *udata = luaL_checkudata(L, 1, "Vector2");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "x") == 0) {
@@ -145,10 +145,10 @@ int l_Vector2_newindex(lua_State *L) {
 	return 0;
 }
 
-void l_Vector2_push(lua_State *L, const Vector2 &vector2) {
+void l_Vector2_push(lua_State *L, Vector2 vector2) {
 
 	// Create new user data
-	Vector2 *ud = (Vector2*)lua_newuserdata(L, sizeof(Vector2));
+	Vector2 *ud = lua_newuserdata(L, sizeof(Vector2));
 	*ud = vector2;
 
 	// Set metatable
@@ -191,7 +191,7 @@ int l_Vector3_constructor(lua_State *L) {
 
 int l_Vector3_index(lua_State *L) {
 
-	Vector3 *udata = (Vector3*)luaL_checkudata(L, 1, "Vector3");
+	Vector3 *udata = luaL_checkudata(L, 1, "Vector3");
 	const char *key = luaL_checkstring(L, 2);
 
 	// Vector x component
@@ -210,7 +210,7 @@ int l_Vector3_index(lua_State *L) {
 
 int l_Vector3_newindex(lua_State *L) {
 
-	Vector3 *udata = (Vector3*)luaL_checkudata(L, 1, "Vector3");
+	Vector3 *udata = luaL_checkudata(L, 1, "Vector3");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "x") == 0) {
@@ -226,10 +226,10 @@ int l_Vector3_newindex(lua_State *L) {
 	return 0;
 }
 
-void l_Vector3_push(lua_State *L, const Vector3 &vector3) {
+void l_Vector3_push(lua_State *L, Vector3 vector3) {
 
 	// Create new user data
-	Vector3 *ud = (Vector3*)lua_newuserdata(L, sizeof(Vector3));
+	Vector3 *ud = lua_newuserdata(L, sizeof(Vector3));
 	*ud = vector3;
 
 	// Set metatable
@@ -275,7 +275,7 @@ int l_Vector4_constructor(lua_State *L) {
 // Vector4 field getter
 int l_Vector4_index(lua_State *L) {
 
-	Vector4 *udata = (Vector4*)luaL_checkudata(L, 1, "Vector4");
+	Vector4 *udata = luaL_checkudata(L, 1, "Vector4");
 	const char *key = luaL_checkstring(L, 2);
 
 	// Vector x component
@@ -297,7 +297,7 @@ int l_Vector4_index(lua_State *L) {
 // Vector4 field setter
 int l_Vector4_newindex(lua_State *L) {
 
-	Vector4 *udata = (Vector4*)luaL_checkudata(L, 1, "Vector4");
+	Vector4 *udata = luaL_checkudata(L, 1, "Vector4");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "x") == 0) {
@@ -316,10 +316,10 @@ int l_Vector4_newindex(lua_State *L) {
 }
 
 // Pushes a Vector4 onto the stack
-void l_Vector4_push(lua_State *L, const Vector4 &vector4) {
+void l_Vector4_push(lua_State *L, Vector4 vector4) {
 
 	// Create new user data
-	Vector4 *ud = (Vector4*)lua_newuserdata(L, sizeof(Vector4));
+	Vector4 *ud = lua_newuserdata(L, sizeof(Vector4));
 	*ud = vector4;
 
 	// Set metatable
@@ -389,7 +389,7 @@ int l_Matrix_constructor(lua_State *L) {
 // Matrix field getter
 int l_Matrix_index(lua_State *L) {
 
-	Matrix *udata = (Matrix*)luaL_checkudata(L, 1, "Matrix");
+	Matrix *udata = luaL_checkudata(L, 1, "Matrix");
 	const char *key = luaL_checkstring(L, 2);
 
 	// Matrix x component
@@ -435,7 +435,7 @@ int l_Matrix_index(lua_State *L) {
 // Matrix field setter
 int l_Matrix_newindex(lua_State *L) {
 
-	Matrix *udata = (Matrix*)luaL_checkudata(L, 1, "Matrix");
+	Matrix *udata = luaL_checkudata(L, 1, "Matrix");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "m0") == 0) {
@@ -478,10 +478,10 @@ int l_Matrix_newindex(lua_State *L) {
 }
 
 // Pushes a Matrix onto the stack
-void l_Matrix_push(lua_State *L, const Matrix &matrix) {
+void l_Matrix_push(lua_State *L, Matrix matrix) {
 
 	// Create new user data
-	Matrix *ud = (Matrix*)lua_newuserdata(L, sizeof(Matrix));
+	Matrix *ud = lua_newuserdata(L, sizeof(Matrix));
 	*ud = matrix;
 
 	// Set metatable
@@ -526,7 +526,7 @@ int l_Rectangle_constructor(lua_State *L) {
 
 int l_Rectangle_index(lua_State *L) {
 
-    Rectangle *udata = (Rectangle*)luaL_checkudata(L, 1, "Rectangle");
+    Rectangle *udata = luaL_checkudata(L, 1, "Rectangle");
     const char *key = luaL_checkstring(L, 2);
 
     // Rectangle x component
@@ -547,7 +547,7 @@ int l_Rectangle_index(lua_State *L) {
 
 int l_Rectangle_newindex(lua_State *L) {
 
-    Rectangle *udata = (Rectangle*)luaL_checkudata(L, 1, "Rectangle");
+    Rectangle *udata = luaL_checkudata(L, 1, "Rectangle");
     const char *key = luaL_checkstring(L, 2);
 
     if (strcmp(key, "x") == 0) {
@@ -565,10 +565,10 @@ int l_Rectangle_newindex(lua_State *L) {
     return 0;
 }
 
-void l_Rectangle_push(lua_State *L, const Rectangle &rectangle) {
+void l_Rectangle_push(lua_State *L, Rectangle rectangle) {
 
     // Create new user data
-    Rectangle *ud = (Rectangle*)lua_newuserdata(L, sizeof(Rectangle));
+    Rectangle *ud = lua_newuserdata(L, sizeof(Rectangle));
     *ud = rectangle;
 
     // Set metatable
@@ -614,7 +614,7 @@ int l_Camera2D_constructor(lua_State *L) {
 // Camera2D field getter
 int l_Camera2D_index(lua_State *L) {
 
-	Camera2D *udata = (Camera2D*)luaL_checkudata(L, 1, "Camera2D");
+	Camera2D *udata = luaL_checkudata(L, 1, "Camera2D");
 	const char *key = luaL_checkstring(L, 2);
 
 	// Camera2D x component
@@ -636,7 +636,7 @@ int l_Camera2D_index(lua_State *L) {
 // Camera2D field setter
 int l_Camera2D_newindex(lua_State *L) {
 
-	Camera2D *udata = (Camera2D*)luaL_checkudata(L, 1, "Camera2D");
+	Camera2D *udata = luaL_checkudata(L, 1, "Camera2D");
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "target") == 0) {
@@ -655,10 +655,10 @@ int l_Camera2D_newindex(lua_State *L) {
 }
 
 // Pushes a Camera2D onto the stack
-void l_Camera2D_push(lua_State *L, const Camera2D &camera2d) {
+void l_Camera2D_push(lua_State *L, Camera2D camera2d) {
 
 	// Create new user data
-	Camera2D *ud = (Camera2D*)lua_newuserdata(L, sizeof(Camera2D));
+	Camera2D *ud = lua_newuserdata(L, sizeof(Camera2D));
 	*ud = camera2d;
 
 	// Set metatable

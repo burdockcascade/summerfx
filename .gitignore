@@ -15,3 +15,8 @@ build/
 /.luarocks
 
 examples/**/*.c
+
+cmake-build-debug/
+
+# Jetbrains
+.idea/

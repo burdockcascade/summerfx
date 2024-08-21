@@ -19,7 +19,7 @@ local function parse_lua_functions(filename)
     local functions = {}
     local function_ptr = 0;
     for line in file:lines() do
-    
+
         local tag, body = line:match(luadoc_match)
 
         if tag then
@@ -53,7 +53,7 @@ local function parse_lua_functions(filename)
                     }
                 end
             end
-            
+
         end
 
 
@@ -79,7 +79,7 @@ for _, module in ipairs(modules) do
 
     print("Documenting module: " .. module)
 
-    local functions = parse_lua_functions("src/modules/" .. module .. ".cpp")
+    local functions = parse_lua_functions("src/modules/" .. module .. ".c")
 
     -- capitalise first letter
     module = module:gsub("^%l", string.upper)

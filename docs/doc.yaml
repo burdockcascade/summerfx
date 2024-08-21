@@ -14,7 +14,7 @@ modules:
             description: The height of the window.
           - name: title
             type: string
-            description: The title of the window.   
+            description: The title of the window.
       - name: Close
         description: Close the window.
         usage:
@@ -274,14 +274,32 @@ modules:
       - name: DrawRectangleLines
         description: Draw a rectangle outline
         params:
+          - name: x
+            type: int
+            description: The x position of the rectangle
+          - name: y
+            type: int
+            description: The y position of the rectangle
+          - name: width
+            type: int
+            description: The width of the rectangle
+          - name: height
+            type: int
+            description: The height of the rectangle
+          - name: color
+            type: Color
+            description: The color of the rectangle
+      - name: DrawRectangleLinesEx
+        description: Draw a rectangle outline with extended parameters
+        params:
           - name: rectangle
-            type: rectangle
+            type: Rectangle
             description: The rectangle to draw
-          - name: int
-            type: lineThickness
+          - name: lineThicknes
+            type: int
             description: The thickness of the lines
-          - name: Color
-            type: color
+          - name: color
+            type: Color
             description: The color of the lines
       - name: DrawRectangleRounded
         description: Draw a rectangle with rounded edges
@@ -319,21 +337,39 @@ modules:
       - name: DrawRectangleGradientV
         description: Draw a rectangle with a vertical gradient
         params:
-          - name: rectangle
-            type: Rectangle
-            description: The rectangle to draw
-          - name: c1
+          - name: x
+            type: int
+            description: The x position of the rectangle
+          - name: y
+            type: int
+            description: The y position of the rectangle
+          - name: width
+            type: int
+            description: The width of the rectangle
+          - name: height
+            type: int
+            description: The height of the rectangle
+          - name: color1
             type: Color
             description: The first color of the gradient
-          - name: c2
+          - name: color2
             type: Color
             description: The second color of the gradient
       - name: DrawRectangleGradientH
         description: Draw a rectangle with a horizontal gradient
         params:
-          - name: rectangle
-            type: Rectangle
-            description: The rectangle to draw
+          - name: x
+            type: int
+            description: The x position of the rectangle
+          - name: y
+            type: int
+            description: The y position of the rectangle
+          - name: width
+            type: int
+            description: The width of the rectangle
+          - name: height
+            type: int
+            description: The height of the rectangle
           - name: color1
             type: Color
             description: The first color of the gradient
@@ -361,9 +397,9 @@ modules:
       - name: DrawPoly
         description: Draw a polygon
         params:
-          - name: Vector2
-            type: position
-            description: The position of the polygon
+          - name: position
+            type: The
+            description: position of the polygon
           - name: sides
             type: int
             description: The number of sides of the polygon
@@ -379,12 +415,45 @@ modules:
       - name: DrawLine
         description: Draw a line
         params:
+          - name: startX
+            type: int
+            description: The x position of the start of the line
+          - name: startY
+            type: int
+            description: The y position of the start of the line
+          - name: endX
+            type: int
+            description: The x position of the end of the line
+          - name: endY
+            type: int
+            description: The y position of the end of the line
+          - name: color
+            type: Color
+            description: The color of the line
+      - name: DrawLineV
+        description: Draw a line
+        params:
           - name: start
             type: Vector2
             description: The start position of the line
           - name: end
             type: Vector2
             description: The end position of the line
+          - name: color
+            type: Color
+            description: The color of the line
+      - name: DrawLineEx
+        description: Draw a line with extended parameters
+        params:
+          - name: start
+            type: Vector2
+            description: The start position of the line
+          - name: end
+            type: Vector2
+            description: The end position of the line
+          - name: thicknes
+            type: float
+            description: The thickness of the line
           - name: color
             type: Color
             description: The color of the line

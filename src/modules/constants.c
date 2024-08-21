@@ -1,4 +1,4 @@
-#include "modules.hpp"
+#include "modules.h"
 
 // Add predefined colors to Color table
 void bind_constants(lua_State *L) {
@@ -122,7 +122,7 @@ void bind_constants(lua_State *L) {
 	// -- @constant COLOR_BROWN Color(127, 106, 79, 255)
 	// -- @description A brown color
 	l_Color_push(L, BROWN);
-	lua_setglobal(L, "COLOR_BROWN");	
+	lua_setglobal(L, "COLOR_BROWN");
 
 	// -- @constant COLOR_DARKBROWN Color(76, 63, 47, 255)
 	// -- @description A dark brown color
