@@ -214,9 +214,9 @@ int l_Vector3_newindex(lua_State *L) {
 	const char *key = luaL_checkstring(L, 2);
 
 	if (strcmp(key, "x") == 0) {
-		udata->x = luaL_checknumber(L, 1);
+		udata->x = luaL_checknumber(L, 3);
 	}else if (strcmp(key, "y") == 0) {
-		udata->y = luaL_checknumber(L, 2);
+		udata->y = luaL_checknumber(L, 3);
 	} else if (strcmp(key, "z") == 0) {
 		udata->z = luaL_checknumber(L, 3);
 	} else {
@@ -551,13 +551,13 @@ int l_Rectangle_newindex(lua_State *L) {
     const char *key = luaL_checkstring(L, 2);
 
     if (strcmp(key, "x") == 0) {
-        udata->x = luaL_checknumber(L, 1);
+        udata->x = luaL_checknumber(L, 3);
     } else if (strcmp(key, "y") == 0) {
-        udata->y = luaL_checknumber(L, 2);
+        udata->y = luaL_checknumber(L, 3);
     } else if (strcmp(key, "width") == 0) {
         udata->width = luaL_checknumber(L, 3);
     } else if (strcmp(key, "height") == 0) {
-        udata->height = luaL_checknumber(L, 4);
+        udata->height = luaL_checknumber(L, 3);
     } else {
         luaL_error(L, "Unknown field '%s' on ", key);
     }
@@ -598,12 +598,34 @@ void l_Rectangle_push(lua_State *L, Rectangle rectangle) {
 // --@return Camera2D
 int l_Camera2D_constructor(lua_State *L) {
 
+    int param_length = lua_gettop(L);
+
 	// Create struct
 	Camera2D s;
-	s.target = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
-	s.offset = *(Vector2*)luaL_checkudata(L, 2, "Vector2");
-	s.rotation = luaL_checknumber(L, 3);
-	s.zoom = luaL_checknumber(L, 4);
+
+    if (param_length > 0) {
+        s.target = *(Vector2*)luaL_checkudata(L, 1, "Vector2");
+    } else {
+        s.target = (Vector2){0, 0};
+    }
+
+    if (param_length > 1) {
+        s.offset = *(Vector2*)luaL_checkudata(L, 2, "Vector2");
+    } else {
+        s.offset = (Vector2){0, 0};
+    }
+
+    if (param_length > 2) {
+        s.rotation = luaL_checknumber(L, 3);
+    } else {
+        s.rotation = 0;
+    }
+
+    if (param_length > 3) {
+        s.zoom = luaL_checknumber(L, 4);
+    } else {
+        s.zoom = 1;
+    }
 
 	// Push struct onto stack
 	l_Camera2D_push(L, s);

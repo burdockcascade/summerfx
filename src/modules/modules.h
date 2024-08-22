@@ -10,6 +10,8 @@ void bind_structs(lua_State *L);
 void bind_input_module(lua_State *L);
 void bind_window_module(lua_State *L);
 void bind_graphics2d_module(lua_State *L);
+void bind_text_module(lua_State *L);
+void bind_math_module(lua_State *L);
 
 void l_Vector2_push(lua_State *L, Vector2 vector2);
 void l_Vector3_push(lua_State *L, Vector3 vector3);

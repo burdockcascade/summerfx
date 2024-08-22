@@ -27,6 +27,8 @@ int main(int argc, char** argv) {
     bind_input_module(L);
     bind_window_module(L);
     bind_graphics2d_module(L);
+    bind_text_module(L);
+    bind_math_module(L);
 
     // Load and execute the Lua file
     if (luaL_dofile(L, fileToLoad)) {

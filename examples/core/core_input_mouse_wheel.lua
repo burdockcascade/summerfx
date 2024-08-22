@@ -21,12 +21,12 @@ function main()
             Graphics2D.DrawRectangle(screenWidth/2 - 40, boxPositionY, 80, 80, COLOR_MAROON)
 
             Graphics2D.DrawText("Use mouse wheel to move the cube up and down!", 10, 10, 20, COLOR_GRAY)
-            Graphics2D.DrawText(TextFormat("Box position Y: %03i", boxPositionY), 10, 40, 20, LIGHTGRAY)
+            Graphics2D.DrawText(Text.Format("Box position Y: %03i", boxPositionY), 10, 40, 20, COLOR_LIGHTGRAY)
 
         Window.EndDrawing()
     end
 
-    Window.CloseWindow();
+    Window.Close();
 
 end
 

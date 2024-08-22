@@ -15,3 +15,4 @@ target("summerfx")
     set_kind("binary")
     add_files("src/*.c")
     add_files("src/modules/*.c")
+

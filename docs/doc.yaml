@@ -167,6 +167,32 @@ modules:
         usage:
           - Window.IsCursorOnScreen()
         params:
+      - name: BeginMode2D
+        description: Begin 2D mode.
+        usage:
+          - Window.BeginMode2D(Camera2D(0, 0, 0, 0))
+        params:
+          - name: camera
+            type: Camera2D
+            description: The camera to use.
+      - name: EndMode2D
+        description: End 2D mode.
+        usage:
+          - Window.EndMode2D()
+        params:
+      - name: BeginMode3D
+        description: Begin 3D mode.
+        usage:
+          - Window.BeginMode3D(Camera3D(Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), 0, 0, 0, 0, 0))
+        params:
+          - name: camera
+            type: Camera3D
+            description: The camera to use.
+      - name: EndMode3D
+        description: End 3D mode.
+        usage:
+          - Window.EndMode3D()
+        params:
   - name: Graphics2d
     functions:
       - name: DrawText
@@ -286,6 +312,15 @@ modules:
           - name: height
             type: int
             description: The height of the rectangle
+          - name: color
+            type: Color
+            description: The color of the rectangle
+      - name: DrawRectangleRec
+        description: Draw a rectangle
+        params:
+          - name: rectangle
+            type: Rectangle
+            description: The rectangle to draw
           - name: color
             type: Color
             description: The color of the rectangle
@@ -766,3 +801,33 @@ modules:
           - name: mapping
             type: string
             description: The mapping to set
+      - name: SetGestureEnabled
+        description: Set if a gesture is enabled
+        params:
+          - name: int
+            type: flags
+            description: The flags of the gestures to enable
+      - name: IsGestureDetected
+        description: Check if a gesture is detected
+        params:
+          - name: int
+            type: gesture
+            description: The gesture to check
+      - name: GetGestureDetected
+        description: Get the gesture detected
+        params:
+      - name: GetGestureHoldDuration
+        description: Get the hold duration of a gesture
+        params:
+      - name: GetGestureDragVector
+        description: Get the drag vector of a gesture
+        params:
+      - name: GetGestureDragAngle
+        description: Get the drag angle of a gesture
+        params:
+      - name: GetGesturePinchVector
+        description: Get the pinch vector of a gesture
+        params:
+      - name: GetGesturePinchAngle
+        description: Get the pinch angle of a gesture
+        params:

@@ -139,6 +139,19 @@ int graphics2d_draw_rectangle_lines(lua_State *L) {
     return 0;
 }
 
+// DrawRectangleRec
+// -- @function DrawRectangleRec
+// -- @description Draw a rectangle
+// -- @param rectangle Rectangle The rectangle to draw
+// -- @param color Color The color of the rectangle
+// -- @return void
+int graphics2d_draw_rectangle_rec(lua_State *L) {
+    const Rectangle *r = luaL_checkudata(L, 1, "Rectangle");
+    const Color *c = luaL_checkudata(L, 2, "Color");
+    DrawRectangleRec(*r, *c);
+    return 0;
+}
+
 // DrawRectangleLinesEx
 // -- @function DrawRectangleLinesEx
 // -- @description Draw a rectangle outline with extended parameters
@@ -153,7 +166,6 @@ int graphics2d_draw_rectangle_lines_ex(lua_State *L) {
     DrawRectangleLinesEx(*r, lineThickness, *c);
     return 0;
 }
-
 
 // DrawRectangleRounded
 // -- @function DrawRectangleRounded
@@ -442,6 +454,9 @@ void bind_graphics2d_module(lua_State *L) {
 
     lua_pushcfunction(L, graphics2d_draw_rectangle);
     lua_setfield(L, -2, "DrawRectangle");
+
+    lua_pushcfunction(L, graphics2d_draw_rectangle_rec);
+    lua_setfield(L, -2, "DrawRectangleRec");
 
     lua_pushcfunction(L, graphics2d_draw_rectangle_lines);
     lua_setfield(L, -2, "DrawRectangleLines");

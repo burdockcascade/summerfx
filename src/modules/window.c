@@ -326,6 +326,53 @@ int window_is_cursor_on_screen(lua_State *L) {
 }
 
 // =====================================================================
+// Modes
+
+// Begin Mode 2D
+// -- @function BeginMode2D
+// -- @description Begin 2D mode.
+// -- @usage Window.BeginMode2D(Camera2D(0, 0, 0, 0))
+// -- @param camera Camera2D The camera to use.
+// -- @return void
+int window_begin_mode_2d(lua_State *L) {
+    const Camera2D *camera = luaL_checkudata(L, 1, "Camera2D");
+    BeginMode2D(*camera);
+    return 0;
+}
+
+// End Mode 2D
+// -- @function EndMode2D
+// -- @description End 2D mode.
+// -- @usage Window.EndMode2D()
+// -- @return void
+int window_end_mode_2d(lua_State *L) {
+    EndMode2D();
+    return 0;
+}
+
+// Begin Mode 3D
+// -- @function BeginMode3D
+// -- @description Begin 3D mode.
+// -- @usage Window.BeginMode3D(Camera3D(Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0), 0, 0, 0, 0, 0))
+// -- @param camera Camera3D The camera to use.
+// -- @return void
+int window_begin_mode_3d(lua_State *L) {
+    const Camera3D *camera = luaL_checkudata(L, 1, "Camera3D");
+    BeginMode3D(*camera);
+    return 0;
+}
+
+// End Mode 3D
+// -- @function EndMode3D
+// -- @description End 3D mode.
+// -- @usage Window.EndMode3D()
+// -- @return void
+int window_end_mode_3d(lua_State *L) {
+    EndMode3D();
+    return 0;
+}
+
+// =====================================================================
 // Bindings
 
 void bind_window_module(lua_State *L) {
@@ -416,6 +463,15 @@ void bind_window_module(lua_State *L) {
 
     lua_pushcfunction(L, window_is_cursor_on_screen);
     lua_setfield(L, -2, "IsCursorOnScreen");
+
+    lua_pushcfunction(L, window_begin_mode_2d);
+    lua_setfield(L, -2, "BeginMode2D");
+
+    lua_pushcfunction(L, window_end_mode_2d);
+    lua_setfield(L, -2, "EndMode2D");
+
+    lua_pushcfunction(L, window_begin_mode_3d);
+    lua_setfield(L, -2, "BeginMode3D");
 
     lua_pushcfunction(L, window_close);
     lua_setfield(L, -2, "Close");

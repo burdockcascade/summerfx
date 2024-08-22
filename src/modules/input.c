@@ -408,6 +408,124 @@ int input_set_gamepad_mappings(lua_State *L) {
 }
 
 // =====================================================================
+// Gestures
+
+// Set Gesture Enabled
+// -- @function SetGestureEnabled
+// -- @description Set if a gesture is enabled
+// -- @param int flags The flags of the gestures to enable
+// -- @return void
+int input_set_gesture_enabled(lua_State *L) {
+    const int flags = luaL_checkinteger(L, 1);
+    SetGesturesEnabled(flags);
+    return 0;
+}
+
+// Is Gesture Detected
+// -- @function IsGestureDetected
+// -- @description Check if a gesture is detected
+// -- @param int gesture The gesture to check
+// -- @return bool If the gesture is detected
+int input_is_gesture_detected(lua_State *L) {
+    const int gesture = luaL_checkinteger(L, 1);
+    lua_pushboolean(L, IsGestureDetected(gesture));
+    return 1;
+}
+
+// Get Gesture Detected
+// -- @function GetGestureDetected
+// -- @description Get the gesture detected
+// -- @return int The gesture detected
+int input_get_gesture_detected(lua_State *L) {
+    lua_pushinteger(L, GetGestureDetected());
+    return 1;
+}
+
+// Get Gesture Hold Duration
+// -- @function GetGestureHoldDuration
+// -- @description Get the hold duration of a gesture
+// -- @return float The hold duration of the gesture
+int input_get_gesture_hold_duration(lua_State *L) {
+    lua_pushnumber(L, GetGestureHoldDuration());
+    return 1;
+}
+
+// Get Gesture Drag Vector
+// -- @function GetGestureDragVector
+// -- @description Get the drag vector of a gesture
+// -- @return Vector2 The drag vector of the gesture
+int input_get_gesture_drag_vector(lua_State *L) {
+    const Vector2 v = GetGestureDragVector();
+    l_Vector2_push(L, v);
+    return 1;
+}
+
+// Get Gesture Drag Angle
+// -- @function GetGestureDragAngle
+// -- @description Get the drag angle of a gesture
+// -- @return float The drag angle of the gesture
+int input_get_gesture_drag_angle(lua_State *L) {
+    lua_pushnumber(L, GetGestureDragAngle());
+    return 1;
+}
+
+// Get Gesture Pinch Vector
+// -- @function GetGesturePinchVector
+// -- @description Get the pinch vector of a gesture
+// -- @return Vector2 The pinch vector of the gesture
+int input_get_gesture_pinch_vector(lua_State *L) {
+    const Vector2 v = GetGesturePinchVector();
+    l_Vector2_push(L, v);
+    return 1;
+}
+
+// Get Gesture Pinch Angle
+// -- @function GetGesturePinchAngle
+// -- @description Get the pinch angle of a gesture
+// -- @return float The pinch angle of the gesture
+int input_get_gesture_pinch_angle(lua_State *L) {
+    lua_pushnumber(L, GetGesturePinchAngle());
+    return 1;
+}
+
+void bind_gesture_constants(lua_State *L) {
+
+    lua_pushinteger(L, GESTURE_NONE);
+    lua_setglobal(L, "GESTURE_NONE");
+
+    lua_pushinteger(L, GESTURE_TAP);
+    lua_setglobal(L, "GESTURE_TAP");
+
+    lua_pushinteger(L, GESTURE_DOUBLETAP);
+    lua_setglobal(L, "GESTURE_DOUBLETAP");
+
+    lua_pushinteger(L, GESTURE_HOLD);
+    lua_setglobal(L, "GESTURE_HOLD");
+
+    lua_pushinteger(L, GESTURE_DRAG);
+    lua_setglobal(L, "GESTURE_DRAG");
+
+    lua_pushinteger(L, GESTURE_SWIPE_RIGHT);
+    lua_setglobal(L, "GESTURE_SWIPE_RIGHT");
+
+    lua_pushinteger(L, GESTURE_SWIPE_LEFT);
+    lua_setglobal(L, "GESTURE_SWIPE_LEFT");
+
+    lua_pushinteger(L, GESTURE_SWIPE_UP);
+    lua_setglobal(L, "GESTURE_SWIPE_UP");
+
+    lua_pushinteger(L, GESTURE_SWIPE_DOWN);
+    lua_setglobal(L, "GESTURE_SWIPE_DOWN");
+
+    lua_pushinteger(L, GESTURE_PINCH_IN);
+    lua_setglobal(L, "GESTURE_PINCH_IN");
+
+    lua_pushinteger(L, GESTURE_PINCH_OUT);
+    lua_setglobal(L, "GESTURE_PINCH_OUT");
+
+}
+
+// =====================================================================
 // Bindings
 
 void bind_keys_constants(lua_State *L) {
@@ -450,6 +568,276 @@ void bind_keys_constants(lua_State *L) {
 
     lua_pushinteger(L, KEY_PAGE_DOWN);
     lua_setglobal(L, "KEY_PAGE_DOWN");
+
+    lua_pushinteger(L, KEY_HOME);
+    lua_setglobal(L, "KEY_HOME");
+
+    lua_pushinteger(L, KEY_END);
+    lua_setglobal(L, "KEY_END");
+
+    lua_pushinteger(L, KEY_CAPS_LOCK);
+    lua_setglobal(L, "KEY_CAPS_LOCK");
+
+    lua_pushinteger(L, KEY_SCROLL_LOCK);
+    lua_setglobal(L, "KEY_SCROLL_LOCK");
+
+    lua_pushinteger(L, KEY_NUM_LOCK);
+    lua_setglobal(L, "KEY_NUM_LOCK");
+
+    lua_pushinteger(L, KEY_PRINT_SCREEN);
+    lua_setglobal(L, "KEY_PRINT_SCREEN");
+
+    lua_pushinteger(L, KEY_PAUSE);
+    lua_setglobal(L, "KEY_PAUSE");
+
+    lua_pushinteger(L, KEY_F1);
+    lua_setglobal(L, "KEY_F1");
+
+    lua_pushinteger(L, KEY_F2);
+    lua_setglobal(L, "KEY_F2");
+
+    lua_pushinteger(L, KEY_F3);
+    lua_setglobal(L, "KEY_F3");
+
+    lua_pushinteger(L, KEY_F4);
+    lua_setglobal(L, "KEY_F4");
+
+    lua_pushinteger(L, KEY_F5);
+    lua_setglobal(L, "KEY_F5");
+
+    lua_pushinteger(L, KEY_F6);
+    lua_setglobal(L, "KEY_F6");
+
+    lua_pushinteger(L, KEY_F7);
+    lua_setglobal(L, "KEY_F7");
+
+    lua_pushinteger(L, KEY_F8);
+    lua_setglobal(L, "KEY_F8");
+
+    lua_pushinteger(L, KEY_F9);
+    lua_setglobal(L, "KEY_F9");
+
+    lua_pushinteger(L, KEY_F10);
+    lua_setglobal(L, "KEY_F10");
+
+    lua_pushinteger(L, KEY_F11);
+    lua_setglobal(L, "KEY_F11");
+
+    lua_pushinteger(L, KEY_F12);
+    lua_setglobal(L, "KEY_F12");
+
+    lua_pushinteger(L, KEY_LEFT_SHIFT);
+    lua_setglobal(L, "KEY_LEFT_SHIFT");
+
+    lua_pushinteger(L, KEY_LEFT_CONTROL);
+    lua_setglobal(L, "KEY_LEFT_CONTROL");
+
+    lua_pushinteger(L, KEY_LEFT_ALT);
+    lua_setglobal(L, "KEY_LEFT_ALT");
+
+    lua_pushinteger(L, KEY_LEFT_SUPER);
+    lua_setglobal(L, "KEY_LEFT_SUPER");
+
+    lua_pushinteger(L, KEY_RIGHT_SHIFT);
+    lua_setglobal(L, "KEY_RIGHT_SHIFT");
+
+    lua_pushinteger(L, KEY_RIGHT_CONTROL);
+    lua_setglobal(L, "KEY_RIGHT_CONTROL");
+
+    lua_pushinteger(L, KEY_RIGHT_ALT);
+    lua_setglobal(L, "KEY_RIGHT_ALT");
+
+    lua_pushinteger(L, KEY_RIGHT_SUPER);
+    lua_setglobal(L, "KEY_RIGHT_SUPER");
+
+    lua_pushinteger(L, KEY_KB_MENU);
+    lua_setglobal(L, "KEY_KB_MENU");
+
+    lua_pushinteger(L, KEY_LEFT_BRACKET);
+    lua_setglobal(L, "KEY_LEFT_BRACKET");
+
+    lua_pushinteger(L, KEY_BACKSLASH);
+    lua_setglobal(L, "KEY_BACKSLASH");
+
+    lua_pushinteger(L, KEY_RIGHT_BRACKET);
+    lua_setglobal(L, "KEY_RIGHT_BRACKET");
+
+    lua_pushinteger(L, KEY_GRAVE);
+    lua_setglobal(L, "KEY_GRAVE");
+
+    lua_pushinteger(L, KEY_KP_0);
+    lua_setglobal(L, "KEY_KP_0");
+
+    lua_pushinteger(L, KEY_KP_1);
+    lua_setglobal(L, "KEY_KP_1");
+
+    lua_pushinteger(L, KEY_KP_2);
+    lua_setglobal(L, "KEY_KP_2");
+
+    lua_pushinteger(L, KEY_KP_3);
+    lua_setglobal(L, "KEY_KP_3");
+
+    lua_pushinteger(L, KEY_KP_4);
+    lua_setglobal(L, "KEY_KP_4");
+
+    lua_pushinteger(L, KEY_KP_5);
+    lua_setglobal(L, "KEY_KP_5");
+
+    lua_pushinteger(L, KEY_KP_6);
+    lua_setglobal(L, "KEY_KP_6");
+
+    lua_pushinteger(L, KEY_KP_7);
+    lua_setglobal(L, "KEY_KP_7");
+
+    lua_pushinteger(L, KEY_KP_8);
+    lua_setglobal(L, "KEY_KP_8");
+
+    lua_pushinteger(L, KEY_KP_9);
+    lua_setglobal(L, "KEY_KP_9");
+
+    lua_pushinteger(L, KEY_KP_DECIMAL);
+    lua_setglobal(L, "KEY_KP_DECIMAL");
+
+    lua_pushinteger(L, KEY_KP_DIVIDE);
+    lua_setglobal(L, "KEY_KP_DIVIDE");
+
+    lua_pushinteger(L, KEY_KP_MULTIPLY);
+    lua_setglobal(L, "KEY_KP_MULTIPLY");
+
+    lua_pushinteger(L, KEY_KP_SUBTRACT);
+    lua_setglobal(L, "KEY_KP_SUBTRACT");
+
+    lua_pushinteger(L, KEY_KP_ADD);
+    lua_setglobal(L, "KEY_KP_ADD");
+
+    lua_pushinteger(L, KEY_KP_ENTER);
+    lua_setglobal(L, "KEY_KP_ENTER");
+
+    lua_pushinteger(L, KEY_KP_EQUAL);
+    lua_setglobal(L, "KEY_KP_EQUAL");
+
+    lua_pushinteger(L, KEY_BACK);
+    lua_setglobal(L, "KEY_BACK");
+
+    lua_pushinteger(L, KEY_MENU);
+    lua_setglobal(L, "KEY_MENU");
+
+    lua_pushinteger(L, KEY_VOLUME_UP);
+    lua_setglobal(L, "KEY_VOLUME_UP");
+
+    lua_pushinteger(L, KEY_VOLUME_DOWN);
+    lua_setglobal(L, "KEY_VOLUME_DOWN");
+
+    lua_pushinteger(L, KEY_PAUSE);
+    lua_setglobal(L, "KEY_PAUSE");
+
+    lua_pushinteger(L, KEY_A);
+    lua_setglobal(L, "KEY_A");
+
+    lua_pushinteger(L, KEY_B);
+    lua_setglobal(L, "KEY_B");
+
+    lua_pushinteger(L, KEY_C);
+    lua_setglobal(L, "KEY_C");
+
+    lua_pushinteger(L, KEY_D);
+    lua_setglobal(L, "KEY_D");
+
+    lua_pushinteger(L, KEY_E);
+    lua_setglobal(L, "KEY_E");
+
+    lua_pushinteger(L, KEY_F);
+    lua_setglobal(L, "KEY_F");
+
+    lua_pushinteger(L, KEY_G);
+    lua_setglobal(L, "KEY_G");
+
+    lua_pushinteger(L, KEY_H);
+    lua_setglobal(L, "KEY_H");
+
+    lua_pushinteger(L, KEY_I);
+    lua_setglobal(L, "KEY_I");
+
+    lua_pushinteger(L, KEY_J);
+    lua_setglobal(L, "KEY_J");
+
+    lua_pushinteger(L, KEY_K);
+    lua_setglobal(L, "KEY_K");
+
+    lua_pushinteger(L, KEY_L);
+    lua_setglobal(L, "KEY_L");
+
+    lua_pushinteger(L, KEY_M);
+    lua_setglobal(L, "KEY_M");
+
+    lua_pushinteger(L, KEY_N);
+    lua_setglobal(L, "KEY_N");
+
+    lua_pushinteger(L, KEY_O);
+    lua_setglobal(L, "KEY_O");
+
+    lua_pushinteger(L, KEY_P);
+    lua_setglobal(L, "KEY_P");
+
+    lua_pushinteger(L, KEY_Q);
+    lua_setglobal(L, "KEY_Q");
+
+    lua_pushinteger(L, KEY_R);
+    lua_setglobal(L, "KEY_R");
+
+    lua_pushinteger(L, KEY_S);
+    lua_setglobal(L, "KEY_S");
+
+    lua_pushinteger(L, KEY_T);
+    lua_setglobal(L, "KEY_T");
+
+    lua_pushinteger(L, KEY_U);
+    lua_setglobal(L, "KEY_U");
+
+    lua_pushinteger(L, KEY_V);
+    lua_setglobal(L, "KEY_V");
+
+    lua_pushinteger(L, KEY_W);
+    lua_setglobal(L, "KEY_W");
+
+    lua_pushinteger(L, KEY_X);
+    lua_setglobal(L, "KEY_X");
+
+    lua_pushinteger(L, KEY_Y);
+    lua_setglobal(L, "KEY_Y");
+
+    lua_pushinteger(L, KEY_Z);
+    lua_setglobal(L, "KEY_Z");
+
+    lua_pushinteger(L, KEY_ZERO);
+    lua_setglobal(L, "KEY_ZERO");
+
+    lua_pushinteger(L, KEY_ONE);
+    lua_setglobal(L, "KEY_ONE");
+
+    lua_pushinteger(L, KEY_TWO);
+    lua_setglobal(L, "KEY_TWO");
+
+    lua_pushinteger(L, KEY_THREE);
+    lua_setglobal(L, "KEY_THREE");
+
+    lua_pushinteger(L, KEY_FOUR);
+    lua_setglobal(L, "KEY_FOUR");
+
+    lua_pushinteger(L, KEY_FIVE);
+    lua_setglobal(L, "KEY_FIVE");
+
+    lua_pushinteger(L, KEY_SIX);
+    lua_setglobal(L, "KEY_SIX");
+
+    lua_pushinteger(L, KEY_SEVEN);
+    lua_setglobal(L, "KEY_SEVEN");
+
+    lua_pushinteger(L, KEY_EIGHT);
+    lua_setglobal(L, "KEY_EIGHT");
+
+    lua_pushinteger(L, KEY_NINE);
+    lua_setglobal(L, "KEY_NINE");
 
     // TODO: Add more keys
 
@@ -593,6 +981,26 @@ void bind_input_module(lua_State *L) {
 
     lua_pushcfunction(L, input_set_gamepad_mappings);
     lua_setfield(L, -2, "SetGamepadMappings");
+
+    bind_gesture_constants(L);
+
+    lua_pushcfunction(L, input_set_gesture_enabled);
+    lua_setfield(L, -2, "SetGestureEnabled");
+
+    lua_pushcfunction(L, input_is_gesture_detected);
+    lua_setfield(L, -2, "IsGestureDetected");
+
+    lua_pushcfunction(L, input_get_gesture_detected);
+    lua_setfield(L, -2, "GetGestureDetected");
+
+    lua_pushcfunction(L, input_get_gesture_hold_duration);
+    lua_setfield(L, -2, "GetGestureHoldDuration");
+
+    lua_pushcfunction(L, input_get_gesture_drag_vector);
+    lua_setfield(L, -2, "GetGestureDragVector");
+
+    lua_pushcfunction(L, input_get_gesture_drag_angle);
+    lua_setfield(L, -2, "GetGestureDragAngle");
 
     lua_pop(L, 1);
 
